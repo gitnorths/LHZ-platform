@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>Home</p>
-    <button @click="toLogin">toLogin</button>
+    <el-button type="primary" @click="toLogin">toLogin</el-button>
   </div>
 </template>
 <script>
@@ -20,5 +20,8 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style lang="scss">
+p {
+  background-color: $theme-color;
+}
 </style>
