@@ -20,8 +20,8 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 p {
-  background-color: $theme-color;
+  color: $main-color;
 }
 </style>
