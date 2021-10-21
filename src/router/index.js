@@ -3,7 +3,7 @@ import Home from "../views/home/index";
 import Login from "../views/user/login";
 
 const routes = [
-  { path: "/", component: Home },
+  { path: "/", component: Login },
   {
     path: "/home",
     name: "home",
