@@ -1,3 +1,65 @@
-@import './normalize.scss';
+@import "./normalize.scss";
 
-$main-color: darkolivegreen;  
+$main-color: darkolivegreen;
+.el-input {
+  &__inner {
+    height: 50px;
+    line-height: 50px;
+    background-color: #023333;
+    border-color: #2a7a7a;
+    font-size: 18px;
+    color: #fff;
+
+    &:hover {
+      border-color: #05bf99;
+    }
+  }
+}
+.el-checkbox {
+  &.is-checked {
+    color: #05bf99;
+  }
+  &__input {
+    &.is-focus {
+      .el-checkbox__inner {
+        border-color: #2a7a7a;
+      }
+    }
+
+    &.is-checked {
+      & + .el-checkbox__label {
+        color: #05bf99;
+      }
+      .el-checkbox__inner {
+        background-color: #05bf99;
+        border-color: #05bf99;
+      }
+    }
+  }
+
+  &__inner {
+    background-color: #023333;
+    border-color: #2a7a7a;
+
+    &:hover {
+      border-color: #05bf99;
+    }
+  }
+
+  &__label {
+    color: #fff;
+  }
+}
+
+
+@keyframes seamless-scrolling {
+  0% {
+    transform: translateX(50%);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
