@@ -50,16 +50,3 @@ $main-color: darkolivegreen;
     color: #fff;
   }
 }
-
-
-@keyframes animatedCloud {
-  0% {
-    left: -200px;
-  }
-  50% {
-    left: 0;
-  }
-  100% {
-    left: 200px;
-  }
-}

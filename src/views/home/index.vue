@@ -15,13 +15,10 @@
         src="~@/assets/img/home-xmgl.png"
         class="home-xmgl animate__animated animate__zoomIn"
         alt=""
+        @click="jumpPage('xmgl')"
       />
       <div class="home-cloud">
-        <img
-          src="~@/assets/img/home-cloud-1.png"
-          class="home-cloud-1 animate__animated animate__bounce"
-          alt=""
-        />
+        <img src="~@/assets/img/home-cloud-1.png" class="home-cloud-1" alt="" />
         <img src="~@/assets/img/home-cloud-2.png" class="home-cloud-2" alt="" />
         <img src="~@/assets/img/home-cloud-3.png" class="home-cloud-3" alt="" />
         <img src="~@/assets/img/home-cloud-4.png" class="home-cloud-4" alt="" />
@@ -36,10 +33,19 @@ export default {
   name: "Home",
   data() {
     return {
-      jsnrUrl: require(`@/assets/img/home-jsnr.png`),
-      ssxgUrl: require(`@/assets/img/home-ssxg.png`),
-      xmglUrl: require(`@/assets/img/home-xmgl.png`),
     };
+  },
+  methods: {
+    jumpPage(action) {
+      switch (action) {
+        case "xmgl":
+          this.$router.push(`/projects`);
+          break;
+
+        default:
+          break;
+      }
+    },
   },
 };
 </script>
@@ -97,12 +103,13 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    animation: animatedCloud 40s linear infinite;
-    // animation-timing-function: linear; // 动画速度曲线，匀速
-    // animation-iteration-count: infinite; // 动画循环无限次播放
-    // animation-name: headShake;
-    // animation-duration: 1.5s;
-    // animation-fill-mode: both;
+
+    transform: translate(0);
+    animation-delay: 3.5s;
+    animation-name: CLOUD-MOVE;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 
     & > img {
       position: absolute;
@@ -132,6 +139,21 @@ export default {
       left: 630px;
       top: 20px;
     }
+  }
+}
+
+@keyframes CLOUD-MOVE {
+  0% {
+    transform: translate(0);
+  }
+  33.33% {
+    transform: translate(150px);
+  }
+  66.66% {
+    transform: translate(-150px);
+  }
+  100% {
+    transform: translate(0);
   }
 }
 </style>
