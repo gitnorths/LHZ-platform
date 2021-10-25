@@ -52,14 +52,14 @@ $main-color: darkolivegreen;
 }
 
 
-@keyframes seamless-scrolling {
+@keyframes animatedCloud {
   0% {
-    transform: translateX(50%);
+    left: -200px;
   }
   50% {
-    transform: translateX(0px);
+    left: 0;
   }
   100% {
-    transform: translateX(-50%);
+    left: 200px;
   }
 }

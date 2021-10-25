@@ -1,39 +1,33 @@
 <template>
   <div class="home">
     <div class="home-map">
-      <img src="~@/assets/img/home-jsnr.png" class="home-jsnr animate__animated animate__zoomIn" alt="" />
-      <img src="~@/assets/img/home-ssxg.png" class="home-ssxg animate__animated animate__zoomIn" alt="" />
-      <img src="~@/assets/img/home-xmgl.png" class="home-xmgl animate__animated animate__zoomIn" alt="" />
       <img
-        src="~@/assets/img/home-cloud-1.png"
-        class="home-cloud home-cloud-1 animate__animated animate__bounce"
+        src="~@/assets/img/home-jsnr.png"
+        class="home-jsnr animate__animated animate__zoomIn"
         alt=""
       />
       <img
-        src="~@/assets/img/home-cloud-2.png"
-        class="home-cloud home-cloud-2"
+        src="~@/assets/img/home-ssxg.png"
+        class="home-ssxg animate__animated animate__zoomIn"
         alt=""
       />
       <img
-        src="~@/assets/img/home-cloud-3.png"
-        class="home-cloud home-cloud-3"
+        src="~@/assets/img/home-xmgl.png"
+        class="home-xmgl animate__animated animate__zoomIn"
         alt=""
       />
-      <img
-        src="~@/assets/img/home-cloud-4.png"
-        class="home-cloud home-cloud-4"
-        alt=""
-      />
-      <img
-        src="~@/assets/img/home-cloud-5.png"
-        class="home-cloud home-cloud-5"
-        alt=""
-      />
-      <img
-        src="~@/assets/img/home-cloud-6.png"
-        class="home-cloud home-cloud-6"
-        alt=""
-      />
+      <div class="home-cloud">
+        <img
+          src="~@/assets/img/home-cloud-1.png"
+          class="home-cloud-1 animate__animated animate__bounce"
+          alt=""
+        />
+        <img src="~@/assets/img/home-cloud-2.png" class="home-cloud-2" alt="" />
+        <img src="~@/assets/img/home-cloud-3.png" class="home-cloud-3" alt="" />
+        <img src="~@/assets/img/home-cloud-4.png" class="home-cloud-4" alt="" />
+        <img src="~@/assets/img/home-cloud-5.png" class="home-cloud-5" alt="" />
+        <img src="~@/assets/img/home-cloud-6.png" class="home-cloud-6" alt="" />
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +52,7 @@ export default {
   height: 100vh;
   background: {
     repeat: no-repeat;
+    size: 100%;
     image: url(~@/assets/img/home-bg.png);
   }
 
@@ -98,12 +93,20 @@ export default {
 
   &-cloud {
     position: absolute;
-    // animation-name: seamless-scrolling; // Q3
-    animation-timing-function: linear; // 动画速度曲线，匀速
-    animation-iteration-count: infinite; // 动画循环无限次播放
-    animation-name: headShake;
-    animation-duration: 1.5s;
-    animation-fill-mode: both;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: animatedCloud 40s linear infinite;
+    // animation-timing-function: linear; // 动画速度曲线，匀速
+    // animation-iteration-count: infinite; // 动画循环无限次播放
+    // animation-name: headShake;
+    // animation-duration: 1.5s;
+    // animation-fill-mode: both;
+
+    & > img {
+      position: absolute;
+    }
 
     &-1 {
       left: 0;
