@@ -1,5 +1,27 @@
 <template>
   <div class="home">
+    <div class="lhz-header">
+      <div class="lhz-header-left">
+        <el-breadcrumb separator="|">
+          <el-breadcrumb-item><img :src="require(`@/assets/img/home/xy.png`)" alt />雨  25℃ 2020-07-28 15:53</el-breadcrumb-item>
+        </el-breadcrumb>
+      </div>
+      <div class="lhz-header-center"><span>浏河镇农业面源污染智慧监管平台</span></div>
+      <div class="lhz-header-right">
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
+              class="el-icon-arrow-down el-icon--right"
+            ></i>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item><a href="/login">退出</a></el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </div>
     <div class="home-map">
       <img
         v-for="(item, i) in imgData"
@@ -68,6 +90,7 @@ export default {
     position: relative;
     width: 1260px;
     height: 700px;
+    margin-top: 86px;
     background: {
       repeat: no-repeat;
       position: center;

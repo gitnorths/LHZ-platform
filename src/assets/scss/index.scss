@@ -58,11 +58,63 @@ $main-color: darkolivegreen;
   left: 0;
   right: 0;
   height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: {
     repeat: no-repeat;
     position: center;
-    image: url(~@/assets/img/home/header.png)
-  };
+    image: url(~@/assets/img/home/header.png);
+  }
+
+  i {
+    font-size: 14px;
+    color: #05bf99;
+  }
+
+  &-left {
+    flex: 1;
+    padding-left: 50px;
+    padding-bottom: 35px;
+
+    .el-breadcrumb {
+      &__inner {
+        color: #05BF99 !important;
+        a {
+          color: #fff !important;
+        }
+      }
+      &__separator {
+        color: #2a7a7a;
+      }
+      img {
+        display: block;
+        height: 20px;
+        margin-right: 10px;
+        margin-top: -3px;
+        float: left;
+      }
+    }
+  }
+  &-center {
+    flex: 0 0 600px;
+    padding-bottom: 10px;
+    text-align: center;
+
+    span {
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      font-family: "PingFang-SC-Bold";
+    }
+  }
+  &-right {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    padding-right: 50px;
+    padding-bottom: 35px;
+  }
 }
 
 .lhz-poper {
@@ -94,14 +146,14 @@ $main-color: darkolivegreen;
       line-height: 50px;
       padding: 0 20px;
       text-align: center;
-      color: #22F3E2;
+      color: #22f3e2;
       z-index: 10;
       cursor: pointer;
       background: {
         repeat: no-repeat;
         position: center bottom;
-        image: url(~@/assets/img/projects/bot.png)
-      };
+        image: url(~@/assets/img/projects/bot.png);
+      }
 
       &:last-child {
         background-image: initial;
@@ -110,13 +162,13 @@ $main-color: darkolivegreen;
       span {
         font-size: 16px;
         font-weight: bold;
-        color: #22F3E2;
+        color: #22f3e2;
         padding-right: 20px;
         background: {
           repeat: no-repeat;
           position: center right;
-          image: url(~@/assets/img/projects/next.png)
-        };
+          image: url(~@/assets/img/projects/next.png);
+        }
       }
     }
   }
@@ -124,6 +176,42 @@ $main-color: darkolivegreen;
   .el-popper {
     &__arrow {
       display: none;
+    }
+  }
+}
+
+.el-dropdown {
+  &-link {
+    cursor: pointer;
+    color: #ffffff;
+  }
+}
+
+.el-dropdown {
+  &__popper {
+    background: #023333 !important;
+    border: 1px solid #05bf99 !important;
+  }
+  &-menu {
+    background-color: #023333 !important;
+    min-width: 100px;
+    &__item {
+      padding: 0;
+      text-align: center;
+      color: #fff !important;
+
+      &:hover {
+        background-color: #011616 !important;
+      }
+    }
+  }
+}
+
+.el-popper {
+  &__arrow {
+    &::before {
+      background: #023333 !important;
+      border-color: #05bf99 !important;
     }
   }
 }

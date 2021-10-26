@@ -1,7 +1,34 @@
 <template>
   <div class="projects">
     <div class="lhz-header">
-      <span>项目管理</span>
+      <div class="lhz-header-left">
+        <el-breadcrumb separator="|">
+          <el-breadcrumb-item
+            ><a href="/"
+              ><i class="el-icon-s-home el-icon--left"></i>首页</a
+            ></el-breadcrumb-item
+          >
+          <el-breadcrumb-item
+            ><img :src="require(`@/assets/img/home/xy.png`)" alt />雨 25℃
+            2020-07-28 15:53</el-breadcrumb-item
+          >
+        </el-breadcrumb>
+      </div>
+      <div class="lhz-header-center"><span>项目管理</span></div>
+      <div class="lhz-header-right">
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
+              class="el-icon-arrow-down el-icon--right"
+            ></i>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item><a href="/login">退出</a></el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
     <div class="projects-main">
       <ul class="projects-ul">
@@ -10,7 +37,13 @@
           :key="i"
           :class="`animate__animated animate__zoomIn ${item.url}`"
         >
-          <el-popover placement="top" :width="263" trigger="click" popper-class="lhz-poper">
+          <el-popover
+            placement="top"
+            :width="263"
+            trigger="click"
+            popper-class="lhz-poper"
+            v-if="i === 0"
+          >
             <template #reference>
               <div>
                 <img
@@ -26,6 +59,13 @@
               <li><span>技术咨询顾问小组</span></li>
             </ul>
           </el-popover>
+          <div v-else>
+            <img
+              :src="require(`@/assets/img/projects/${item.url}.png`)"
+              alt=""
+            />
+            <p>{{ item.name }}</p>
+          </div>
         </li>
       </ul>
     </div>

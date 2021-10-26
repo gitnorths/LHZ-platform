@@ -139,6 +139,7 @@ export default {
       background: {
         repeat: no-repeat;
         position: center bottom;
+        size: 100%;
         image: url(~@/assets/img/login/title-bot.png);
       }
     }
