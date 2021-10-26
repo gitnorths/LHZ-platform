@@ -16,7 +16,7 @@
         <div class="el-input-group__prepend">
           <img
             class="login-form__icon"
-            src="~@/assets/img/login-form-user.png"
+            src="~@/assets/img/login/form-user.png"
             alt="#"
             style="margin-left: -10px"
           />
@@ -31,7 +31,7 @@
         <div class="el-input-group__prepend">
           <img
             class="login-form__icon"
-            src="~@/assets/img/login-form-pass.png"
+            src="~@/assets/img/login/form-pass.png"
             alt="#"
             style="margin-left: -10px"
           />
@@ -60,7 +60,6 @@
   </div>
 </template>
 <script>
-import { router } from "../../router";
 
 export default {
   name: "Login",
@@ -93,8 +92,8 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(router);
-          router.push({ name: "home" });
+          this.$router.push(`/home`);
+          // router.push({ name: "home" });
         } else {
           console.log("error submit!!");
           return false;
@@ -114,7 +113,7 @@ export default {
   height: 100vh;
   background: {
     repeat: no-repeat;
-    image: url(~@/assets/img/login-bg.png);
+    image: url(~@/assets/img/login/bg.png);
   }
 
   &-title {
@@ -140,7 +139,7 @@ export default {
       background: {
         repeat: no-repeat;
         position: center bottom;
-        image: url(~@/assets/img/login-title-bot.png);
+        image: url(~@/assets/img/login/title-bot.png);
       }
     }
   }
@@ -152,7 +151,7 @@ export default {
   padding: 0 70px;
   background: {
     repeat: no-repeat;
-    image: url(~@/assets/img/login-form-bg.png);
+    image: url(~@/assets/img/login/form-bg.png);
   }
   &-item {
     margin-bottom: 20px;

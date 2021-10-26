@@ -15,6 +15,7 @@ $main-color: darkolivegreen;
     }
   }
 }
+
 .el-checkbox {
   &.is-checked {
     color: #05bf99;
@@ -48,5 +49,81 @@ $main-color: darkolivegreen;
 
   &__label {
     color: #fff;
+  }
+}
+
+.lhz-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 86px;
+  background: {
+    repeat: no-repeat;
+    position: center;
+    image: url(~@/assets/img/home/header.png)
+  };
+}
+
+.lhz-poper {
+  background: initial !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: 0 none !important;
+
+  & > ul {
+    position: relative;
+    padding: 20px 0 35px;
+
+    &::before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      content: "";
+      border-style: solid;
+      border-color: transparent;
+      border-width: 35px 132px 16px 132px;
+      border-image: url(~@/assets/img/projects/pop-bg.png) 35 132 16 132 stretch stretch;
+    }
+
+    & > li {
+      position: relative;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 20px;
+      text-align: center;
+      color: #22F3E2;
+      z-index: 10;
+      cursor: pointer;
+      background: {
+        repeat: no-repeat;
+        position: center bottom;
+        image: url(~@/assets/img/projects/bot.png)
+      };
+
+      &:last-child {
+        background-image: initial;
+      }
+
+      span {
+        font-size: 16px;
+        font-weight: bold;
+        color: #22F3E2;
+        padding-right: 20px;
+        background: {
+          repeat: no-repeat;
+          position: center right;
+          image: url(~@/assets/img/projects/next.png)
+        };
+      }
+    }
+  }
+
+  .el-popper {
+    &__arrow {
+      display: none;
+    }
   }
 }

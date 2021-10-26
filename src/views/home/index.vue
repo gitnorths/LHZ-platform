@@ -2,28 +2,21 @@
   <div class="home">
     <div class="home-map">
       <img
-        src="~@/assets/img/home-jsnr.png"
-        class="home-jsnr animate__animated animate__zoomIn"
+        v-for="(item, i) in imgData"
+        :key="i"
+        :src="require(`@/assets/img/home/${item.url}.png`)"
+        :class="`animate__animated animate__zoomIn ${item.url}`"
         alt=""
-      />
-      <img
-        src="~@/assets/img/home-ssxg.png"
-        class="home-ssxg animate__animated animate__zoomIn"
-        alt=""
-      />
-      <img
-        src="~@/assets/img/home-xmgl.png"
-        class="home-xmgl animate__animated animate__zoomIn"
-        alt=""
-        @click="jumpPage('xmgl')"
+        @click="jumpPage(`${item.url}`)"
       />
       <div class="home-cloud">
-        <img src="~@/assets/img/home-cloud-1.png" class="home-cloud-1" alt="" />
-        <img src="~@/assets/img/home-cloud-2.png" class="home-cloud-2" alt="" />
-        <img src="~@/assets/img/home-cloud-3.png" class="home-cloud-3" alt="" />
-        <img src="~@/assets/img/home-cloud-4.png" class="home-cloud-4" alt="" />
-        <img src="~@/assets/img/home-cloud-5.png" class="home-cloud-5" alt="" />
-        <img src="~@/assets/img/home-cloud-6.png" class="home-cloud-6" alt="" />
+        <img
+          v-for="(item, i) in cloudData"
+          :key="i"
+          :src="require(`@/assets/img/home/${item.url}.png`)"
+          :class="`${item.url}`"
+          alt=""
+        />
       </div>
     </div>
   </div>
@@ -33,6 +26,15 @@ export default {
   name: "Home",
   data() {
     return {
+      imgData: [{ url: "jsnr" }, { url: "ssxg" }, { url: "xmgl" }],
+      cloudData: [
+        { url: "cloud-1" },
+        { url: "cloud-2" },
+        { url: "cloud-3" },
+        { url: "cloud-4" },
+        { url: "cloud-5" },
+        { url: "cloud-6" },
+      ],
     };
   },
   methods: {
@@ -59,7 +61,7 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100%;
-    image: url(~@/assets/img/home-bg.png);
+    image: url(~@/assets/img/home/bg.png);
   }
 
   &-map {
@@ -70,31 +72,26 @@ export default {
       repeat: no-repeat;
       position: center;
       size: 100%;
-      image: url(~@/assets/img/home-map.png);
+      image: url(~@/assets/img/home/map.png);
     }
-  }
+    & > img {
+      position: absolute;
+      cursor: pointer;
+      z-index: 10;
 
-  &-jsnr,
-  &-ssxg,
-  &-xmgl {
-    position: absolute;
-    cursor: pointer;
-    z-index: 10;
-  }
-
-  &-jsnr {
-    left: -97px;
-    top: -20px;
-  }
-
-  &-ssxg {
-    right: -165px;
-    top: 50px;
-  }
-
-  &-xmgl {
-    left: 75px;
-    bottom: -5px;
+      &:nth-child(1) {
+        left: -97px;
+        top: -20px;
+      }
+      &:nth-child(2) {
+        right: -165px;
+        top: 50px;
+      }
+      &:nth-child(3) {
+        left: 75px;
+        bottom: -5px;
+      }
+    }
   }
 
   &-cloud {
@@ -113,31 +110,35 @@ export default {
 
     & > img {
       position: absolute;
-    }
 
-    &-1 {
-      left: 0;
-      top: 0;
-    }
-    &-2 {
-      right: 25px;
-      top: 80px;
-    }
-    &-3 {
-      right: 110px;
-      bottom: 145px;
-    }
-    &-4 {
-      left: 565px;
-      top: 180px;
-    }
-    &-5 {
-      left: 30px;
-      top: 260px;
-    }
-    &-6 {
-      left: 630px;
-      top: 20px;
+      &:nth-child(1) {
+        left: 0;
+        top: 0;
+      }
+      &:nth-child(2) {
+        right: 25px;
+        top: 80px;
+      }
+      &:nth-child(2) {
+        right: 25px;
+        top: 80px;
+      }
+      &:nth-child(3) {
+        right: 110px;
+        bottom: 145px;
+      }
+      &:nth-child(4) {
+        left: 565px;
+        top: 180px;
+      }
+      &:nth-child(5) {
+        left: 30px;
+        top: 260px;
+      }
+      &:nth-child(6) {
+        left: 630px;
+        top: 20px;
+      }
     }
   }
 }
