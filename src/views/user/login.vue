@@ -103,7 +103,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .login {
   display: flex;
   align-items: center;

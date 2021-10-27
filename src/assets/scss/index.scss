@@ -1,6 +1,26 @@
 @import "./normalize.scss";
 
-$main-color: darkolivegreen;
+:root {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    border: #07D5C0;
+    background: #07D5C0;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  /* 滚动条轨道 */
+  ::-webkit-scrollbar-track {
+    border-radius: 4px;
+    border: #1A4A45;
+    background: #1A4A45;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+}
+
 .el-input {
   &__inner {
     height: 50px;
@@ -79,7 +99,7 @@ $main-color: darkolivegreen;
 
     .el-breadcrumb {
       &__inner {
-        color: #05BF99 !important;
+        color: #05bf99 !important;
         a {
           color: #fff !important;
         }
@@ -198,8 +218,10 @@ $main-color: darkolivegreen;
     &__item {
       padding: 0;
       text-align: center;
-      color: #fff !important;
 
+      a {
+        color: #fff !important;
+      }
       &:hover {
         background-color: #011616 !important;
       }
@@ -212,6 +234,102 @@ $main-color: darkolivegreen;
     &::before {
       background: #023333 !important;
       border-color: #05bf99 !important;
+    }
+  }
+}
+
+.el-overlay-dialog {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lhz-dialog {
+  &-projects {
+    height: 814px;
+    margin: 0;
+    background: {
+      repeat: no-repeat;
+      size: 100%;
+      color: initial;
+      image: url(~@/assets/img/projects/poper-bg.png);
+    }
+    .el-dialog {
+      &__header {
+        height: 71px;
+        line-height: 71px;
+        padding: 0 60px;
+      }
+      &__title {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        color: #fff;
+        font-size: 32px;
+      }
+      &__headerbtn {
+        i {
+          display: none;
+        }
+        width: 30px;
+        height: 30px;
+        background: {
+          repeat: no-repeat;
+          size: 100%;
+          color: initial;
+          image: url(~@/assets/img/close.png);
+        }
+        top: 25px;
+      }
+      &__body {
+        padding: 20px;
+
+        .el-form {
+          &-item {
+            &__label,
+            &__content {
+              color: #ffffff;
+              font-size: 16px;
+            }
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.el-tabs {
+  &--card {
+    & > .el-tabs__header {
+      margin-bottom: 30px;
+      border: 0 none;
+      .el-tabs {
+        &__nav {
+          // padding: 0 10px;
+          border: 1px solid #2b6768;
+          border-radius: 4px;
+          &-wrap {
+            &::after {
+              display: none;
+            }
+          }
+        }
+        &__item {
+          height: 32px;
+          line-height: 32px;
+          // padding: 0 10px;
+          color: #2b6768;
+          font-size: 16px;
+          border-color: #2b6768;
+          border-bottom-width: 0;
+
+          &.is-active {
+            background-color: #2b6768;
+            border: 0 none;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }
