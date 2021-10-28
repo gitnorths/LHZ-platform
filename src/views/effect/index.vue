@@ -37,13 +37,79 @@
           </el-dropdown>
         </div>
       </el-header>
-      <el-main>
+      <el-main class="effect-main">
         <el-row :gutter="20">
-          <el-col :span="4">
+          <el-col :span="5">
             <div class="lhz-effect_title">农田面源污染防治</div>
+            <el-card class="border-r" header="农田排水汇流湿地工程">
+              <el-row>
+                <el-col :span="12">
+                  <p class="font14 color-white ta-center mb12">
+                    <font class="font30">30</font>个
+                  </p>
+                  <p class="font14 color-green ta-center">
+                    农田排水促沉净化装置
+                  </p>
+                </el-col>
+                <el-col :span="12">
+                  <p class="font14 color-white ta-center mb12">
+                    <font class="font30">400</font>㎡
+                  </p>
+                  <p class="font14 color-green ta-center">生态填料与基质</p>
+                </el-col>
+              </el-row>
+            </el-card>
+            <el-card header="农田排水汇流湿地工程">
+              <el-row :gutter="8">
+                <el-col :span="12" v-for="(item, i) in effectData1" :key="i">
+                  <div class="effect-div-bg flex">
+                    <el-image
+                      style="
+                        width: 36px;
+                        height: 36px;
+                        margin-right: 8px;
+                      "
+                      :src="require(`@/assets/img/effect/${item.url}`)"
+                      :fit="fit"
+                    ></el-image>
+                    <div class="flex1">
+                      <p class="font14 color-blue">{{ item.name }}</p>
+                      <p class="font14 color-white">
+                        <font class="font20">{{ item.text }}</font
+                        >{{ item.unit }}
+                      </p>
+                    </div>
+                  </div>
+                </el-col>
+              </el-row>
+            </el-card>
+            <el-card header="农田排水汇流湿地工程">
+              <el-row :gutter="8">
+                <el-col :span="24" v-for="(item, i) in effectData2" :key="i">
+                  <div class="flex align-items justify-content-center">
+                    <el-image
+                      style="
+                        width: 112px;
+                        height: 90px;
+                        margin-right: 8px;
+                      "
+                      :src="require(`@/assets/img/effect/${item.url}`)"
+                      :fit="fit"
+                    ></el-image>
+                    <div>
+                      <p class="font24 color-blue ta-center">{{ item.name }}</p>
+                      <p class="font16 color-white ta-center">
+                        <font class="font16">{{ item.text }}</font
+                        >{{ item.unit }}
+                      </p>
+                    </div>
+                  </div>
+                </el-col>
+              </el-row>
+            </el-card>
           </el-col>
-          <el-col :span="16"><div class="grid-content bg-purple"></div></el-col>
-          <el-col :span="4"><div class="grid-content bg-purple"></div></el-col>
+          <el-col :span="14"><div class="grid-content bg-purple"></div></el-col>
+          <el-col :span="5"><div class="grid-content bg-purple"></div></el-col>
         </el-row>
       </el-main>
     </el-container>
@@ -56,6 +122,52 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
+      effectData1: [
+        {
+          name: "态塘",
+          text: "8",
+          color: "color-blue",
+          url: "effect-1-1.png",
+          unit: "个",
+        },
+        {
+          name: "挺水植物",
+          text: "1547",
+          color: "color-yellow",
+          url: "effect-1-2.png",
+          unit: "㎡",
+        },
+        {
+          name: "湿地清淤",
+          text: "28280",
+          color: "color-green",
+          url: "effect-1-3.png",
+          unit: "m³",
+        },
+        {
+          name: "湿地清淤",
+          text: "28280",
+          color: "color-pink",
+          url: "effect-1-4.png",
+          unit: "m³",
+        },
+        {
+          name: "净化塘边坡清杂",
+          text: "1512",
+          color: "color-purple",
+          url: "effect-1-5.png",
+          unit: "㎡",
+        },
+      ],
+      effectData2: [
+        {
+          name: "10000株",
+          text: "栽植垂柳、红叶石楠 ",
+          color: "color-green",
+          url: "effect-2-1.png",
+          unit: "",
+        },
+      ],
     };
   },
   methods: {
@@ -105,17 +217,25 @@ export default {
         // font-weight: bold;
         font-family: "PingFang-SC-Bold";
         color: #fff;
-        // background: {
-        //   repeat: no-repeat;
-        //   size: 100% 100%;
-        //   image: url(~@/assets/img/effect/effect-title.png);
-        // }
-
-        border-image-source: url(~@/assets/img/effect/effect-title.png);
-        border-image-repeat: stretch stretch;
-        border-image-width: 50px 150px;
-        border-image-slice: 50 150 fill;
+        background: {
+          repeat: no-repeat;
+          size: 100% 100%;
+          image: url(~@/assets/img/effect/effect-title.png);
+        }
       }
+    }
+
+    .effect-div-bg {
+      border-image: linear-gradient(0deg, #1aa697, #2a7a7a) 10 10;
+      background: linear-gradient(
+        90deg,
+        #2a7a7a 0%,
+        rgba(42, 122, 122, 0) 100%
+      );
+      opacity: 0.8;
+      border-radius: 23px;
+      margin-bottom: 8px;
+      padding: 5px;
     }
   }
 }
