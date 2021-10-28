@@ -1,46 +1,55 @@
 <template>
-  <div class="home">
-    <div class="lhz-header">
-      <div class="lhz-header-left">
-        <el-breadcrumb separator="|">
-          <el-breadcrumb-item><img :src="require(`@/assets/img/home/xy.png`)" alt />雨  25℃ 2020-07-28 15:53</el-breadcrumb-item>
-        </el-breadcrumb>
-      </div>
-      <div class="lhz-header-center"><span>浏河镇农业面源污染智慧监管平台</span></div>
-      <div class="lhz-header-right">
-        <el-dropdown trigger="click">
-          <span class="el-dropdown-link">
-            <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
-              class="el-icon-arrow-down el-icon--right"
-            ></i>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item><a href="/login">退出</a></el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
-    </div>
-    <div class="home-map">
-      <img
-        v-for="(item, i) in imgData"
-        :key="i"
-        :src="require(`@/assets/img/home/${item.url}.png`)"
-        :class="`animate__animated animate__zoomIn ${item.url}`"
-        alt=""
-        @click="jumpPage(`${item.url}`)"
-      />
-      <div class="home-cloud">
-        <img
-          v-for="(item, i) in cloudData"
-          :key="i"
-          :src="require(`@/assets/img/home/${item.url}.png`)"
-          :class="`${item.url}`"
-          alt=""
-        />
-      </div>
-    </div>
+  <div class="lhz-layout home">
+    <el-container>
+      <el-header class="lhz-header">
+        <div class="el-header__left">
+          <el-breadcrumb separator="|">
+            <el-breadcrumb-item
+              ><img :src="require(`@/assets/img/home/xy.png`)" alt />雨 25℃
+              2020-07-28 15:53</el-breadcrumb-item
+            >
+          </el-breadcrumb>
+        </div>
+        <div class="el-header__center">
+          <span>浏河镇农业面源污染智慧监管平台</span>
+        </div>
+        <div class="el-header__right">
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link">
+              <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
+                class="el-icon-arrow-down el-icon--right"
+              ></i>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item><a href="/login">退出</a></el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+      </el-header>
+      <el-main>
+        <div class="home-map">
+          <img
+            v-for="(item, i) in imgData"
+            :key="i"
+            :src="require(`@/assets/img/home/${item.url}.png`)"
+            :class="`animate__animated animate__zoomIn ${item.url}`"
+            alt=""
+            @click="jumpPage(`${item.url}`)"
+          />
+          <div class="home-cloud">
+            <img
+              v-for="(item, i) in cloudData"
+              :key="i"
+              :src="require(`@/assets/img/home/${item.url}.png`)"
+              :class="`${item.url}`"
+              alt=""
+            />
+          </div>
+        </div>
+      </el-main>
+    </el-container>
   </div>
 </template>
 <script>
@@ -62,6 +71,9 @@ export default {
   methods: {
     jumpPage(action) {
       switch (action) {
+        case "ssxg":
+          this.$router.push(`/effect`);
+          break;
         case "xmgl":
           this.$router.push(`/projects`);
           break;
@@ -86,11 +98,29 @@ export default {
     image: url(~@/assets/img/home/bg.png);
   }
 
+  .el-header {
+    height: 86px;
+    background: {
+      repeat: no-repeat;
+      position: center;
+      image: url(~@/assets/img/home/header.png);
+    }
+
+    &__left {
+      padding-left: 50px;
+      padding-bottom: 35px;
+    }
+    &__right {
+      padding-right: 50px;
+      padding-bottom: 35px;
+    }
+  }
+
   &-map {
     position: relative;
     width: 1260px;
     height: 700px;
-    margin-top: 86px;
+    margin: 86px auto 0;
     background: {
       repeat: no-repeat;
       position: center;
