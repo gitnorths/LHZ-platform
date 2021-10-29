@@ -371,6 +371,7 @@
     font-size: 16px;
     color: #fff;
 
+    &:focus,
     &:hover {
       background-color: initial !important;
       color: #07d5c0 !important;
@@ -444,8 +445,16 @@
   text-align: center;
 }
 
+.mb10 {
+  margin-bottom: 10px;
+}
+
 .mb12 {
   margin-bottom: 12px;
+}
+
+.mr20 {
+  margin-right: 20px;
 }
 
 .flex {
@@ -460,16 +469,21 @@
 .justify-content-center {
   justify-content: center;
 }
+.justify-content-around {
+  justify-content: space-around;
+}
 
 .justify-content-between {
   justify-content: space-between;
 }
 
 .border-r {
-  .el-card__body {
+  & > div {
+    position: relative;
+
     &::after {
       position: absolute;
-      left: 50%;
+      right: -25%;
       top: 0;
       width: 1px;
       height: 100%;
@@ -481,21 +495,66 @@
         image: url(~@/assets/img/effect/border-r.png);
       }
     }
+
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.border-rl {
+  &>div{
+    padding: 10px 0;
+  }
+  &::after,
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+  }
+
+  &::after {
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: {
+      repeat: no-repeat;
+      size: 100% 100%;
+      image: url(~@/assets/img/effect/border-r.png);
+    }
+  }
+
+  &::before {
+    left: 0;
+    top: 50%;
+    height: 1px;
+    width: 100%;
+    background: {
+      repeat: no-repeat;
+      size: 100% 100%;
+      image: url(~@/assets/img/effect/border-b.png);
+    }
   }
 }
 
 .effect-main {
   .el-card {
+    display: flex;
+    flex-direction: column;
     background-color: initial;
     border-image-source: url(~@/assets/img/effect/effect-card.png);
     border-image-repeat: stretch round;
     border-image-width: 26px;
     border-image-slice: 26 fill;
-    margin-top: 10px;
+    padding-bottom: 1.5vh;
 
     &__header {
-      padding: 9px 0;
-      line-height: 16px;
+      height: 3.4vh;
+      line-height: 3.4vh;
+      padding: 0;
       text-align: center;
       font-size: 16px;
       font-family: PingFang SC;
@@ -507,8 +566,11 @@
 
     &__body {
       position: relative;
-      margin: 10px 14px 20px;
       padding: 0;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
