@@ -7,14 +7,14 @@
   }
   /* 滚动条滑块 */
   ::-webkit-scrollbar-thumb {
-    border-radius: 4px;
+    border-radius: 0.4vh;
     border: #07d5c0;
     background: #07d5c0;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
   }
   /* 滚动条轨道 */
   ::-webkit-scrollbar-track {
-    border-radius: 4px;
+    border-radius: 0.4vh;
     border: #1a4a45;
     background: #1a4a45;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
@@ -29,11 +29,11 @@
 
 .el-input {
   &__inner {
-    height: 50px;
-    line-height: 50px;
+    height: 5vh;
+    line-height: 5vh;
     background-color: #023333;
     border-color: #2a7a7a;
-    font-size: 18px;
+    font-size: 1.8vh;
     color: #fff;
 
     &:hover {
@@ -84,7 +84,7 @@
   justify-content: space-between;
 
   i {
-    font-size: 14px;
+    font-size: 1.4vh;
     color: #05bf99;
   }
 
@@ -103,8 +103,8 @@
       }
       img {
         display: block;
-        height: 20px;
-        margin-right: 10px;
+        height: 2vh;
+        margin-right: 1vh;
         margin-top: -3px;
         float: left;
       }
@@ -112,12 +112,12 @@
   }
   &__center {
     flex: 0 0 600px;
-    padding-bottom: 10px;
+    padding-bottom: 1vh;
     text-align: center;
 
     span {
       color: #fff;
-      font-size: 36px;
+      font-size: 3.6vh;
       font-weight: bold;
       font-family: "PingFang-SC-Bold";
     }
@@ -148,8 +148,8 @@
 
     & > li {
       position: relative;
-      height: 50px;
-      line-height: 50px;
+      height: 5vh;
+      line-height: 5vh;
       padding: 0 20px;
       text-align: center;
       color: #22f3e2;
@@ -170,10 +170,10 @@
       }
 
       span {
-        font-size: 16px;
+        font-size: 1.6vh;
         font-weight: bold;
         color: #22f3e2;
-        padding-right: 20px;
+        padding-right: 2vh;
         background: {
           repeat: no-repeat;
           position: center right;
@@ -200,7 +200,7 @@
 .el-dropdown {
   &__popper {
     background: #023333 !important;
-    border: 1px solid #05bf99 !important;
+    border: 0.1vh solid #05bf99 !important;
   }
   &-menu {
     background-color: #023333 !important;
@@ -254,30 +254,30 @@
         align-items: center;
         height: 100%;
         color: #fff;
-        font-size: 32px;
+        font-size: 3.2vh;
       }
       &__headerbtn {
         i {
           display: none;
         }
-        width: 30px;
-        height: 30px;
+        width: 3vh;
+        height: 3vh;
         background: {
           repeat: no-repeat;
           size: 100%;
           color: initial;
           image: url(~@/assets/img/close.png);
         }
-        top: 25px;
+        top: 2.5vh;
       }
       &__body {
-        padding: 20px;
+        padding: 2vh;
 
         .el-form {
           &-item {
             &__label {
               color: #ffffff;
-              font-size: 16px;
+              font-size: 1.6vh;
             }
             margin: 0;
           }
@@ -290,13 +290,13 @@
 .el-tabs {
   &--card {
     & > .el-tabs__header {
-      margin-bottom: 30px;
+      margin-bottom: 3vh;
       border: 0 none;
       .el-tabs {
         &__nav {
           // padding: 0 10px;
-          border: 1px solid #2b6768;
-          border-radius: 4px;
+          border: 0.1vh solid #2b6768;
+          border-radius: 0.4vh;
           &-wrap {
             &::after {
               display: none;
@@ -304,11 +304,11 @@
           }
         }
         &__item {
-          height: 32px;
-          line-height: 32px;
+          height: 3.2vh;
+          line-height: 3.2vh;
           // padding: 0 10px;
           color: #2b6768;
-          font-size: 16px;
+          font-size: 1.6vh;
           border-color: #2b6768;
           border-bottom-width: 0;
 
@@ -330,16 +330,20 @@
   flex: 0 0 540px;
 
   &__left {
-    width: 84px;
-    height: 36px;
+    width: 8.4vh;
+    height: 3.6vh;
     background: rgba(8, 104, 101, 0.5);
-    border-radius: 4px;
+    border-radius: 0.4vh;
     align-items: center;
     justify-content: center;
-    margin-right: 60px;
+    margin-right: 5vh;
+    padding: 0 0.2vh;
 
     &::after {
       display: none;
+    }
+    i{
+      font-size: 2vh;
     }
   }
   &__title,
@@ -347,14 +351,14 @@
     color: #fff;
   }
   &__title {
-    font-size: 16px;
+    font-size: 1.6vh;
   }
   &__content {
-    font-size: 34px;
+    font-size: 3.4vh;
     font-family: Adobe Heiti Std;
     font-weight: normal;
     color: #ffffff;
-    text-shadow: 0 0 20px #fff;
+    text-shadow: 0 0 2vh #fff;
   }
 }
 
@@ -364,11 +368,11 @@
   border-bottom: none;
 
   &-item {
-    height: 70px;
-    line-height: 70px;
-    margin-right: 80px;
-    padding-top: 10px;
-    font-size: 16px;
+    height: 7vh;
+    line-height: 7vh;
+    margin-right: 8vw;
+    padding-top: 1vh;
+    font-size: 1.6vh;
     color: #fff;
 
     &:focus,
@@ -383,7 +387,19 @@
     &.is-active {
       font-weight: bold;
       color: #07d5c0 !important;
-      border-color: #07d5c0 !important;
+      // border-color: #07d5c0 !important;
+      border-bottom: 0;
+
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0.2vh;
+        width: 100%;
+        height: 0.2vh;
+        background-color: #07d5c0;
+      }
     }
   }
 }
@@ -395,26 +411,26 @@
 }
 
 .font14 {
-  font-size: 14px;
+  font-size: 1.4vh;
 }
 
 .font16 {
-  font-size: 16px;
+  font-size: 1.6vh;
 }
 
 .font20 {
-  font-size: 20px;
-  line-height: 20px;
+  font-size: 2vh;
+  line-height: 2vh;
 }
 
 .font24 {
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 2.4vh;
+  line-height: 2.4vh;
 }
 
 .font30 {
-  font-size: 30px;
-  line-height: 30px;
+  font-size: 3vh;
+  line-height: 3vh;
 }
 
 .color-white {
@@ -446,15 +462,19 @@
 }
 
 .mb10 {
-  margin-bottom: 10px;
+  margin-bottom: 1vh;
 }
 
 .mb12 {
-  margin-bottom: 12px;
+  margin-bottom: 1.2vh;
+}
+
+.mb30 {
+  margin-bottom: 3vh;
 }
 
 .mr20 {
-  margin-right: 20px;
+  margin-right: 2vh;
 }
 
 .flex {
@@ -462,6 +482,9 @@
 }
 .flex1 {
   flex: 1;
+}
+.flex-column {
+  flex-direction: column;
 }
 .align-items {
   align-items: center;
@@ -485,7 +508,7 @@
       position: absolute;
       right: -25%;
       top: 0;
-      width: 1px;
+      width: 0.1vh;
       height: 100%;
       display: block;
       content: "";
@@ -506,7 +529,7 @@
 
 .border-rl {
   &>div{
-    padding: 10px 0;
+    padding: 1vh 0;
   }
   &::after,
   &::before {
@@ -518,7 +541,7 @@
   &::after {
     left: 50%;
     top: 0;
-    width: 1px;
+    width: 0.1vh;
     height: 100%;
     background: {
       repeat: no-repeat;
@@ -530,7 +553,7 @@
   &::before {
     left: 0;
     top: 50%;
-    height: 1px;
+    height: 0.1vh;
     width: 100%;
     background: {
       repeat: no-repeat;
@@ -547,7 +570,7 @@
     background-color: initial;
     border-image-source: url(~@/assets/img/effect/effect-card.png);
     border-image-repeat: stretch round;
-    border-image-width: 26px;
+    border-image-width: 2.6vh;
     border-image-slice: 26 fill;
     padding-bottom: 1.5vh;
 
@@ -556,7 +579,7 @@
       line-height: 3.4vh;
       padding: 0;
       text-align: center;
-      font-size: 16px;
+      font-size: 1.6vh;
       font-family: PingFang SC;
       font-weight: bold;
       color: #ffffff;

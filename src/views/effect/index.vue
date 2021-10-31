@@ -5,10 +5,9 @@
         <el-page-header
           icon="el-icon-s-home"
           title="首页"
-          content=""
+          content="实施效果"
           @back="goHome"
         />
-        <!-- 实施效果 -->
         <el-menu
           :default-active="activeIndex"
           class="el-menu-demo"
@@ -77,14 +76,14 @@
                 "
               >
                 <div
-                  v-for="(item, i) in effectData1"
+                  v-for="(item, i) in effectData_lc"
                   :key="i"
-                  style="padding-top: 4px; padding-bottom: 4px"
+                  style="padding-top: 0.4vh; padding-bottom: 0.4vh"
                 >
-                  <div class="effect-div-bg flex">
+                  <div class="effect-div-bg flex align-items">
                     <el-image
-                      style="width: 36px; height: 36px; margin-right: 8px"
-                      :src="require(`@/assets/img/effect/${item.url}`)"
+                      style="height: 3.6vh; margin-right: 0.8vh"
+                      :src="`${item.url}`"
                     ></el-image>
                     <div class="flex1">
                       <p class="font14 color-blue">{{ item.name }}</p>
@@ -103,11 +102,11 @@
               style="height: 12.4vh"
             >
               <el-row :gutter="8">
-                <el-col :span="24" v-for="(item, i) in effectData2" :key="i">
+                <el-col :span="24" v-for="(item, i) in effectData_lb" :key="i">
                   <div class="flex align-items justify-content-center">
                     <el-image
-                      style="height: 8vh; margin-right: 8px"
-                      :src="require(`@/assets/img/effect/${item.url}`)"
+                      style="height: 8vh; margin-right: 0.8vh"
+                      :src="`${item.url}`"
                     ></el-image>
                     <div>
                       <p class="font24 color-blue ta-center mb12">
@@ -211,24 +210,90 @@
               </el-row>
             </el-card>
           </el-col>
-          <el-col :span="14"><div class="grid-content bg-purple"></div></el-col>
+          <el-col :span="14">
+            <div
+              class="
+                effect__center
+                flex
+                align-items
+                justify-content-between justify-content-center
+              "
+            >
+              <div v-for="(item, i) in effectData_center" :key="i" style="">
+                <el-image
+                  style="height: 13vh"
+                  :src="`${item.url}`"
+                  class="mb10"
+                ></el-image>
+                <p class="font24 color-white ta-center">{{ item.name }}</p>
+              </div>
+            </div>
+          </el-col>
           <el-col :span="5">
             <div class="lhz-effect_title mb10">畜禽养殖污染物治理</div>
-            <div class="flex align-items justify-content-between mb10 border-r" style="height: 18vh;">
-              <div v-for="(item, i) in effectData3" :key="i" style="" >
-                <el-image
-                  style="height: 8.4vh"
-                  :src="require(`@/assets/img/effect/${item.url}`)"
-                ></el-image>
+            <div
+              class="flex align-items justify-content-between mb10 border-r"
+              style="height: 18vh"
+            >
+              <div v-for="(item, i) in effectData_rt" :key="i" style="">
+                <el-image style="height: 8.4vh" :src="`${item.url}`"></el-image>
                 <p class="font14 color-green ta-center mb12">
-                  <font class="font24">{{ item.text }}</font
-                  >{{ item.unit }}
+                  <font class="font24"> {{ item.text }} </font>{{ item.unit }}
                 </p>
                 <p class="font14 color-white ta-center">{{ item.name }}</p>
               </div>
             </div>
             <div class="lhz-effect_title mb10">地表径流净化利用</div>
+            <el-row
+              :gutter="10"
+              class="flex align-items justify-content-between"
+            >
+              <el-col :span="12" v-for="(item, i) in effectData_rc" :key="i">
+                <div
+                  class="
+                    flex
+                    justify-content-center
+                    align-items
+                    flex-column
+                    effect_rc
+                  "
+                  style="padding-top: 1.5vh; padding-bottom: 1.5vh"
+                >
+                  <p
+                    :class="`flex align-items justify-content-center font14 ta-center mb12 ${item.color}`"
+                    :style="{ backgroundImage: `url(${item.url})` }"
+                  >
+                    <font class="font30">{{ item.value }} </font>
+                  </p>
+                  <p class="font14 color-white ta-center">
+                    {{ item.text }}（{{ item.unit }}）
+                  </p>
+                </div>
+              </el-col>
+            </el-row>
             <div class="lhz-effect_title mb10">地表径流净化利用</div>
+            <el-row
+              :gutter="10"
+              class="flex align-items justify-content-between"
+            >
+              <el-col :span="8" v-for="(item, i) in effectData_rb" :key="i">
+                <div
+                  class="
+                    flex
+                    justify-content-center
+                    align-items
+                    flex-column
+                    effect_rb
+                  "
+                >
+                  <p :class="`font14 ta-center mb12 ${item.color}`">
+                    <font class="font30">{{ item.value }} </font>
+                    {{ item.unit }}
+                  </p>
+                  <p class="font14 color-white ta-center">{{ item.text }}</p>
+                </div>
+              </el-col>
+            </el-row>
           </el-col>
         </el-row>
       </el-main>
@@ -242,110 +307,110 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      effectData1: [
+      effectData_lc: [
         {
           name: "态塘",
           text: "8",
           color: "color-blue",
-          url: "effect-1-1.png",
+          url: require(`@/assets/img/effect/effect-1-1.png`),
           unit: "个",
         },
         {
           name: "挺水植物",
           text: "1547",
           color: "color-yellow",
-          url: "effect-1-2.png",
+          url: require(`@/assets/img/effect/effect-1-2.png`),
           unit: "㎡",
         },
         {
           name: "湿地清淤",
           text: "28280",
           color: "color-green",
-          url: "effect-1-3.png",
+          url: require(`@/assets/img/effect/effect-1-3.png`),
           unit: "m³",
         },
         {
           name: "湿地清淤",
           text: "28280",
           color: "color-pink",
-          url: "effect-1-4.png",
+          url: require(`@/assets/img/effect/effect-1-4.png`),
           unit: "m³",
         },
         {
           name: "净化塘边坡清杂",
           text: "1512",
           color: "color-purple",
-          url: "effect-1-5.png",
+          url: require(`@/assets/img/effect/effect-1-5.png`),
           unit: "㎡",
         },
       ],
-      effectData2: [
+      effectData_lb: [
         {
           name: "10000株",
           text: "栽植垂柳、红叶石楠 ",
           color: "color-green",
-          url: "effect-2-1.png",
+          url: require(`@/assets/img/effect/effect-2-1.png`),
           unit: "",
         },
       ],
-      effectData3: [
+      effectData_rt: [
         {
           name: "干粪运输车",
           text: "1",
           color: "color-green",
-          url: "effect-3-1.png",
+          url: require(`@/assets/img/effect/effect-3-1.png`),
           unit: "台",
         },
         {
           name: "有机肥施肥机",
           text: "3",
           color: "color-green",
-          url: "effect-3-2.png",
+          url: require(`@/assets/img/effect/effect-3-2.png`),
           unit: "台",
         },
         {
           name: "吸粪车",
           text: "2",
           color: "color-green",
-          url: "effect-3-3.png",
+          url: require(`@/assets/img/effect/effect-3-3.png`),
           unit: "台",
         },
       ],
-      effectData4: [
+      effectData_rc: [
         {
           value: "25.31",
           text: "清淤清杂",
           color: "color-white",
-          url: "effect-4-1.png",
+          url: require(`@/assets/img/effect/effect-4-1.png`),
           unit: "万m³",
         },
         {
           value: "14360",
           text: "栽植挺水植物",
           color: "color-white",
-          url: "effect-4-2.png",
+          url: require(`@/assets/img/effect/effect-4-2.png`),
           unit: "㎡",
         },
         {
           value: "2393",
           text: "栽植灌木",
           color: "color-white",
-          url: "effect-4-3.png",
+          url: require(`@/assets/img/effect/effect-4-3.png`),
           unit: "株",
         },
         {
           value: "16974",
           text: "杉木桩护岸",
           color: "color-white",
-          url: "effect-4-4.png",
+          url: require(`@/assets/img/effect/effect-4-4.png`),
           unit: "m",
         },
       ],
-      effectData5: [
+      effectData_rb: [
         {
           value: "19200",
           text: "新建生态道路",
-          color: "color-green",
+          color: "color-blue",
           unit: "㎡",
         },
         {
@@ -359,6 +424,24 @@ export default {
           text: "涵洞",
           color: "color-yellow",
           unit: "座",
+        },
+      ],
+      effectData_center: [
+        {
+          name: "养殖污染物治理",
+          url: require(`@/assets/img/effect/effect-center-1.png`),
+        },
+        {
+          name: "农田面源污染防治",
+          url: require(`@/assets/img/effect/effect-center-2.png`),
+        },
+        {
+          name: "地表径流污水净化",
+          url: require(`@/assets/img/effect/effect-center-3.png`),
+        },
+        {
+          name: "配套工程",
+          url: require(`@/assets/img/effect/effect-center-4.png`),
         },
       ],
     };
@@ -395,18 +478,18 @@ export default {
     }
 
     &__right {
-      padding-top: 10px;
+      padding-top: 1vh;
     }
   }
   .el-main {
-    padding: 20px;
+    padding: 2vh;
 
     .lhz-effect {
       &_title {
         height: 6vh;
         line-height: 6vh;
-        padding: 0 24px;
-        font-size: 24px;
+        padding: 0 2.4vh;
+        font-size: 2.4vh;
         // font-weight: bold;
         font-family: "PingFang-SC-Bold";
         color: #fff;
@@ -418,16 +501,73 @@ export default {
       }
     }
 
-    .effect-div-bg {
-      border-image: linear-gradient(0deg, #1aa697, #2a7a7a) 30 30;
-      background: linear-gradient(
-        90deg,
-        #2a7a7a 0%,
-        rgba(42, 122, 122, 0) 100%
-      );
-      opacity: 0.8;
-      border-radius: 30px 0 0 30px;
-      padding: 3px 5px;
+    .effect {
+      &-div-bg {
+        border-image: linear-gradient(0deg, #1aa697, #2a7a7a) 30 30;
+        background: linear-gradient(
+          90deg,
+          #2a7a7a 0%,
+          rgba(42, 122, 122, 0) 100%
+        );
+        opacity: 0.8;
+        border-radius: 3vh 0 0 3vh;
+        padding: 0.3vh 0.5vh;
+      }
+
+      &__center {
+        position: relative;
+        width: 95vh;
+        height: 85vh;
+        margin: 3.4vh auto 0;
+        cursor: pointer;
+        background: {
+          repeat: no-repeat;
+          size: contain;
+          position: center;
+          image: url(~@/assets/img/effect/effect-center-bg.png);
+        }
+
+        & > div {
+          text-align: center;
+          margin-bottom: 150px;
+
+          &:nth-child(2),
+          &:nth-child(3) {
+            align-self: flex-start;
+          }
+
+          &:nth-child(2) {
+            margin-right: 100px;
+          }
+
+          &:nth-child(3) {
+            margin-left: 100px;
+          }
+        }
+      }
+
+      &_rc {
+        p {
+          &:first-child {
+            width: 12vh;
+            height: 12vh;
+            background: {
+              repeat: no-repeat;
+              size: 100% 100%;
+            }
+          }
+        }
+      }
+
+      &_rb {
+        width: 100%;
+        height: 13vh;
+        background: {
+          repeat: no-repeat;
+          size: 100% 100%;
+          image: url(~@/assets/img/effect/effect-rb.png);
+        }
+      }
     }
   }
 }
