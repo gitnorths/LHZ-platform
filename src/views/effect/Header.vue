@@ -43,7 +43,33 @@ export default {
       activeIndex: "1",
       activeIndex2: "1",
     }
-  }
+  },
+  methods: {
+    goHome() {
+      this.$router.push(`/home`);
+    },
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      switch (key) {
+        case "1":
+          this.$router.push(`/effect/`);
+          break;
+        case "2":
+          console.log(2222);
+          this.$router.push(`/effect/farmland`);
+          break;
+        case "3":
+          this.$router.push(`/effect/farmland`);
+          break;
+        case "4":
+          this.$router.push(`/effect/farmland`);
+          break;
+
+        default:
+          break;
+      }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
