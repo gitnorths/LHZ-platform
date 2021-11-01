@@ -1,41 +1,7 @@
 <template>
   <div class="effect-layout">
     <el-container>
-      <el-header>
-        <el-page-header
-          icon="el-icon-s-home"
-          title="首页"
-          content="实施效果"
-          @back="goHome"
-        />
-        <el-menu
-          :default-active="activeIndex"
-          class="el-menu-demo"
-          mode="horizontal"
-          @select="handleSelect"
-        >
-          <el-menu-item index="1">首页</el-menu-item>
-          <el-menu-item index="2">农田面源污染防治</el-menu-item>
-          <el-menu-item index="3">养殖污染物治理</el-menu-item>
-          <el-menu-item index="4">配套工程</el-menu-item>
-        </el-menu>
-        <div class="el-header__right">
-          <el-dropdown trigger="click">
-            <span class="el-dropdown-link">
-              <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
-                class="el-icon-arrow-down el-icon--right"
-              ></i>
-            </span>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item>
-                  <router-link to="/login">退出</router-link>
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
-        </div>
-      </el-header>
+      <Header></Header>
       <el-main class="effect-main">
         <el-row :gutter="20">
           <el-col :span="5">
@@ -246,7 +212,12 @@
             <div class="lhz-effect_title mb10">地表径流净化利用</div>
             <el-row
               :gutter="10"
-              class="flex align-items justify-content-between"
+              class="
+                flex
+                align-items align-content-around
+                justify-content-between
+              "
+              style="height: 36vh"
             >
               <el-col :span="12" v-for="(item, i) in effectData_rc" :key="i">
                 <div
@@ -257,7 +228,6 @@
                     flex-column
                     effect_rc
                   "
-                  style="padding-top: 1.5vh; padding-bottom: 1.5vh"
                 >
                   <p
                     :class="`flex align-items justify-content-center font14 ta-center mb12 ${item.color}`"
@@ -301,12 +271,14 @@
   </div>
 </template>
 <script>
+import Header from "./Header";
 export default {
   name: "Effect",
+  components: {
+    Header,
+  },
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1",
       effectData_lc: [
         {
           name: "态塘",
@@ -468,18 +440,7 @@ export default {
 
   .el-container {
     height: 100%;
-  }
-  .el-header {
-    height: 7vh;
-    background: {
-      repeat: no-repeat;
-      size: 100% 100%;
-      image: url(~@/assets/img/effect/bg-header.png);
-    }
-
-    &__right {
-      padding-top: 1vh;
-    }
+    flex-direction: column;
   }
   .el-main {
     padding: 2vh;
@@ -527,6 +488,10 @@ export default {
           image: url(~@/assets/img/effect/effect-center-bg.png);
         }
 
+        .el-image {
+          animation: 50s linear infinite rotateCenter;
+        }
+
         & > div {
           text-align: center;
           margin-bottom: 150px;
@@ -568,6 +533,15 @@ export default {
           image: url(~@/assets/img/effect/effect-rb.png);
         }
       }
+    }
+  }
+  @keyframes rotateCenter {
+    0% {
+      transform: rotate(0);
+    }
+
+    100% {
+      transform: rotate(1turn);
     }
   }
 }
