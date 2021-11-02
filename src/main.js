@@ -1,7 +1,8 @@
 import { createApp } from "vue";
 import ElementPlus from "element-plus";
-import { Autoplay, Pagination, EffectCoverflow,Navigation } from "swiper";
-import "swiper/swiper.scss";
+import "swiper/swiper-bundle.css";
+import Swiper, { Navigation, Autoplay,Thumbs } from 'swiper'; //相关组件
+Swiper.use([ Navigation, Autoplay,Thumbs]);
 import "animate.css";
 import "element-plus/dist/index.css";
 import "./assets/scss/index.scss";
@@ -10,6 +11,5 @@ import App from "./App.vue";
 
 const app = createApp(App);
 app.use(ElementPlus);
-app.use([Autoplay, Pagination, EffectCoverflow,Navigation]);
 app.use(router);
 app.mount("#app");

@@ -43,7 +43,7 @@ export default {
     flex-direction: column;
   }
   .el-main {
-    padding: 2vh;
+    padding: 0;
   }
 }
 </style>

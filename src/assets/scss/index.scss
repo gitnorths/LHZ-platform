@@ -433,6 +433,11 @@
   line-height: 3vh;
 }
 
+.font40 {
+  font-size: 4vh;
+  line-height: 4vh;
+}
+
 .color-white {
   color: #fff;
 }
@@ -475,6 +480,14 @@
 
 .mr20 {
   margin-right: 2vh;
+}
+
+.b-bot {
+  border-bottom: 1px solid #38ffe8;
+}
+
+.b-bot-dashed {
+  border-bottom: 1px dashed rgba(56, 255, 232, 0.2);
 }
 
 .flex {

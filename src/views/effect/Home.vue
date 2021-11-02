@@ -1,238 +1,244 @@
 <template>
-  <el-row :gutter="20" class="effect-main">
-    <el-col :span="5">
-      <div class="lhz-effect_title mb10">农田面源污染防治</div>
-      <el-card
-        header="农田排水口污染物拦截工程"
-        class="mb10"
-        style="height: 12vh"
-      >
-        <div class="flex justify-content-around border-r flex1">
-          <div>
-            <p class="font14 color-white ta-center mb12">
-              <font class="font30">30</font>个
-            </p>
-            <p class="font14 color-green ta-center">农田排水促沉净化装置</p>
+  <div style="padding: 2vh">
+    <el-row :gutter="20" class="effect-main">
+      <el-col :span="5">
+        <div class="lhz-effect_title mb10">农田面源污染防治</div>
+        <el-card
+          header="农田排水口污染物拦截工程"
+          class="mb10"
+          style="height: 12vh"
+        >
+          <div class="flex justify-content-around border-r flex1">
+            <div>
+              <p class="font14 color-white ta-center mb12">
+                <font class="font30">30</font>个
+              </p>
+              <p class="font14 color-green ta-center">农田排水促沉净化装置</p>
+            </div>
+            <div>
+              <p class="font14 color-white ta-center mb12">
+                <font class="font30">400</font>㎡
+              </p>
+              <p class="font14 color-green ta-center">生态填料与基质</p>
+            </div>
           </div>
-          <div>
-            <p class="font14 color-white ta-center mb12">
-              <font class="font30">400</font>㎡
-            </p>
-            <p class="font14 color-green ta-center">生态填料与基质</p>
-          </div>
-        </div>
-      </el-card>
-      <el-card header="农田排水汇流湿地工程" class="mb10" style="height: 17vh">
-        <div
-          class="flex"
-          style="
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: space-around;
-          "
+        </el-card>
+        <el-card
+          header="农田排水汇流湿地工程"
+          class="mb10"
+          style="height: 17vh"
         >
           <div
-            v-for="(item, i) in effectData_lc"
-            :key="i"
-            style="padding-top: 0.4vh; padding-bottom: 0.4vh"
-          >
-            <div class="effect-div-bg flex align-items">
-              <el-image
-                style="height: 3.6vh; margin-right: 0.8vh"
-                :src="`${item.url}`"
-              ></el-image>
-              <div class="flex1">
-                <p class="font14 color-blue">{{ item.name }}</p>
-                <p class="font14 color-white">
-                  <font class="font20">{{ item.text }}</font
-                  >{{ item.unit }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </el-card>
-      <el-card header="建立生态隔离带" class="mb10" style="height: 12.4vh">
-        <el-row :gutter="8">
-          <el-col :span="24" v-for="(item, i) in effectData_lb" :key="i">
-            <div class="flex align-items justify-content-center">
-              <el-image
-                style="height: 8vh; margin-right: 0.8vh"
-                :src="`${item.url}`"
-              ></el-image>
-              <div>
-                <p class="font24 color-blue ta-center mb12">
-                  {{ item.name }}
-                </p>
-                <p class="font16 color-white ta-center">
-                  <font class="font16">{{ item.text }}</font
-                  >{{ item.unit }}
-                </p>
-              </div>
-            </div>
-          </el-col>
-        </el-row>
-      </el-card>
-      <el-card header="秸秆收集利用工程" class="mb10" style="height: 14vh">
-        <el-row class="border-rl">
-          <el-col :span="12">
-            <div class="flex align-items justify-content-center">
-              <p class="font14 color-white ta-center mr20">秸秆还田机</p>
-              <p class="font12 color-green ta-center">
-                <font class="font24">12</font>台
-              </p>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="flex align-items justify-content-center">
-              <p class="font14 color-white ta-center mr20">秸秆粉碎机</p>
-              <p class="font12 color-green ta-center">
-                <font class="font24">12</font>台
-              </p>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="flex align-items justify-content-center">
-              <p class="font14 color-white ta-center mr20">大型拖拉机</p>
-              <p class="font12 color-green ta-center">
-                <font class="font24">12</font>台
-              </p>
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="flex align-items justify-content-center">
-              <p class="font14 color-white ta-center mr20">秸秆收储中心</p>
-              <p class="font12 color-green ta-center">
-                <font class="font24">1</font>台
-              </p>
-            </div>
-          </el-col>
-        </el-row>
-      </el-card>
-      <el-card header="化肥农药减量施用" class="mb10" style="height: 13vh">
-        <div class="flex justify-content-around border-r flex1">
-          <div>
-            <p class="font14 color-green ta-center mb12">
-              <font class="font24">300</font>亩
-            </p>
-            <p class="font14 color-white ta-center">复垦废弃<br />种植田块</p>
-          </div>
-          <div>
-            <p class="font14 color-blue ta-center mb12">
-              <font class="font24">500</font>亩
-            </p>
-            <p class="font14 color-white ta-center">轮作休耕</p>
-          </div>
-          <div>
-            <p class="font14 color-yellow ta-center mb12">
-              <font class="font24">12</font>台
-            </p>
-            <p class="font14 color-white ta-center">自走植保机</p>
-          </div>
-          <div>
-            <p class="font14 color-purple ta-center mb12">
-              <font class="font24">12</font>台
-            </p>
-            <p class="font14 color-white ta-center">防控无人机</p>
-          </div>
-        </div>
-      </el-card>
-      <el-card header="节水灌溉工程" style="height: 8vh">
-        <el-row>
-          <el-col :span="24">
-            <div class="flex align-items justify-content-center">
-              <p class="font14 color-white ta-center mr20">明灌改暗灌</p>
-              <p class="font12 color-green ta-center">
-                <font class="font24">700</font>亩
-              </p>
-            </div>
-          </el-col>
-        </el-row>
-      </el-card>
-    </el-col>
-    <el-col :span="14">
-      <div
-        class="
-          effect__center
-          flex
-          align-items
-          justify-content-between justify-content-center
-        "
-      >
-        <div v-for="(item, i) in effectData_center" :key="i" style="">
-          <el-image
-            style="height: 13vh"
-            :src="`${item.url}`"
-            class="mb10"
-          ></el-image>
-          <p class="font24 color-white ta-center">{{ item.name }}</p>
-        </div>
-      </div>
-    </el-col>
-    <el-col :span="5">
-      <div class="lhz-effect_title mb10">畜禽养殖污染物治理</div>
-      <div
-        class="flex align-items justify-content-between mb10 border-r"
-        style="height: 18vh"
-      >
-        <div v-for="(item, i) in effectData_rt" :key="i" style="">
-          <el-image style="height: 8.4vh" :src="`${item.url}`"></el-image>
-          <p class="font14 color-green ta-center mb12">
-            <font class="font24"> {{ item.text }} </font>{{ item.unit }}
-          </p>
-          <p class="font14 color-white ta-center">{{ item.name }}</p>
-        </div>
-      </div>
-      <div class="lhz-effect_title mb10">地表径流净化利用</div>
-      <el-row
-        :gutter="10"
-        class="flex align-items align-content-around justify-content-between"
-        style="height: 36vh"
-      >
-        <el-col :span="12" v-for="(item, i) in effectData_rc" :key="i">
-          <div
-            class="
-              flex
-              justify-content-center
-              align-items
-              flex-column
-              effect_rc
+            class="flex"
+            style="
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: space-around;
             "
           >
-            <p
-              :class="`flex align-items justify-content-center font14 ta-center mb12 ${item.color}`"
-              :style="{ backgroundImage: `url(${item.url})` }"
+            <div
+              v-for="(item, i) in effectData_lc"
+              :key="i"
+              style="padding-top: 0.4vh; padding-bottom: 0.4vh"
             >
-              <font class="font30">{{ item.value }} </font>
-            </p>
-            <p class="font14 color-white ta-center">
-              {{ item.text }}（{{ item.unit }}）
-            </p>
+              <div class="effect-div-bg flex align-items">
+                <el-image
+                  style="height: 3.6vh; margin-right: 0.8vh"
+                  :src="`${item.url}`"
+                ></el-image>
+                <div class="flex1">
+                  <p class="font14 color-blue">{{ item.name }}</p>
+                  <p class="font14 color-white">
+                    <font class="font20">{{ item.text }}</font
+                    >{{ item.unit }}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-        </el-col>
-      </el-row>
-      <div class="lhz-effect_title mb10">配套工程</div>
-      <el-row :gutter="10" class="flex align-items justify-content-between">
-        <el-col :span="8" v-for="(item, i) in effectData_rb" :key="i">
-          <div
-            class="
-              flex
-              justify-content-center
-              align-items
-              flex-column
-              effect_rb
-            "
-          >
-            <p :class="`font14 ta-center mb12 ${item.color}`">
-              <font class="font30">{{ item.value }} </font>
-              {{ item.unit }}
-            </p>
-            <p class="font14 color-white ta-center">{{ item.text }}</p>
+        </el-card>
+        <el-card header="建立生态隔离带" class="mb10" style="height: 12.4vh">
+          <el-row :gutter="8">
+            <el-col :span="24" v-for="(item, i) in effectData_lb" :key="i">
+              <div class="flex align-items justify-content-center">
+                <el-image
+                  style="height: 8vh; margin-right: 0.8vh"
+                  :src="`${item.url}`"
+                ></el-image>
+                <div>
+                  <p class="font24 color-blue ta-center mb12">
+                    {{ item.name }}
+                  </p>
+                  <p class="font16 color-white ta-center">
+                    <font class="font16">{{ item.text }}</font
+                    >{{ item.unit }}
+                  </p>
+                </div>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+        <el-card header="秸秆收集利用工程" class="mb10" style="height: 14vh">
+          <el-row class="border-rl">
+            <el-col :span="12">
+              <div class="flex align-items justify-content-center">
+                <p class="font14 color-white ta-center mr20">秸秆还田机</p>
+                <p class="font12 color-green ta-center">
+                  <font class="font24">12</font>台
+                </p>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="flex align-items justify-content-center">
+                <p class="font14 color-white ta-center mr20">秸秆粉碎机</p>
+                <p class="font12 color-green ta-center">
+                  <font class="font24">12</font>台
+                </p>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="flex align-items justify-content-center">
+                <p class="font14 color-white ta-center mr20">大型拖拉机</p>
+                <p class="font12 color-green ta-center">
+                  <font class="font24">12</font>台
+                </p>
+              </div>
+            </el-col>
+            <el-col :span="12">
+              <div class="flex align-items justify-content-center">
+                <p class="font14 color-white ta-center mr20">秸秆收储中心</p>
+                <p class="font12 color-green ta-center">
+                  <font class="font24">1</font>台
+                </p>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+        <el-card header="化肥农药减量施用" class="mb10" style="height: 13vh">
+          <div class="flex justify-content-around border-r flex1">
+            <div>
+              <p class="font14 color-green ta-center mb12">
+                <font class="font24">300</font>亩
+              </p>
+              <p class="font14 color-white ta-center">复垦废弃<br />种植田块</p>
+            </div>
+            <div>
+              <p class="font14 color-blue ta-center mb12">
+                <font class="font24">500</font>亩
+              </p>
+              <p class="font14 color-white ta-center">轮作休耕</p>
+            </div>
+            <div>
+              <p class="font14 color-yellow ta-center mb12">
+                <font class="font24">12</font>台
+              </p>
+              <p class="font14 color-white ta-center">自走植保机</p>
+            </div>
+            <div>
+              <p class="font14 color-purple ta-center mb12">
+                <font class="font24">12</font>台
+              </p>
+              <p class="font14 color-white ta-center">防控无人机</p>
+            </div>
           </div>
-        </el-col>
-      </el-row>
-    </el-col>
-  </el-row>
+        </el-card>
+        <el-card header="节水灌溉工程" style="height: 8vh">
+          <el-row>
+            <el-col :span="24">
+              <div class="flex align-items justify-content-center">
+                <p class="font14 color-white ta-center mr20">明灌改暗灌</p>
+                <p class="font12 color-green ta-center">
+                  <font class="font24">700</font>亩
+                </p>
+              </div>
+            </el-col>
+          </el-row>
+        </el-card>
+      </el-col>
+      <el-col :span="14">
+        <div
+          class="
+            effect__center
+            flex
+            align-items
+            justify-content-between justify-content-center
+          "
+        >
+          <div v-for="(item, i) in effectData_center" :key="i" style="">
+            <el-image
+              style="height: 13vh"
+              :src="`${item.url}`"
+              class="mb10"
+            ></el-image>
+            <p class="font24 color-white ta-center">{{ item.name }}</p>
+          </div>
+        </div>
+      </el-col>
+      <el-col :span="5">
+        <div class="lhz-effect_title mb10">畜禽养殖污染物治理</div>
+        <div
+          class="flex align-items justify-content-between mb10 border-r"
+          style="height: 18vh"
+        >
+          <div v-for="(item, i) in effectData_rt" :key="i" style="">
+            <el-image style="height: 8.4vh" :src="`${item.url}`"></el-image>
+            <p class="font14 color-green ta-center mb12">
+              <font class="font24"> {{ item.text }} </font>{{ item.unit }}
+            </p>
+            <p class="font14 color-white ta-center">{{ item.name }}</p>
+          </div>
+        </div>
+        <div class="lhz-effect_title mb10">地表径流净化利用</div>
+        <el-row
+          :gutter="10"
+          class="flex align-items align-content-around justify-content-between"
+          style="height: 36vh"
+        >
+          <el-col :span="12" v-for="(item, i) in effectData_rc" :key="i">
+            <div
+              class="
+                flex
+                justify-content-center
+                align-items
+                flex-column
+                effect_rc
+              "
+            >
+              <p
+                :class="`flex align-items justify-content-center font14 ta-center mb12 ${item.color}`"
+                :style="{ backgroundImage: `url(${item.url})` }"
+              >
+                <font class="font30">{{ item.value }} </font>
+              </p>
+              <p class="font14 color-white ta-center">
+                {{ item.text }}（{{ item.unit }}）
+              </p>
+            </div>
+          </el-col>
+        </el-row>
+        <div class="lhz-effect_title mb10">配套工程</div>
+        <el-row :gutter="10" class="flex align-items justify-content-between">
+          <el-col :span="8" v-for="(item, i) in effectData_rb" :key="i">
+            <div
+              class="
+                flex
+                justify-content-center
+                align-items
+                flex-column
+                effect_rb
+              "
+            >
+              <p :class="`font14 ta-center mb12 ${item.color}`">
+                <font class="font30">{{ item.value }} </font>
+                {{ item.unit }}
+              </p>
+              <p class="font14 color-white ta-center">{{ item.text }}</p>
+            </div>
+          </el-col>
+        </el-row>
+      </el-col>
+    </el-row>
+  </div>
 </template>
 <script>
 export default {
