@@ -6,17 +6,17 @@
       content="实施效果"
       @back="goHome"
     />
-    <el-menu
-      :default-active="activeIndex"
-      class="el-menu-demo"
-      mode="horizontal"
-      @select="handleSelect"
-    >
-      <el-menu-item index="1">首页</el-menu-item>
-      <el-menu-item index="2">农田面源污染防治</el-menu-item>
-      <el-menu-item index="3">养殖污染物治理</el-menu-item>
-      <el-menu-item index="4">配套工程</el-menu-item>
-    </el-menu>
+    <div class="el-header__menu">
+      <div class="el-header__menu-item">
+        <router-link
+          v-for="(item, index) in meunData"
+          :to="item.path"
+          :key="index"
+        >
+          {{ item.name ? item.name : "" }}
+        </router-link>
+      </div>
+    </div>
     <div class="el-header__right">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
@@ -37,12 +37,34 @@
 </template>
 <script>
 export default {
-  name: 'Header',
-  data(){
+  name: "Header",
+  data() {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-    }
+      meunData: [
+        {
+          name: "首页",
+          path: "/effect",
+        },
+        {
+          name: "农田面源污染防治",
+          path: "/effect/farmland",
+        },
+        {
+          name: "养殖污染物治理",
+          path: "/",
+        },
+        {
+          name: "地表径流污水净化",
+          path: "/",
+        },
+        {
+          name: "配套工程",
+          path: "/",
+        },
+      ],
+    };
   },
   methods: {
     goHome() {
@@ -55,7 +77,6 @@ export default {
           this.$router.push(`/effect/`);
           break;
         case "2":
-          console.log(2222);
           this.$router.push(`/effect/farmland`);
           break;
         case "3":
@@ -73,17 +94,40 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.el-header {
+  height: 7vh;
+  background: {
+    repeat: no-repeat;
+    size: 100% 100%;
+    image: url(~@/assets/img/effect/bg-header.png);
+  }
 
-  .el-header {
-    height: 7vh;
-    background: {
-      repeat: no-repeat;
-      size: 100% 100%;
-      image: url(~@/assets/img/effect/bg-header.png);
-    }
+  &__menu {
+    flex: 0 0 52.08vw;
 
-    &__right {
-      padding-top: 1vh;
+    &-item {
+      display: flex;
+      align-items: center;
+      height: 6.8vh;
+      line-height: 6.8vh;
+
+      & > a {
+        font-size: 1.6vh;
+        color: #fff;
+        margin: 0 4vh;
+        border-bottom: 2px solid transparent;
+
+        &.router-link-exact-active {
+          font-weight: bold;
+          color: #07d5c0;
+          border-color: #07d5c0;
+        }
+      }
     }
   }
+
+  &__right {
+    padding-top: 1vh;
+  }
+}
 </style>

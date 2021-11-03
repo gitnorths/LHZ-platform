@@ -3,7 +3,6 @@
     <el-container>
       <Header></Header>
       <el-main>
-        <!-- <Home></Home> -->
         <router-view :key="routeKey"></router-view>
       </el-main>
     </el-container>
@@ -11,12 +10,10 @@
 </template>
 <script>
 import Header from "./Header";
-// import Home from "./Home";
 export default {
   name: "Effect",
   components: {
     Header,
-    // Home,
   },
   data() {
     return {};

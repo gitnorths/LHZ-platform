@@ -483,7 +483,43 @@
 }
 
 .b-bot {
-  border-bottom: 1px solid #38ffe8;
+  background: {
+    repeat: no-repeat;
+    size: 100%;
+    position: center bottom;
+    image: url(~@/assets/img/effect/f-header-bottom.png);
+  }
+}
+
+.header-text {
+  position: relative;
+  color: #fff;
+  font-size: 3.2vh;
+  padding: 0 6.5vh;
+  
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 3.4vh;
+    height: 0.4vh;
+    margin-top: -0.2vh;
+    background: {
+      repeat: no-repeat;
+      size: 100%;
+    }
+  }
+  
+  &::after {
+    left: 0;
+    background-image: url(~@/assets/img/effect/f-header-left.png);
+  }
+  &::before {
+    right: 0;
+    background-image: url(~@/assets/img/effect/f-header-right.png);
+  }
+
 }
 
 .b-bot-dashed {
