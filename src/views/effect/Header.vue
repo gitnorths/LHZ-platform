@@ -53,15 +53,15 @@ export default {
         },
         {
           name: "养殖污染物治理",
-          path: "/",
+          path: "/effect/farming",
         },
         {
           name: "地表径流污水净化",
-          path: "/",
+          path: "/effect/purify",
         },
         {
           name: "配套工程",
-          path: "/",
+          path: "/effect/setting",
         },
       ],
     };

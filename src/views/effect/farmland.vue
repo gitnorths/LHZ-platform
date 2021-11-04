@@ -15,7 +15,7 @@
         <div class="f-col f-left">
           <div class="f-card">
             <div class="f-card-header b-bot">{{ title }}</div>
-            <div class="f-card-body">
+            <div class="f-card-body" style="justify-content: space-around">
               <p>{{ text }}</p>
               <el-image :src="`${url}`"></el-image>
             </div>
@@ -81,8 +81,12 @@
             <div class="f-card-body">
               <div v-for="(item, i) in rData" class="f-item2" :key="i">
                 <p :class="`font20 ${item.color}`">
-                  <el-image style="height: 8vh" :src="`${item.url}`"></el-image
-                  >{{ item.name }}
+                  <el-image
+                    class="mr10"
+                    style="height: 8vh"
+                    :src="`${item.url}`"
+                  ></el-image>
+                  {{ item.name }}
                 </p>
                 <p class="font16">
                   <font class="font30">{{ item.value }}</font
@@ -100,6 +104,40 @@
             >
               <el-image :src="`${item.url}`"></el-image>
               <p :class="`font20 ${item.color}`">{{ item.name }}</p>
+            </div>
+          </div>
+          <div class="f-card" v-else-if="active === 3">
+            <div class="f-card-body" style="padding: 0">
+              <div class="f-item3">
+                <div v-for="(item, i) in rData" :key="i">
+                  <p>{{ item.value }}</p>
+                  <p :class="`font16 ${item.color}`">
+                    <font class="font24">{{ item.name }}</font
+                    >({{ item.unit }})
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="f-card" v-else-if="active === 4">
+            <div class="f-card-body f-item4" style="padding: 0">
+              <div v-for="(item, i) in rData" :key="i">
+                <p :class="`font24 ${item.color}`">
+                  <font class="font40">{{ item.value }}</font> {{ item.unit }}
+                </p>
+                <p class="font24">{{ item.name }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="f-card" v-else-if="active === 5">
+            <div class="f-card-body" v-for="(item, i) in rData" :key="i">
+              <div class="mb30 f-item5">
+                <p :class="`font24 ${item.color}`">
+                  <font class="font40">{{ item.value }}</font> {{ item.unit }}
+                </p>
+                <p :class="`font24 ${item.color}`">{{ item.name }}</p>
+              </div>
+              <el-image :src="`${item.url}`"></el-image>
             </div>
           </div>
         </div>
@@ -253,42 +291,75 @@ export default {
           this.url = require(`@/assets/img/effect/f-4.png`);
           this.rData = [
             {
-              name: "秸秆还田机(台)",
+              name: "秸秆还田机",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-1.png`),
+              value: "12",
+              unit: "台",
             },
             {
-              name: "秸秆粉碎机(台)",
+              name: "秸秆粉碎机",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-2.png`),
+              value: "12",
+              unit: "台",
             },
             {
-              name: "大型拖拉机(台)",
+              name: "大型拖拉机",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-2.png`),
+              value: "12",
+              unit: "台",
             },
             {
-              name: "秸秆收储中心(座)",
+              name: "秸秆收储中心",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-2.png`),
+              value: "1",
+              unit: "座",
             },
           ];
           break;
         case 4:
-          this.title = "建立生态隔离带";
+          this.title = "化肥农药减量施用";
           this.text =
-            "在示范区范围的主干道两侧建立乔灌结合生态隔离带，一乔一灌间隔种植垂柳、红叶石楠，垂柳胸径5cm，红叶石楠冠幅100cm，高度100-110cm，垂柳与红叶石楠株距1.5m，垂柳（红叶石楠）与垂柳（红叶石楠）株距3m，构筑生态屏障，实现对干道周边环境的绿化和防止田间水土流失。";
-          this.url = require(`@/assets/img/effect/f-3.png`);
+            "将新塘村300亩废弃种植田块进行复垦等土地整理工程，后续种植紫云英，进行绿肥轮作有机生产模式应用推广。同时，在万安村、何桥村等地的500亩耕地进行休耕轮作。购置自走植保机12台，防控无人机12台。";
+          this.url = require(`@/assets/img/effect/f-5.png`);
           this.rData = [
             {
-              name: "栽植垂柳、红叶石楠",
+              name: "复垦废弃种植田块",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-1.png`),
+              value: "300",
+              unit: "亩",
             },
             {
-              name: "生态防护林布置图",
+              name: "轮作休耕",
               color: "color-blue",
-              url: require(`@/assets/img/effect/f-3-1.png`),
+              value: "500",
+              unit: "亩",
+            },
+            {
+              name: "自走植保机",
+              color: "color-yellow",
+              value: "12",
+              unit: "台",
+            },
+            {
+              name: "防控无人机",
+              color: "color-purple",
+              value: "12",
+              unit: "台",
+            },
+          ];
+          break;
+        case 5:
+          this.title = "节水灌溉工程";
+          this.text =
+            "将万安村、何桥村的700亩土渠明灌区改造为暗管灌溉区，实现水资源的节约利用，减少进入水体的农业生产种植尾水，从中间环节上对农业面源污染物进入水体进行控制。";
+          this.url = require(`@/assets/img/effect/f-6.png`);
+          this.rData = [
+            {
+              name: "明灌改暗灌",
+              color: "color-green",
+              value: "700",
+              unit: "亩",
+              url: require(`@/assets/img/effect/f-6-1.png`),
             },
           ];
           break;
@@ -383,6 +454,11 @@ export default {
     }
     .f-left {
       border-image-source: url(~@/assets/img/effect/f-left-bg.png);
+
+      p {
+        font-size: 2vh;
+        line-height: 4.5vh;
+      }
     }
     .f-right {
       border-image-source: url(~@/assets/img/effect/f-right-bg.png);
@@ -425,11 +501,6 @@ export default {
       flex: 1;
       padding: 0 10px;
       color: #ffffff;
-
-      p {
-        font-size: 2vh;
-        line-height: 4.5vh;
-      }
     }
   }
   .swiper-container {
@@ -511,6 +582,91 @@ export default {
     }
     &:nth-child(2) {
       margin-right: 3vh;
+    }
+  }
+}
+
+.f-item3 {
+  & > div {
+    display: flex;
+    align-items: center;
+
+    & > p {
+      &:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 161px;
+        height: 138.75px;
+        font-size: 5.6vh;
+        font-weight: bold;
+        color: #fff;
+        margin-right: 10px;
+        background: {
+          repeat: no-repeat;
+          size: cover;
+          image: url(~@/assets/img/effect/f-4-1.png);
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      & > p {
+        &:first-child {
+          background-position: center -138.75px;
+        }
+      }
+    }
+
+    &:nth-child(3) {
+      & > p {
+        &:first-child {
+          background-position: center -277.5px;
+        }
+      }
+    }
+
+    &:nth-child(4) {
+      & > p {
+        &:first-child {
+          background-position: center -416.25px;
+        }
+      }
+    }
+  }
+}
+.f-item4 {
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 13vh;
+    background: {
+      repeat: no-repeat;
+      size: 100%;
+      image: url(~@/assets/img/effect/f-5-1.png);
+    }
+
+    font {
+      font-weight: bold;
+    }
+  }
+}
+.f-item5 {
+  width: 100%;
+  border: 1px solid #07d5c0;
+  border-radius: 4vh;
+  text-align: center;
+  overflow: hidden;
+
+  & > p {
+    padding: 1vh 0;
+    background: linear-gradient(180deg, rgba(0, 74, 52, 0) 50%, #0c554a 100%);
+
+    &:first-child {
+      border-bottom: 1px solid #07d5c0;
     }
   }
 }
