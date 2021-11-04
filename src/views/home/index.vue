@@ -33,17 +33,17 @@
           <img
             v-for="(item, i) in imgData"
             :key="i"
-            :src="require(`@/assets/img/home/${item.url}.png`)"
+            :src="item.url"
             :class="`animate__animated animate__zoomIn ${item.url}`"
             alt=""
-            @click="jumpPage(`${item.url}`)"
+            @click="jumpPage(item.name)"
           />
           <div class="home-cloud">
             <img
               v-for="(item, i) in cloudData"
               :key="i"
-              :src="require(`@/assets/img/home/${item.url}.png`)"
-              :class="`${item.url}`"
+              :src="item.url"
+              :class="item.name"
               alt=""
             />
           </div>
@@ -57,23 +57,32 @@ export default {
   name: "Home",
   data() {
     return {
-      imgData: [{ url: "jsnr" }, { url: "ssxg" }, { url: "xmgl" }],
+      imgData: [
+        { name: "jsnr", url: require(`@/assets/img/home/jsnr.png`) },
+        { name: "ssxg", url: require(`@/assets/img/home/ssxg.png`) },
+        { name: "xmgl", url: require(`@/assets/img/home/xmgl.png`) },
+      ],
       cloudData: [
-        { url: "cloud-1" },
-        { url: "cloud-2" },
-        { url: "cloud-3" },
-        { url: "cloud-4" },
-        { url: "cloud-5" },
-        { url: "cloud-6" },
+        { name: "cloud-1", url: require(`@/assets/img/home/cloud-1.png`) },
+        { name: "cloud-2", url: require(`@/assets/img/home/cloud-2.png`) },
+        { name: "cloud-3", url: require(`@/assets/img/home/cloud-3.png`) },
+        { name: "cloud-4", url: require(`@/assets/img/home/cloud-4.png`) },
+        { name: "cloud-5", url: require(`@/assets/img/home/cloud-5.png`) },
+        { name: "cloud-6", url: require(`@/assets/img/home/cloud-6.png`) },
       ],
     };
   },
   methods: {
     jumpPage(action) {
       switch (action) {
+        case "jsnr":
+          this.$router.push(`/construct`);
+          break;
+
         case "ssxg":
           this.$router.push(`/effect`);
           break;
+
         case "xmgl":
           this.$router.push(`/projects`);
           break;
