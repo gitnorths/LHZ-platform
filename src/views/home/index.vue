@@ -112,6 +112,7 @@ export default {
     background: {
       repeat: no-repeat;
       position: center;
+      size: contain;
       image: url(~@/assets/img/home/header.png);
     }
 
@@ -126,14 +127,15 @@ export default {
   }
 
   &-map {
+    overflow: hidden;
     position: relative;
-    width: 1260px;
-    height: 700px;
-    margin: 86px auto 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
     background: {
       repeat: no-repeat;
       position: center;
-      size: 100%;
+      size: contain;
       image: url(~@/assets/img/home/map.png);
     }
     & > img {
@@ -142,16 +144,25 @@ export default {
       z-index: 10;
 
       &:nth-child(1) {
-        left: -97px;
-        top: -20px;
+        width: 56.7vh;
+        height: 14.6vh;
+        left: 50%;
+        margin-left: -77vh;
+        top: 2vh;
       }
       &:nth-child(2) {
-        right: -165px;
-        top: 50px;
+        width: 57.7vh;
+        height: 14.6vh;
+        right: 50%;
+        margin-right: -84vh;
+        top: 12vh;
       }
       &:nth-child(3) {
-        left: 75px;
-        bottom: -5px;
+        width: 57.7vh;
+        height: 24.2vh;
+        left: 50%;
+        margin-left: -55vh;
+        bottom: 5vh;
       }
     }
   }
