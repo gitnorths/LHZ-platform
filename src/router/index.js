@@ -35,6 +35,24 @@ const routes = [
         component: () => import("../views/construct/Home"),
         meta: { title: "首页" },
       },
+      {
+        name: "AutoMonitor",
+        path: "/construct/auto-monitor",
+        component: () => import("../views/construct/auto-monitor"),
+        meta: { title: "自动监测" },
+      },
+      {
+        name: "WaterDetect",
+        path: "/construct/water-detect",
+        component: () => import("../views/construct/water-detect"),
+        meta: { title: "水质检测" },
+      },
+      {
+        name: "PollutionAssessment",
+        path: "/construct/pollution-assessment",
+        component: () => import("../views/construct/pollution-assessment"),
+        meta: { title: "面源污染评价" },
+      },
     ]
   },
   {

@@ -1,15 +1,18 @@
 <template>
-  <el-header>
-    <el-page-header
-      icon="el-icon-s-home"
-      title="首页"
-      content="实施效果"
-      @back="goHome"
-    />
-    <div class="el-header__menu">
-      <div class="el-header__menu-item">
+  <el-header class="lhz-header">
+    <div class="el-header__left">
+      <el-breadcrumb separator="|">
+        <el-breadcrumb-item>
+          <a href="/"> <i class="el-icon-s-home el-icon--left"></i>首页</a>
+        </el-breadcrumb-item>
+        <el-breadcrumb-item>
+          <img :src="require(`@/assets/img/home/xy.png`)" alt /> 雨 25℃
+          2020-07-28 15:53
+        </el-breadcrumb-item>
+      </el-breadcrumb>
+      <div class="el-header__menu">
         <router-link
-          v-for="(item, index) in meunData"
+          v-for="(item, index) in meunLeft"
           :to="item.path"
           :key="index"
         >
@@ -17,12 +20,21 @@
         </router-link>
       </div>
     </div>
+    <div class="el-header__center"><span></span></div>
     <div class="el-header__right">
+      <div class="el-header__menu">
+        <router-link
+          v-for="(item, index) in meunRight"
+          :to="item.path"
+          :key="index"
+        >
+          {{ item.name ? item.name : "" }}
+        </router-link>
+      </div>
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
-            class="el-icon-arrow-down el-icon--right"
-          ></i>
+          <i class="el-icon-user el-icon--left"></i> 张三 [农情管理部]
+          <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
@@ -42,26 +54,24 @@ export default {
     return {
       activeIndex: "1",
       activeIndex2: "1",
-      meunData: [
+      meunLeft: [
         {
           name: "首页",
-          path: "/effect",
+          path: "/construct",
         },
         {
-          name: "农田面源污染防治",
-          path: "/effect/farmland",
+          name: "自动监测",
+          path: "/construct/auto-monitor",
+        },
+      ],
+      meunRight: [
+        {
+          name: "水质检测",
+          path: "/construct/water-detect",
         },
         {
-          name: "养殖污染物治理",
-          path: "/effect/farming",
-        },
-        {
-          name: "地表径流污水净化",
-          path: "/effect/purify",
-        },
-        {
-          name: "配套工程",
-          path: "/effect/setting",
+          name: "面源污染评价",
+          path: "/construct/pollution-assessment",
         },
       ],
     };
@@ -69,27 +79,7 @@ export default {
   methods: {
     goHome() {
       this.$router.push(`/home`);
-    },
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      switch (key) {
-        case "1":
-          this.$router.push(`/effect/`);
-          break;
-        case "2":
-          this.$router.push(`/effect/farmland`);
-          break;
-        case "3":
-          this.$router.push(`/effect/farmland`);
-          break;
-        case "4":
-          this.$router.push(`/effect/farmland`);
-          break;
-
-        default:
-          break;
-      }
-    },
+    }
   },
 };
 </script>
@@ -99,35 +89,56 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100% 100%;
-    image: url(~@/assets/img/effect/bg-header.png);
+    image: url(~@/assets/img/construct/bg-header.png);
   }
 
-  &__menu {
-    flex: 0 0 52.08vw;
-
-    &-item {
-      display: flex;
-      align-items: center;
-      height: 6.8vh;
-      line-height: 6.8vh;
-
-      & > a {
-        font-size: 1.6vh;
-        color: #fff;
-        margin: 0 4vh;
-        border-bottom: 2px solid transparent;
-
-        &.router-link-exact-active {
-          font-weight: bold;
-          color: #07d5c0;
-          border-color: #07d5c0;
-        }
-      }
-    }
+  &__center {
+    flex: 0 0 480px;
+  }
+  &__left {
+    padding-left: 3vh;
   }
 
   &__right {
-    padding-top: 1vh;
+    padding-right: 3vh;
+  }
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-bottom: 3vh;
+  }
+
+  &__menu {
+    display: flex;
+    z-index: 11;
+
+    & > a {
+      display: block;
+      width: 14vh;
+      height: 3.8vh;
+      line-height: 3.8vh;
+      text-align: center;
+      font-size: 1.6vh;
+      color: #2A7A7A;
+      background: {
+        repeat: no-repeat;
+        size: 100% 100%;
+        image: url(~@/assets/img/construct/bg-menu.png);
+      }
+
+      &:hover {
+        color: #FFFFFF;
+      }
+
+      &.router-link-exact-active {
+        color: #FFFFFF;
+        background-image: url(~@/assets/img/construct/bg-menu-active.png);
+      }
+    }
   }
 }
 </style>
