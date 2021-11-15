@@ -1,6 +1,6 @@
 <template>
   <div class="construct construct-map">
-    <!-- <div id="map"></div> -->
+    <div id="map"></div>
     <div class="sidebar">
       <div class="sidebar__header">
         <div class="sidebar__title">
@@ -59,80 +59,88 @@
   </div>
 </template>
 <script>
-import BMap from "BMap";
+// import BMap from "BMap";
+import { baiduMap } from "@/components/baiduMap";
 export default {
   name: "AutoMonitor",
   data() {
-    return {};
+    return {
+      ak: "avfc2kLXwHDxyuKCPYpjU3V6AQEEQTE4",
+    };
   },
   methods: {
-    createMap() {
-      /* eslint-disable */
-      // 创建Map实例
-      let map = new BMap.Map("map");
-      // 初始化地图,设置中心点坐标和地图级别
-      map.centerAndZoom(new BMap.Point(121.13215, 31.462382), 11);
-      // 设置地图显示的城市 此项是必须设置的
-      map.setCurrentCity("太仓市");
-      map.setMapType(BMAP_HYBRID_MAP);
-      map.panBy(-350, 10);
-      // map.setTilt(50);
-      //开启鼠标滚轮缩放
-      // map.enableScrollWheelZoom(false);
-      let bdary = new BMap.Boundary();
-      bdary.get("太仓市", function (rs) {
-        //获取行政区域
-        map.clearOverlays(); //清除地图覆盖物
-        map.panBy(-350, 10);
-        let count = rs.boundaries.length; //行政区域的点有多少个
-        if (count === 0) {
-          alert("未能获取当前输入行政区域");
-          return;
-        }
-        let pointArray = [];
-        for (let i = 0; i < count; i++) {
-          let ply = new BMap.Polygon(rs.boundaries[i], {
-            name: "太仓市",
-            strokeColor: "#FFFFFF",
-            strokeWeight: 1,
-            strokeOpacity: "1",
-            fillOpacity: "0.5",
-            fillColor: "#13414C",
-          }); //建立多边形覆盖物
-          map.addOverlay(ply); //添加覆盖物
-          pointArray = pointArray.concat(ply.getPath());
-          // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
-          var myIcon = new BMap.Icon(
-            require(`@/assets/img/construct/icon-camera.png`),
-            new BMap.Size(140, 116)
-          );
-          var point = new BMap.Point(121.13215, 31.462382);
-          var marker = new BMap.Marker(point, {
-            icon: myIcon,
-            title: "1",
-          });
-          map.addOverlay(marker);
-          // 创建信息窗口
-          var opts = {
-            width: 200,
-            height: 100,
-            title: "博物院",
-          };
-          var infoWindow = new BMap.InfoWindow(
-            "地址：北京市东城区王府井大街88号乐天银泰百货八层",
-            opts
-          );
-          // 点标记添加点击事件
-          marker.addEventListener("click", function () {
-            map.openInfoWindow(infoWindow, point); // 开启信息窗口
-          });
-        }
-        map.setViewport(pointArray); //调整视野
-      });
-    },
   },
   mounted() {
-    this.createMap();
+    // 动态引入较大类库避免影响页面展示
+    this.$nextTick(() => {
+      // let _this = this;
+      baiduMap(this.ak).then(() => {
+        // 创建Map实例
+        /* eslint-disable */
+        let map = new BMap.Map("map");
+        // 初始化地图,设置中心点坐标和地图级别
+        map.centerAndZoom(new BMap.Point(121.13215, 31.462382), 11);
+        // 设置地图显示的城市 此项是必须设置的
+        map.setCurrentCity("太仓市");
+        map.setMapType(BMAP_HYBRID_MAP);
+        map.panBy(-350, 10);
+        // map.setTilt(50);
+        //开启鼠标滚轮缩放
+        // map.enableScrollWheelZoom(false);
+        // setTimeout(() => {
+        let bdarys = new BMap.Boundary();
+        bdarys.get("太仓市", function (rs) {
+          //获取行政区域
+          map.clearOverlays(); //清除地图覆盖物
+          map.panBy(-350, 10);
+          let count = rs.boundaries.length; //行政区域的点有多少个
+          if (count === 0) {
+            alert("未能获取当前输入行政区域");
+            return;
+          }
+          let pointArray = [];
+          for (let i = 0; i < count; i++) {
+            let ply = new BMap.Polygon(rs.boundaries[i], {
+              name: "太仓市",
+              strokeColor: "#FFFFFF",
+              strokeWeight: 1,
+              strokeOpacity: "1",
+              fillOpacity: "0.5",
+              fillColor: "#13414C",
+            }); //建立多边形覆盖物
+            map.addOverlay(ply); //添加覆盖物
+            pointArray = pointArray.concat(ply.getPath());
+            // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
+            var myIcon = new BMap.Icon(
+              require(`@/assets/img/construct/icon-camera.png`),
+              new BMap.Size(140, 116)
+            );
+            var point = new BMap.Point(121.13215, 31.462382);
+            var marker = new BMap.Marker(point, {
+              icon: myIcon,
+              title: "1",
+            });
+            map.addOverlay(marker);
+            // 创建信息窗口
+            var opts = {
+              width: 200,
+              height: 100,
+              title: "监测点具体情况",
+            };
+            var infoWindow = new BMap.InfoWindow(
+              "地址：北京市东城区王府井大街88号乐天银泰百货八层",
+              opts
+            );
+            // 点标记添加点击事件
+            marker.addEventListener("click", function () {
+              map.openInfoWindow(infoWindow, point); // 开启信息窗口
+            });
+          }
+          map.setViewport(pointArray); //调整视野
+        });
+        // }, 5000);
+      });
+    });
   },
 };
 </script>
