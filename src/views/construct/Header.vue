@@ -20,7 +20,7 @@
         </router-link>
       </div>
     </div>
-    <div class="el-header__center"><span></span></div>
+    <div class="el-header__center"><span>建设内容</span></div>
     <div class="el-header__right">
       <div class="el-header__menu">
         <router-link

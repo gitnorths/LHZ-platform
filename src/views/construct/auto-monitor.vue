@@ -68,8 +68,7 @@ export default {
       ak: "avfc2kLXwHDxyuKCPYpjU3V6AQEEQTE4",
     };
   },
-  methods: {
-  },
+  methods: {},
   mounted() {
     // 动态引入较大类库避免影响页面展示
     this.$nextTick(() => {
@@ -111,24 +110,32 @@ export default {
             map.addOverlay(ply); //添加覆盖物
             pointArray = pointArray.concat(ply.getPath());
             // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
-            var myIcon = new BMap.Icon(
+            let myIcon = new BMap.Icon(
               require(`@/assets/img/construct/icon-camera.png`),
               new BMap.Size(140, 116)
             );
-            var point = new BMap.Point(121.13215, 31.462382);
-            var marker = new BMap.Marker(point, {
+            let point = new BMap.Point(121.186163,31.589242);
+            let marker = new BMap.Marker(point, {
               icon: myIcon,
               title: "1",
             });
             map.addOverlay(marker);
             // 创建信息窗口
-            var opts = {
-              width: 200,
-              height: 100,
+            let opts = {
+              width: 320,
+              height: 260,
               title: "监测点具体情况",
             };
-            var infoWindow = new BMap.InfoWindow(
-              "地址：北京市东城区王府井大街88号乐天银泰百货八层",
+            let infoWindow = new BMap.InfoWindow(
+              `
+              <p>编号：SCYJ-21#</p>
+              <p>地址：太仓市浏河镇</p>
+              <p>监测点等级：省级</p>
+              <p>实施主体：太仓市陈荣蔬菜专业合作社</p>
+              <p>种植面积：130亩</p>
+              <p>种植作物：辣椒</p>
+              <p>海拔：2米</p>
+              `,
               opts
             );
             // 点标记添加点击事件
