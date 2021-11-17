@@ -8,8 +8,10 @@
           <span></span>
         </div>
         <div class="sidebar__tooltip">
-          <p>监测点：太仓市浏河镇南稻香路</p>
-          <span>PES010000051</span>
+          <div class="sidebar__tooltip-header">
+            <h4>监测点：太仓市浏河镇南稻香路</h4>
+            <span>PES010000051</span>
+          </div>
         </div>
       </div>
       <div class="sidebar__body">
@@ -25,7 +27,7 @@
                 <el-button type="primary" size="mini">旬度</el-button>
               </el-button-group>
             </div>
-            <div class="construct-echarts"></div>
+            <div class="echarts-box" id="myEcharts"></div>
           </div>
           <div class="sidebar__item">
             <div class="sidebar__title sidebar__body-title">
@@ -38,7 +40,7 @@
                 <el-button type="primary" size="mini">旬度</el-button>
               </el-button-group>
             </div>
-            <div class="construct-echarts"></div>
+            <div class="echarts-box"></div>
           </div>
           <div class="sidebar__item">
             <div class="sidebar__title sidebar__body-title">
@@ -51,7 +53,7 @@
                 <el-button type="primary" size="mini">旬度</el-button>
               </el-button-group>
             </div>
-            <div class="construct-echarts"></div>
+            <div class="echarts-box"></div>
           </div>
         </div>
       </div>
@@ -59,21 +61,27 @@
   </div>
 </template>
 <script>
-// import BMap from "BMap";
+import { defineComponent, onMounted, onUnmounted } from "vue";
+import * as echarts from "echarts";
 import { baiduMap } from "@/components/baiduMap";
-export default {
+export default defineComponent({
   name: "AutoMonitor",
-  data() {
-    return {
-      ak: "avfc2kLXwHDxyuKCPYpjU3V6AQEEQTE4",
-    };
-  },
-  methods: {},
-  mounted() {
-    // 动态引入较大类库避免影响页面展示
-    this.$nextTick(() => {
-      // let _this = this;
-      baiduMap(this.ak).then(() => {
+  setup() {
+    let ak = "avfc2kLXwHDxyuKCPYpjU3V6AQEEQTE4";
+    let echart = echarts;
+
+    onMounted(() => {
+      initBaiduMap(); // map
+      initChart(); // echarts
+    });
+
+    onUnmounted(() => {
+      echart.dispose;
+    });
+
+    // 初始化地图
+    function initBaiduMap() {
+      baiduMap(ak).then(() => {
         // 创建Map实例
         /* eslint-disable */
         let map = new BMap.Map("map");
@@ -114,7 +122,7 @@ export default {
               require(`@/assets/img/construct/icon-camera.png`),
               new BMap.Size(140, 116)
             );
-            let point = new BMap.Point(121.186163,31.589242);
+            let point = new BMap.Point(121.186163, 31.589242);
             let marker = new BMap.Marker(point, {
               icon: myIcon,
               title: "1",
@@ -147,9 +155,55 @@ export default {
         });
         // }, 5000);
       });
-    });
+    }
+
+    // 基础配置一下Echarts
+    function initChart() {
+      let chart = echart.init(document.getElementById("myEcharts"));
+      // 把配置和数据放这里
+      chart.setOption({
+        xAxis: {
+          type: "category",
+          data: [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月",
+          ],
+        },
+        tooltip: {
+          trigger: "axis",
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [
+              820, 932, 901, 934, 1290, 1330, 1320, 801, 102, 230, 4321, 4129,
+            ],
+            type: "line",
+            smooth: true,
+          },
+        ],
+      });
+      window.onresize = function () {
+        //自适应大小
+        chart.resize();
+      };
+    }
+
+    return { initBaiduMap, initChart };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .construct {
@@ -170,145 +224,15 @@ export default {
   }
 
   .sidebar {
-    position: fixed;
-    right: 20px;
-    bottom: 25px;
-    top: 105px;
-    display: flex;
-    flex-direction: column;
-    width: 700px;
-    border-image-source: url(~@/assets/img/construct/bg-pop.png);
-    border-image-repeat: stretch stretch;
-    border-image-width: 1vh 1vh;
-    border-image-slice: 10 10 fill;
-
-    &__header {
-      padding: 3vh 2vh 0;
-    }
-    &__title {
-      display: flex;
-      align-items: center;
-      margin-bottom: 2vh;
-
-      p {
-        display: block;
-        font-size: 24px;
-        line-height: 24px;
-        font-weight: bold;
-        color: #ffffff;
-        padding: 0 1.5vh;
-        border-left: 4px solid #05bf99;
-      }
-
-      span {
-        display: flex;
-        flex: 1;
-        height: 2vh;
-        background: {
-          repeat: no-repeat;
-          size: cover;
-          position: center right;
-          image: url(~@/assets/img/construct/bg-title.png);
-        }
-      }
-    }
-
     &__tooltip {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #112532;
-      padding: 1vh;
-
-      p {
-        font-size: 18px;
-        font-weight: bold;
-        color: #05bf99;
-        padding-left: 3vh;
-        background: {
-          repeat: no-repeat;
-          size: contain;
-          image: url(~@/assets/img/construct/camera.png);
-        }
-      }
-      span {
-        position: relative;
-        display: block;
-        font-size: 14px;
-        color: #feffff;
-        padding-left: 1.5vh;
-
-        &::after,
-        &::before {
-          display: block;
-          content: "";
-          position: absolute;
-          left: 0;
-          width: 3px;
-          height: 6px;
-        }
-        &::before {
-          top: 0;
-          background-color: #f29b76;
-        }
-        &::after {
-          bottom: 0;
-          background-color: #ffffff;
-        }
-      }
-    }
-
-    &__scroll {
-      height: 100%;
-      overflow-y: auto;
-      padding: 0 2vh;
-    }
-
-    &__body {
-      height: 100%;
-      padding: 2vh 0;
-      box-sizing: border-box;
-      overflow: hidden;
-
-      &-title {
-        justify-content: space-between;
-        margin-bottom: 1.5vh;
-
+      &-header {
         p {
-          font-size: 1.8vh;
-          line-height: 1.8vh;
+          background-image: url(~@/assets/img/construct/camera.png);
         }
-
-        .el-button-group {
-          button {
-            background-color: #112532;
-            border-color: #2b6768;
-            color: #2b6768;
-            font-size: 1.2vh;
-            padding: 0 1vh;
-            min-height: 2.4vh;
-
-            &.active {
-              background-color: #2b6768;
-              color: #ffffff;
-            }
-          }
-        }
-      }
-    }
-
-    &__item {
-      background-color: rgba(16, 19, 23, 0.8);
-      border: 1px solid #273d3d;
-      padding: 2vh;
-      margin-bottom: 1.5vh;
-
-      &:last-child {
-        margin: 0;
       }
     }
   }
-  &-echarts {
+  .echarts-box {
     height: 26.3vh;
   }
 }
