@@ -61,6 +61,7 @@
   </div>
 </template>
 <script>
+import { getImageUrl } from "@/utils";
 import { defineComponent, onMounted, onUnmounted } from "vue";
 import * as echarts from "echarts";
 import { baiduMap } from "@/components/baiduMap";
@@ -119,12 +120,14 @@ export default defineComponent({
             pointArray = pointArray.concat(ply.getPath());
             // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
             let myIcon = new BMap.Icon(
-              require(`@/assets/img/construct/icon-camera.png`),
+              // './assets/img/construct/icon-camera.png',
+              new URL(`./../assets/img/construct/icon-camera.png`, import.meta.url),
+              // require(`@/assets/img/construct/icon-camera.png`),
               new BMap.Size(140, 116)
             );
             let point = new BMap.Point(121.186163, 31.589242);
             let marker = new BMap.Marker(point, {
-              icon: myIcon,
+              // icon: myIcon,
               title: "1",
             });
             map.addOverlay(marker);
@@ -214,7 +217,7 @@ export default defineComponent({
     background: {
       repeat: no-repeat;
       size: 100%;
-      image: url(~@/assets/img/effect/bg.png);
+    image: url(./../../assets/img/effect/bg.png);
     }
   }
 
@@ -227,7 +230,7 @@ export default defineComponent({
     &__tooltip {
       &-header {
         p {
-          background-image: url(~@/assets/img/construct/camera.png);
+          background-image: url(./../../assets/img/construct/camera.png);
         }
       }
     }

@@ -48,24 +48,24 @@ const routes = [
         component: () => import("@/views/construct/Home.vue"),
         meta: { title: "首页" },
       },
-      // {
-      //   name: "AutoMonitor",
-      //   path: "/construct/auto-monitor",
-      //   component: () => import("@/views/construct/auto-monitor.vue"),
-      //   meta: { title: "自动监测" },
-      // },
-      // {
-      //   name: "WaterDetect",
-      //   path: "/construct/water-detect",
-      //   component: () => import("@/views/construct/water-detect.vue"),
-      //   meta: { title: "水质检测" },
-      // },
-      // {
-      //   name: "PollutionAssessment",
-      //   path: "/construct/pollution-assessment",
-      //   component: () => import("@/views/construct/pollution-assessment.vue"),
-      //   meta: { title: "面源污染评价" },
-      // },
+      {
+        name: "AutoMonitor",
+        path: "/construct/auto-monitor",
+        component: () => import("@/views/construct/auto-monitor.vue"),
+        meta: { title: "自动监测" },
+      },
+      {
+        name: "WaterDetect",
+        path: "/construct/water-detect",
+        component: () => import("@/views/construct/water-detect.vue"),
+        meta: { title: "水质检测" },
+      },
+      {
+        name: "PollutionAssessment",
+        path: "/construct/pollution-assessment",
+        component: () => import("@/views/construct/pollution-assessment.vue"),
+        meta: { title: "面源污染评价" },
+      },
     ]
   },
   // {

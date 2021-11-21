@@ -233,7 +233,7 @@ export default defineComponent({
     background: {
       repeat: no-repeat;
       size: 100%;
-      image: url(~@/assets/img/effect/bg.png);
+      image: url(./../../assets/img/effect/bg.png);
     }
   }
 
