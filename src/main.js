@@ -7,7 +7,6 @@ import router from "./router/index";
 // 全局引入ui库
 import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
-import "./style/index.scss";
 
 import Swiper, {
   Thumbs,
@@ -20,5 +19,7 @@ import Swiper, {
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.scss";
 Swiper.use([Thumbs, Autoplay, EffectCube, Pagination, Navigation, EffectCoverflow]);
+
+import "./style/index.scss";
 
 createApp(App).use(router).use(store).use(ElementPlus).mount("#app");

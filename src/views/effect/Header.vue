@@ -20,9 +20,8 @@
     <div class="el-header__right">
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
-            class="el-icon-arrow-down el-icon--right"
-          ></i>
+          <i class="el-icon-user el-icon--left"></i> 张三 [农情管理部]
+          <i class="el-icon-arrow-down el-icon--right"></i>
         </span>
         <template #dropdown>
           <el-dropdown-menu>

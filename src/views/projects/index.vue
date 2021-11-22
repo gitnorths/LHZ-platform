@@ -4,24 +4,21 @@
       <el-header class="lhz-header">
         <div class="el-header__left">
           <el-breadcrumb separator="|">
-            <el-breadcrumb-item
-              ><a href="/"
-                ><i class="el-icon-s-home el-icon--left"></i>首页</a
-              ></el-breadcrumb-item
-            >
-            <el-breadcrumb-item
-              ><img :src="require(`@/assets/img/home/xy.png`)" alt />雨 25℃
-              2020-07-28 15:53</el-breadcrumb-item
-            >
+            <el-breadcrumb-item>
+              <a href="/"><i class="el-icon-s-home el-icon--left"></i>首页</a>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>
+              <img :src="getImageUrl('home', weatherImg)" alt /> 雨 25℃
+              2020-07-28 15:53
+            </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
         <div class="el-header__center"><span>项目管理</span></div>
         <div class="el-header__right">
           <el-dropdown trigger="click">
             <span class="el-dropdown-link">
-              <i class="el-icon-user el-icon--left"></i>张三 [农情管理部]<i
-                class="el-icon-arrow-down el-icon--right"
-              ></i>
+              <i class="el-icon-user el-icon--left"></i> 张三 [农情管理部]
+              <i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <template #dropdown>
               <el-dropdown-menu>
@@ -38,7 +35,7 @@
           <li
             v-for="(item, i) in imgData"
             :key="i"
-            :class="`animate__animated animate__zoomIn ${item.url}`"
+            :class="`animate__animated animate__zoomIn ${item.className}`"
           >
             <el-popover
               placement="top"
@@ -49,10 +46,7 @@
             >
               <template #reference>
                 <div>
-                  <img
-                    :src="require(`@/assets/img/projects/${item.url}.png`)"
-                    alt=""
-                  />
+                  <img :src="`${item.url}`" alt="" />
                   <p>{{ item.name }}</p>
                 </div>
               </template>
@@ -67,10 +61,7 @@
               </ul>
             </el-popover>
             <div v-else>
-              <img
-                :src="require(`@/assets/img/projects/${item.url}.png`)"
-                alt=""
-              />
+              <img :src="`${item.url}`" alt="" />
               <p>{{ item.name }}</p>
             </div>
           </li>
@@ -114,16 +105,10 @@
               </span>
             </p>
             <el-form size="mini" label-width="120px">
-              <el-form-item label="组 &nbsp;&nbsp;长："
-                ><span>赵建初 市政府副市长</span></el-form-item
-              >
-              <el-form-item label="副组长："
-                ><span>王晨清 市政府办公室副主任</span></el-form-item
-              >
+              <el-form-item label="组 &nbsp;&nbsp;长："> <span>赵建初 市政府副市长</span> </el-form-item>
+              <el-form-item label="副组长："> <span>王晨清 市政府办公室副主任</span> </el-form-item>
               <el-form-item><span>盛海峰 市农委主任</span></el-form-item>
-              <el-form-item label="成 &nbsp;&nbsp;员："
-                ><span>曹炳华 市委农工办副主任</span></el-form-item
-              >
+              <el-form-item label="成 &nbsp;&nbsp;员："> <span>曹炳华 市委农工办副主任</span> </el-form-item>
               <el-form-item><span>许子云 市发改委副主任</span></el-form-item>
               <el-form-item><span>沈美林 市科技局副局长</span></el-form-item>
               <el-form-item><span>王建良 市财政局副局长</span></el-form-item>
@@ -161,14 +146,14 @@
                 领导小组下设办公室，办公室设在市农业委员会，盛海峰同志兼任办公室主任，许子云、冯瑞兴同志兼任办公室副主任。
               </span>
             </p>
-            <el-image
+            <!-- <el-image
               style="width: 90%; margin: 0 auto; display: block"
-              :src="require(`@/assets/img/projects/file1.png`)"
+              :src="getImageUrl("projects", "file1")"
             ></el-image>
             <el-image
               style="width: 90%; margin: 0 auto 10px; display: block"
-              :src="require(`@/assets/img/projects/file2.png`)"
-            ></el-image>
+              :src="getImageUrl("projects", "file2")"
+            ></el-image> -->
             <p id="tab2" class="conBlock">
               <span>（2）项目建设工作小组 </span>
             </p>
@@ -207,14 +192,14 @@
                 >工作小组下设办公室，办公室设在镇农技站，由刘传松同志兼任办公室主任。</span
               >
             </p>
-            <el-image
+            <!-- <el-image
               style="width: 90%; margin: 0 auto; display: block"
-              :src="require(`@/assets/img/projects/file3.png`)"
+              :src="getImageUrl("projects", "file3")"
             ></el-image>
             <el-image
               style="width: 90%; margin: 0 auto 10px; display: block"
-              :src="require(`@/assets/img/projects/file4.png`)"
-            ></el-image>
+              :src="getImageUrl("projects", "file4")"
+            ></el-image> -->
             <p id="tab3" class="conBlock">
               <span>（3）技术咨询顾问小组 </span>
             </p>
@@ -223,10 +208,10 @@
                 >本项目成立太仓市农业面源污染综合防治专家组，由江苏省农业科学院、苏州市农业科学院、中国科学院南京土壤研究所及江苏太湖地区农业科学研究所等有关专家组成，具体负责农业面源污染综合防治技术集成的研究、技术模式的提炼、技术规范制定，随时对项目的实施提供技术咨询和指导。</span
               >
             </p>
-            <el-image
+            <!-- <el-image
               style="width: 90%; margin: 0 auto 10px; display: block"
-              :src="require(`@/assets/img/projects/file5.png`)"
-            ></el-image>
+              :src="getImageUrl("projects", "file5")"
+            ></el-image> -->
             <p>
               <span style="display: block; text-align: center"
                 >图8-1 项目组织机构图</span
@@ -357,63 +342,68 @@
   </div>
 </template>
 <script>
-export default {
-  name: "Project",
-  data() {
-    return {
-      dialogVisible: false,
-      dialogTitle: "",
-      dialogWidth: "1200px",
-      tabsValue: "",
-      imgData: [
-        {
-          name: "项目实施组织管理",
-          url: "organization",
-          data: [
-            { active: 0, curr: 0, name: "项目建设领导小组" },
-            { active: 1, curr: 0, name: "项目建设工作小组" },
-            { active: 2, curr: 0, name: "技术咨询顾问小组" },
-          ],
-        },
-        {
-          name: "项目管理制度",
-          url: "system",
-          data: [
-            { active: 0, curr: 1, name: "施工招投标制度" },
-            { active: 1, curr: 1, name: "工程建设监理制度" },
-            { active: 2, curr: 1, name: "质量控制" },
-            { active: 3, curr: 1, name: "进度控制" },
-            { active: 4, curr: 1, name: "投资控制" },
-            { active: 5, curr: 1, name: "安全控制" },
-            { active: 6, curr: 1, name: "合同管理" },
-            { active: 7, curr: 1, name: "协调" },
-            { active: 8, curr: 1, name: "竣工验收" },
-          ],
-        },
-        {
-          name: "项目建成后的运行管理",
-          url: "run",
-          data: [
-            { active: 0, curr: 2, name: "突出宣传指导，加强技术服务" },
-            {
-              active: 1,
-              curr: 2,
-              name: "建立健全监测体系，加强农业面源污染监测工作",
-            },
-            { active: 2, curr: 2, name: "建立长效管理机制" },
-            { active: 3, curr: 2, name: "依法行政，加大监管力度" },
-          ],
-        },
-      ],
-      active: 0,
-      current: 0,
-    };
-  },
-  methods: {
-    handleClose() {
+import { getImageUrl } from "@/utils";
+import { defineComponent, provide, reactive, ref } from "vue";
+
+export default defineComponent({
+  name: "Projects",
+  setup() {
+    const active = ref(0);
+    const current = ref(0);
+    const tabsValue = ref("");
+    const weatherImg = ref("xy");
+    const dialogTitle = ref("");
+    const dialogWidth = ref("1200px");
+    let dialogVisible = ref(false);
+    const imgData = reactive([
+      {
+        name: "项目实施组织管理",
+        url: getImageUrl("projects", "organization"),
+        className: "organization",
+        data: [
+          { active: 0, curr: 0, name: "项目建设领导小组" },
+          { active: 1, curr: 0, name: "项目建设工作小组" },
+          { active: 2, curr: 0, name: "技术咨询顾问小组" },
+        ],
+      },
+      {
+        name: "项目管理制度",
+        url: getImageUrl("projects", "system"),
+        className: "system",
+        data: [
+          { active: 0, curr: 1, name: "施工招投标制度" },
+          { active: 1, curr: 1, name: "工程建设监理制度" },
+          { active: 2, curr: 1, name: "质量控制" },
+          { active: 3, curr: 1, name: "进度控制" },
+          { active: 4, curr: 1, name: "投资控制" },
+          { active: 5, curr: 1, name: "安全控制" },
+          { active: 6, curr: 1, name: "合同管理" },
+          { active: 7, curr: 1, name: "协调" },
+          { active: 8, curr: 1, name: "竣工验收" },
+        ],
+      },
+      {
+        name: "项目建成后的运行管理",
+        url: getImageUrl("projects", "run"),
+        className: "run",
+        data: [
+          { active: 0, curr: 2, name: "突出宣传指导，加强技术服务" },
+          {
+            active: 1,
+            curr: 2,
+            name: "建立健全监测体系，加强农业面源污染监测工作",
+          },
+          { active: 2, curr: 2, name: "建立长效管理机制" },
+          { active: 3, curr: 2, name: "依法行政，加大监管力度" },
+        ],
+      },
+    ]);
+
+    function handleClose() {
       this.dialogVisible = false;
-    },
-    handleScroll() {
+    }
+
+    function handleScroll() {
       let scrollTop = this.$refs.tabContent.scrollTop;
       let blocks = document.querySelectorAll(".conBlock");
       blocks.forEach((item, index) => {
@@ -421,8 +411,9 @@ export default {
           this.active = index;
         }
       });
-    },
-    onShowPop(index, curr) {
+    }
+
+    function onShowPop(index, curr) {
       console.log(index, curr);
       this.dialogVisible = true;
       this.dialogTitle = "项目实施组织管理";
@@ -430,8 +421,9 @@ export default {
       setTimeout(() => {
         this.onChangeTab(index);
       }, 500);
-    },
-    onChangeTab(index) {
+    }
+
+    function onChangeTab(index) {
       this.active = index;
       let blocks = document.querySelectorAll(".conBlock");
       let step = 40; //滚动步长
@@ -466,9 +458,26 @@ export default {
         };
         smoothDown();
       }
-    },
+    }
+
+    return {
+      active,
+      current,
+      imgData,
+      tabsValue,
+      weatherImg,
+      getImageUrl,
+      dialogWidth,
+      dialogTitle,
+      dialogVisible,
+
+      onShowPop,
+      onChangeTab,
+      handleClose,
+      handleScroll,
+    };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .lhz-tabs {
@@ -532,7 +541,7 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100%;
-    image: url(~@/assets/img/projects/bg.png);
+    image: url(./../../assets/img/projects/bg.png);
   }
 
   .el-main {
@@ -594,7 +603,7 @@ export default {
     background: {
       repeat: no-repeat;
       position: center;
-      image: url(~@/assets/img/home/header.png);
+      image: url(./../../assets/img/home/header.png);
     }
 
     &__left {

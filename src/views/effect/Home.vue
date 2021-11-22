@@ -164,14 +164,18 @@
             justify-content-between justify-content-center
           "
         >
-          <div v-for="(item, i) in effectData_center" :key="i" style="">
+          <router-link
+            v-for="(item, index) in effectData_center"
+            :to="item.path"
+            :key="index"
+          >
             <el-image
               style="height: 13vh"
               :src="`${item.url}`"
               class="mb10"
             ></el-image>
             <p class="font24 color-white ta-center">{{ item.name }}</p>
-          </div>
+          </router-link>
         </div>
       </el-col>
       <el-col :span="5">
@@ -252,35 +256,35 @@ export default defineComponent({
         name: "态塘",
         text: "8",
         color: "color-blue",
-        url: getImageUrl('effect', 'effect-1-1'),
+        url: getImageUrl("effect", "effect-1-1"),
         unit: "个",
       },
       {
         name: "挺水植物",
         text: "1547",
         color: "color-yellow",
-        url: getImageUrl('effect', 'effect-1-2'),
+        url: getImageUrl("effect", "effect-1-2"),
         unit: "㎡",
       },
       {
         name: "湿地清淤",
         text: "28280",
         color: "color-green",
-        url: getImageUrl('effect', 'effect-1-3'),
+        url: getImageUrl("effect", "effect-1-3"),
         unit: "m³",
       },
       {
         name: "湿地清淤",
         text: "28280",
         color: "color-pink",
-        url: getImageUrl('effect', 'effect-1-4'),
+        url: getImageUrl("effect", "effect-1-4"),
         unit: "m³",
       },
       {
         name: "净化塘边坡清杂",
         text: "1512",
         color: "color-purple",
-        url: getImageUrl('effect', 'effect-1-5'),
+        url: getImageUrl("effect", "effect-1-5"),
         unit: "㎡",
       },
     ]);
@@ -289,7 +293,7 @@ export default defineComponent({
         name: "10000株",
         text: "栽植垂柳、红叶石楠 ",
         color: "color-green",
-        url: getImageUrl('effect', 'effect-2-1'),
+        url: getImageUrl("effect", "effect-2-1"),
         unit: "",
       },
     ]);
@@ -298,21 +302,21 @@ export default defineComponent({
         name: "干粪运输车",
         text: "1",
         color: "color-green",
-        url: getImageUrl('effect', 'effect-3-1'),
+        url: getImageUrl("effect", "effect-3-1"),
         unit: "台",
       },
       {
         name: "有机肥施肥机",
         text: "3",
         color: "color-green",
-        url: getImageUrl('effect', 'effect-3-2'),
+        url: getImageUrl("effect", "effect-3-2"),
         unit: "台",
       },
       {
         name: "吸粪车",
         text: "2",
         color: "color-green",
-        url: getImageUrl('effect', 'effect-3-3'),
+        url: getImageUrl("effect", "effect-3-3"),
         unit: "台",
       },
     ]);
@@ -321,28 +325,28 @@ export default defineComponent({
         value: "25.31",
         text: "清淤清杂",
         color: "color-white",
-        url: getImageUrl('effect', 'effect-4-1'),
+        url: getImageUrl("effect", "effect-4-1"),
         unit: "万m³",
       },
       {
         value: "14360",
         text: "栽植挺水植物",
         color: "color-white",
-        url: getImageUrl('effect', 'effect-4-2'),
+        url: getImageUrl("effect", "effect-4-2"),
         unit: "㎡",
       },
       {
         value: "2393",
         text: "栽植灌木",
         color: "color-white",
-        url: getImageUrl('effect', 'effect-4-3'),
+        url: getImageUrl("effect", "effect-4-3"),
         unit: "株",
       },
       {
         value: "16974",
         text: "杉木桩护岸",
         color: "color-white",
-        url: getImageUrl('effect', 'effect-4-4'),
+        url: getImageUrl("effect", "effect-4-4"),
         unit: "m",
       },
     ]);
@@ -369,19 +373,23 @@ export default defineComponent({
     const effectData_center = reactive([
       {
         name: "养殖污染物治理",
-        url: getImageUrl('effect', 'effect-center-1'),
+        url: getImageUrl("effect", "effect-center-1"),
+        path: "/effect/farming",
       },
       {
         name: "农田面源污染防治",
-        url: getImageUrl('effect', 'effect-center-2'),
+        url: getImageUrl("effect", "effect-center-2"),
+        path: "/effect/farmland",
       },
       {
         name: "地表径流污水净化",
-        url: getImageUrl('effect', 'effect-center-3'),
+        url: getImageUrl("effect", "effect-center-3"),
+        path: "/effect/purify",
       },
       {
         name: "配套工程",
-        url: getImageUrl('effect', 'effect-center-4'),
+        url: getImageUrl("effect", "effect-center-4"),
+        path: "/effect/setting",
       },
     ]);
     return {
@@ -402,7 +410,8 @@ export default defineComponent({
     line-height: 6vh;
     padding: 0 2.4vh;
     font-size: 2.4vh;
-    // font-weight: bold; 
+    // font-weight: bold;
+    text-align: left;
     font-family: "PingFang-SC-Bold";
     color: #fff;
     background: {
@@ -439,7 +448,7 @@ export default defineComponent({
       animation: 50s linear infinite rotateCenter;
     }
 
-    & > div {
+    & > a {
       text-align: center;
       margin-bottom: 150px;
 
