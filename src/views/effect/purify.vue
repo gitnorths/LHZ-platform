@@ -18,7 +18,7 @@
             </div>
             <div class="f-card-body">
               <div class="bannerBox">
-                <div class="swiper-container gallery-top">
+                <div class="swiper-container swiper-gallery">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide"
@@ -28,15 +28,11 @@
                       <img class="img" :src="item" />
                     </div>
                   </div>
-                  <div class="swiper-button-next swiper-button-white">
-                    <i class="el-icon-arrow-right"></i>
-                  </div>
-                  <div class="swiper-button-prev swiper-button-white">
-                    <i class="el-icon-arrow-left"></i>
-                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
                 </div>
                 <div style="height: 15px; width: 400px"></div>
-                <div class="swiper-container gallery-thumbs">
+                <div class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide swiper-bottom"
@@ -80,102 +76,98 @@
 </template>
 <script>
 import Swiper from "swiper";
-export default {
-  components: {
-    // Pagination,
-  },
-  data() {
-    return {
-      bigImg: [
-        "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      ],
-      title: "",
-      title2: "",
-      text: "",
-      url: "",
-      tableData: [],
-    };
-  },
-  created() {
-    this.$nextTick(function () {
-      this.title = "地表径流净化利用工程";
-      this.text =
-        "种植区地区水土和农村村庄污水流失引起的地表径流是面源污染的重要原因，通过对现有河道进行岸坡生态化改造，对地表径流进行净化，对净化后的水资源通过各种输水通道进行生产利用，实现地表径流的净化和回用。";
-      this.text2 =
-        "对示范区内河道进行岸坡生态化改造，同时清淤清杂，共计25.31万m3，河道边坡清杂28720㎡，近水岸边栽植鸢尾、美人蕉、千蕨菜等挺水植物共14360m2，河道坡顶栽植冬青、红叶石楠等灌木2393株，在易坍塌河段密打杉木桩护岸16974m。";
-      this.tableData = [
-        {
-          name: "河塘河",
-          color: "color-green",
-          content:
-            "种植挺水植物1300㎡，种植护岸灌木217株，杉木桩护岸1690m。清淤1.83万m³，清杂2600㎡。",
-        },
-        {
-          name: "界娄河",
-          color: "color-purple",
-          content:
-            "种植挺水植物1000㎡，种植护岸灌木167株，杉木桩护岸1440m。清淤1.31万m³，清杂2000㎡。",
-        },
-        {
-          name: "申泾河",
-          color: "color-pink",
-          content:
-            "种植挺水植物1300㎡，种植护岸灌木217株，杉木桩护岸1612m。清淤2.05万m³，清杂2600㎡。",
-        },
-        {
-          name: "蒋漕河",
-          color: "color-pink",
-          content:
-            "种植挺水植物1200㎡，种植护岸灌木200株，杉木桩护岸1632m。清淤1.64万m³，清杂2400㎡。",
-        },
-        {
-          name: "油槽河",
-          color: "color-pink",
-          content:
-            "种植挺水植物1400㎡，种植护岸灌木233株，杉木桩护岸2070m。清淤2.17万m³，清杂2800㎡。",
-        },
-        {
-          name: "蔡家浜河",
-          color: "color-pink",
-          content:
-            "种植挺水植物710㎡，种植护岸灌木118株，杉木桩护岸994m清淤1.425万m³，清杂1420㎡。",
-        },
-        {
-          name: "横塘河",
-          color: "color-pink",
-          content:
-            "种植挺水植物650㎡，种植护岸灌木108株，杉木桩护岸650m清淤0.785万m³，清杂1300㎡。",
-        },
-        {
-          name: "钱泾河",
-          color: "color-pink",
-          content:
-            "种植挺水植物2000㎡，种植护岸灌木333株，杉木桩护岸2000m。清淤4.41万m³，清杂4000㎡。",
-        },
-        {
-          name: "苏张泾河",
-          color: "color-pink",
-          content:
-            "种植挺水植物2100㎡，种植护岸灌木350株，杉木桩护岸2184m。清淤3.74万m³，清杂4200㎡。",
-        },
-        {
-          name: "马路塘河",
-          color: "color-pink",
-          content:
-            "种植挺水植物2700㎡，种植护岸灌木450株，杉木桩护岸2700m。清淤5.95万m³，清杂5400㎡。",
-        },
-      ];
+import { Pagination } from "swiper";
+// import { getImageUrl } from "@/utils";
+import { defineComponent, onMounted, reactive, ref } from "vue";
 
-      this.galleryThumbsLunbo();
-      this.galleryTopLunbo();
-    });
+export default defineComponent({
+  name: "EffectPurify",
+  components: {
+    Pagination,
   },
-  methods: {
-    galleryTopLunbo() {
-      this.galleryTop = new Swiper(".gallery-top", {
+  setup() {
+    const title = ref("地表径流净化利用工程");
+    const text = ref(
+      "种植区地区水土和农村村庄污水流失引起的地表径流是面源污染的重要原因，通过对现有河道进行岸坡生态化改造，对地表径流进行净化，对净化后的水资源通过各种输水通道进行生产利用，实现地表径流的净化和回用。"
+    );
+    const text2 = ref(
+      "对示范区内河道进行岸坡生态化改造，同时清淤清杂，共计25.31万m3，河道边坡清杂28720㎡，近水岸边栽植鸢尾、美人蕉、千蕨菜等挺水植物共14360m2，河道坡顶栽植冬青、红叶石楠等灌木2393株，在易坍塌河段密打杉木桩护岸16974m。"
+    );
+    const bigImg = reactive([
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+    ]);
+    const tableData = reactive([
+      {
+        name: "河塘河",
+        color: "color-green",
+        content:
+          "种植挺水植物1300㎡，种植护岸灌木217株，杉木桩护岸1690m。清淤1.83万m³，清杂2600㎡。",
+      },
+      {
+        name: "界娄河",
+        color: "color-purple",
+        content:
+          "种植挺水植物1000㎡，种植护岸灌木167株，杉木桩护岸1440m。清淤1.31万m³，清杂2000㎡。",
+      },
+      {
+        name: "申泾河",
+        color: "color-pink",
+        content:
+          "种植挺水植物1300㎡，种植护岸灌木217株，杉木桩护岸1612m。清淤2.05万m³，清杂2600㎡。",
+      },
+      {
+        name: "蒋漕河",
+        color: "color-pink",
+        content:
+          "种植挺水植物1200㎡，种植护岸灌木200株，杉木桩护岸1632m。清淤1.64万m³，清杂2400㎡。",
+      },
+      {
+        name: "油槽河",
+        color: "color-pink",
+        content:
+          "种植挺水植物1400㎡，种植护岸灌木233株，杉木桩护岸2070m。清淤2.17万m³，清杂2800㎡。",
+      },
+      {
+        name: "蔡家浜河",
+        color: "color-pink",
+        content:
+          "种植挺水植物710㎡，种植护岸灌木118株，杉木桩护岸994m清淤1.425万m³，清杂1420㎡。",
+      },
+      {
+        name: "横塘河",
+        color: "color-pink",
+        content:
+          "种植挺水植物650㎡，种植护岸灌木108株，杉木桩护岸650m清淤0.785万m³，清杂1300㎡。",
+      },
+      {
+        name: "钱泾河",
+        color: "color-pink",
+        content:
+          "种植挺水植物2000㎡，种植护岸灌木333株，杉木桩护岸2000m。清淤4.41万m³，清杂4000㎡。",
+      },
+      {
+        name: "苏张泾河",
+        color: "color-pink",
+        content:
+          "种植挺水植物2100㎡，种植护岸灌木350株，杉木桩护岸2184m。清淤3.74万m³，清杂4200㎡。",
+      },
+      {
+        name: "马路塘河",
+        color: "color-pink",
+        content:
+          "种植挺水植物2700㎡，种植护岸灌木450株，杉木桩护岸2700m。清淤5.95万m³，清杂5400㎡。",
+      },
+    ]);
+
+    onMounted(() => {
+      new Swiper(".swiper-gallery", {
         spaceBetween: 0,
         loop: false,
         loopedSlides: 5,
@@ -185,24 +177,29 @@ export default {
           prevEl: ".swiper-button-prev",
         },
         thumbs: {
-          swiper: this.galleryThumbs,
-          slideThumbActiveClass: "swiper-slide-thumb-active",
+          // slideThumbActiveClass: "swiper-slide-thumb-active",
+          swiper: new Swiper(".swiper-thumbs", {
+            spaceBetween: 5, //在slide之间设置距离（单位px）
+            slidesPerView: 4, //设置slider容器能够同时显示的slides数量
+            loop: false, //设置为true 则开启loop模式
+            freeMode: false, //默认为false，普通模式：slide滑动时只滑动一格
+            loopedSlides: 7, //一般设置大于可视slide个数2个即可
+            watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
+            watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
+          }),
         },
       });
-    },
-    galleryThumbsLunbo() {
-      this.galleryThumbs = new Swiper(".gallery-thumbs", {
-        spaceBetween: 5, //在slide之间设置距离（单位px）
-        slidesPerView: 4, //设置slider容器能够同时显示的slides数量
-        loop: false, //设置为true 则开启loop模式
-        freeMode: true, //默认为false，普通模式：slide滑动时只滑动一格
-        loopedSlides: 7, //一般设置大于可视slide个数2个即可
-        watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
-        watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
-      });
-    },
+    });
+
+    return {
+      text,
+      text2,
+      title,
+      bigImg,
+      tableData,
+    };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .f-container {
@@ -259,7 +256,7 @@ export default {
       padding: 0 4vh;
     }
     .f-left {
-      border-image-source: url(~@/assets/img/effect/f-left-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-left-bg.png);
 
       p {
         font-size: 2vh;
@@ -267,7 +264,7 @@ export default {
       }
     }
     .f-right {
-      border-image-source: url(~@/assets/img/effect/f-right-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-right-bg.png);
       padding: 3vh;
 
       .f-card-body {
@@ -300,7 +297,7 @@ export default {
       flex: 1;
       margin: 0 1.4vh 0 2.4vh;
       padding-bottom: 5.5vh;
-      border-image-source: url(~@/assets/img/effect/f-center-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-center-bg.png);
     }
   }
 
@@ -343,16 +340,15 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .gallery-top {
+  .swiper-gallery {
     width: 87vh;
     height: 55vh;
     border: 1px solid #07d5c0;
     border-radius: 8px;
   }
-  .gallery-thumbs {
+  .swiper-thumbs {
     width: 87vh;
     height: 11vh;
-    margin-top: -10px;
 
     .swiper-bottom {
       padding-top: 10px;
@@ -381,7 +377,7 @@ export default {
         background: {
           repeat: no-repeat;
           size: 100%;
-          image: url(~@/assets/img/effect/f-thumb-active.png);
+          image: url(./../../assets/img/effect/f-thumb-active.png);
         }
       }
     }

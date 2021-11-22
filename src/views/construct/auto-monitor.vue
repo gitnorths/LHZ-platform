@@ -65,6 +65,8 @@ import { getImageUrl } from "@/utils";
 import { defineComponent, onMounted, onUnmounted } from "vue";
 import * as echarts from "echarts";
 import { baiduMap } from "@/components/baiduMap";
+// import iconCamera from './../assets/img/construct/icon-camera.png'
+
 export default defineComponent({
   name: "AutoMonitor",
   setup() {
@@ -120,14 +122,14 @@ export default defineComponent({
             pointArray = pointArray.concat(ply.getPath());
             // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
             let myIcon = new BMap.Icon(
-              // './assets/img/construct/icon-camera.png',
-              new URL(`./../assets/img/construct/icon-camera.png`, import.meta.url),
+              // iconCamera,
               // require(`@/assets/img/construct/icon-camera.png`),
+              getImageUrl('construct', 'icon-camera'),
               new BMap.Size(140, 116)
             );
             let point = new BMap.Point(121.186163, 31.589242);
             let marker = new BMap.Marker(point, {
-              // icon: myIcon,
+              icon: myIcon,
               title: "1",
             });
             map.addOverlay(marker);

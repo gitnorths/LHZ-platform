@@ -9,4 +9,16 @@ import ElementPlus from "element-plus";
 import "element-plus/dist/index.css";
 import "./style/index.scss";
 
+import Swiper, {
+  Thumbs,
+  Autoplay,
+  EffectCube,
+  Pagination,
+  Navigation,
+  EffectCoverflow,
+} from 'swiper';
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.scss";
+Swiper.use([Thumbs, Autoplay, EffectCube, Pagination, Navigation, EffectCoverflow]);
+
 createApp(App).use(router).use(store).use(ElementPlus).mount("#app");

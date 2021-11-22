@@ -68,6 +68,7 @@
   </div>
 </template>
 <script>
+import { getImageUrl } from "@/utils";
 import { defineComponent, onMounted, onUnmounted } from "vue";
 import * as echarts from 'echarts'
 import { baiduMap } from "@/components/baiduMap";
@@ -128,7 +129,8 @@ export default defineComponent({
             pointArray = pointArray.concat(ply.getPath());
             // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
             let myIcon = new BMap.Icon(
-              require(`@/assets/img/construct/icon-location.png`),
+              // require(`@/assets/img/construct/icon-location.png`),
+              getImageUrl('construct', 'icon-location'),
               new BMap.Size(140, 116)
             );
             let markers = [];

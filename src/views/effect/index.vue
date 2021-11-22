@@ -10,20 +10,21 @@
 </template>
 <script>
 import Header from "./Header.vue";
-export default {
-  name: "Effect",
+import { defineComponent } from "vue";
+export default defineComponent({
+  name: "Construct",
   components: {
     Header,
   },
-  data() {
-    return {};
-  },
-  computed: {
-    routeKey() {
+  setup() {
+    function routeKey() {
       return this.$route.fullPath;
-    },
+    }
+    return {
+      routeKey,
+    };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .effect-layout {
@@ -32,7 +33,7 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100%;
-    image: url(./../assets/img/effect/bg.png);
+    image: url(./../../assets/img/effect/bg.png);
   }
 
   .el-container {

@@ -36,62 +36,51 @@
   </el-header>
 </template>
 <script>
-export default {
-  name: "Header",
-  data() {
+import { useRouter } from "vue-router";
+import { defineComponent, reactive, ref } from "vue";
+
+export default defineComponent({
+  name: "EffectHeader",
+  setup() {
+    const router = useRouter();
+    const activeIndex = ref("1");
+    const activeIndex2 = ref("1");
+    const meunData = reactive([
+      {
+        name: "首页",
+        path: "/effect",
+      },
+      {
+        name: "农田面源污染防治",
+        path: "/effect/farmland",
+      },
+      {
+        name: "养殖污染物治理",
+        path: "/effect/farming",
+      },
+      {
+        name: "地表径流污水净化",
+        path: "/effect/purify",
+      },
+      {
+        name: "配套工程",
+        path: "/effect/setting",
+      },
+    ]);
+
+    // 返回主页
+    const goHome = () => {
+      router.push(`/`);
+    };
+
     return {
-      activeIndex: "1",
-      activeIndex2: "1",
-      meunData: [
-        {
-          name: "首页",
-          path: "/effect",
-        },
-        {
-          name: "农田面源污染防治",
-          path: "/effect/farmland",
-        },
-        {
-          name: "养殖污染物治理",
-          path: "/effect/farming",
-        },
-        {
-          name: "地表径流污水净化",
-          path: "/effect/purify",
-        },
-        {
-          name: "配套工程",
-          path: "/effect/setting",
-        },
-      ],
+      goHome,
+      meunData,
+      activeIndex,
+      activeIndex2,
     };
   },
-  methods: {
-    goHome() {
-      this.$router.push(`/home`);
-    },
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-      switch (key) {
-        case "1":
-          this.$router.push(`/effect/`);
-          break;
-        case "2":
-          this.$router.push(`/effect/farmland`);
-          break;
-        case "3":
-          this.$router.push(`/effect/farmland`);
-          break;
-        case "4":
-          this.$router.push(`/effect/farmland`);
-          break;
-
-        default:
-          break;
-      }
-    },
-  },
-};
+});
 </script>
 <style lang="scss" scoped>
 .el-header {
@@ -99,7 +88,7 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100% 100%;
-    image: url(~@/assets/img/effect/bg-header.png);
+    image: url(./../../assets/img/effect/bg-header.png);
   }
 
   &__menu {

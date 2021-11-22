@@ -72,18 +72,17 @@ export default defineComponent({
       { name: "cloud-6" },
     ]);
     function onClick(action) {
-      console.log(action);
       switch (action) {
         case "jsnr":
           this.$router.push(`/construct`);
           break;
 
         case "ssxg":
-          this.$router.push(`/effect/index.vue`);
+          this.$router.push(`/effect`);
           break;
 
         case "xmgl":
-          this.$router.push(`/projects/index.vue`);
+          this.$router.push(`/projects`);
           break;
 
         default:
@@ -91,11 +90,11 @@ export default defineComponent({
       }
     }
     return {
-      weatherImg,
       mapArr,
-      cloudArr,
-      getImageUrl,
       onClick,
+      cloudArr,
+      weatherImg,
+      getImageUrl,
     };
   },
 });

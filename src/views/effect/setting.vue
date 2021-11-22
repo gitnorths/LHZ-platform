@@ -18,7 +18,7 @@
             </div>
             <div class="f-card-body">
               <div class="bannerBox">
-                <div class="swiper-container gallery-top">
+                <div class="swiper-container swiper-gallery">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide"
@@ -28,15 +28,11 @@
                       <img class="img" :src="item" />
                     </div>
                   </div>
-                  <div class="swiper-button-next swiper-button-white">
-                    <i class="el-icon-arrow-right"></i>
-                  </div>
-                  <div class="swiper-button-prev swiper-button-white">
-                    <i class="el-icon-arrow-left"></i>
-                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
                 </div>
                 <div style="height: 15px; width: 400px"></div>
-                <div class="swiper-container gallery-thumbs">
+                <div class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide swiper-bottom"
@@ -53,13 +49,28 @@
         </div>
         <div class="f-col f-right f-table">
           <el-table :data="tableData" style="width: 100%" max-height="740">
-            <el-table-column prop="content" label="建设内容" width="100" align="center">
+            <el-table-column
+              prop="content"
+              label="建设内容"
+              width="100"
+              align="center"
+            >
             </el-table-column>
             <el-table-column prop="num" label="数量" align="center">
             </el-table-column>
-            <el-table-column prop="parameter" label="规格型号参数" width="120" align="center">
+            <el-table-column
+              prop="parameter"
+              label="规格型号参数"
+              width="120"
+              align="center"
+            >
             </el-table-column>
-            <el-table-column prop="place" label="建设地点" width="100" align="center">
+            <el-table-column
+              prop="place"
+              label="建设地点"
+              width="100"
+              align="center"
+            >
             </el-table-column>
           </el-table>
         </div>
@@ -69,95 +80,89 @@
 </template>
 <script>
 import Swiper from "swiper";
-export default {
-  components: {
-    // Pagination,
-  },
-  data() {
-    return {
-      bigImg: [
-        "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      ],
-      title: "",
-      title2: "",
-      text: "",
-      url: "",
-      tableData: [],
-    };
-  },
-  created() {
-    this.$nextTick(function () {
-      this.title = "配套工程";
-      this.text =
-        "本项目配套工程主要包括田间道路及桥涵工程建设等。在示范区范围内共新（拆）建生态道路（机耕道、砂石路）共19200㎡，2座机耕桥，3座涵洞。";
-      this.url = require(`@/assets/img/effect/f-7.png`);
-      this.tableData = [
-        {
-          content: "机耕道",
-          num: "1000m",
-          parameter: "宽2.5m，拆建",
-          place: "张桥村",
-        },
-        {
-          content: "机耕道",
-          num: "1800m",
-          parameter: "宽2.5m，拆建",
-          place: "张桥村",
-        },
-        {
-          content: "机耕道",
-          num: "1000m",
-          parameter: "宽3m，拆建",
-          place: "张桥村",
-        },
-        {
-          content: "机耕道",
-          num: "1500m",
-          parameter: "宽3m",
-          place: "张桥村、何桥村",
-        },
-        {
-          content: "机耕道",
-          num: "600m",
-          parameter: "宽6m",
-          place: "张桥村",
-        },
-        {
-          content: "砂石路",
-          num: "1500m",
-          parameter: "宽3.0m",
-          place: "张桥村",
-        },
-        {
-          content: "机耕道",
-          num: "2座",
-          parameter: "8*4",
-          place: "张桥村",
-        },
-        {
-          content: "涵洞",
-          num: "2座",
-          parameter: "6*5，2m方涵管",
-          place: "张桥村",
-        },
-        {
-          content: "涵洞",
-          num: "2座",
-          parameter: "4*4，2m方涵管",
-          place: "张桥村",
-        },
-      ];
+import { Pagination } from "swiper";
+import { getImageUrl } from "@/utils";
+import { defineComponent, onMounted, reactive, ref } from "vue";
 
-      this.galleryThumbsLunbo();
-      this.galleryTopLunbo();
-    });
-  },
-  methods: {
-    galleryTopLunbo() {
-      this.galleryTop = new Swiper(".gallery-top", {
+export default defineComponent({
+  name: "Header",
+  components: { Pagination },
+  setup() {
+    const url = ref(getImageUrl("effect", "f-7"));
+    const text = ref(
+      "本项目配套工程主要包括田间道路及桥涵工程建设等。在示范区范围内共新（拆）建生态道路（机耕道、砂石路）共19200㎡，2座机耕桥，3座涵洞。"
+    );
+    const title = ref("配套工程");
+    const tableData = reactive([
+      {
+        content: "机耕道",
+        num: "1000m",
+        parameter: "宽2.5m，拆建",
+        place: "张桥村",
+      },
+      {
+        content: "机耕道",
+        num: "1800m",
+        parameter: "宽2.5m，拆建",
+        place: "张桥村",
+      },
+      {
+        content: "机耕道",
+        num: "1000m",
+        parameter: "宽3m，拆建",
+        place: "张桥村",
+      },
+      {
+        content: "机耕道",
+        num: "1500m",
+        parameter: "宽3m",
+        place: "张桥村、何桥村",
+      },
+      {
+        content: "机耕道",
+        num: "600m",
+        parameter: "宽6m",
+        place: "张桥村",
+      },
+      {
+        content: "砂石路",
+        num: "1500m",
+        parameter: "宽3.0m",
+        place: "张桥村",
+      },
+      {
+        content: "机耕道",
+        num: "2座",
+        parameter: "8*4",
+        place: "张桥村",
+      },
+      {
+        content: "涵洞",
+        num: "2座",
+        parameter: "6*5，2m方涵管",
+        place: "张桥村",
+      },
+      {
+        content: "涵洞",
+        num: "2座",
+        parameter: "4*4，2m方涵管",
+        place: "张桥村",
+      },
+    ]);
+
+    const bigImg = reactive([
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+    ]);
+
+    onMounted(() => {
+      new Swiper(".swiper-gallery", {
         spaceBetween: 0,
         loop: false,
         loopedSlides: 5,
@@ -167,24 +172,29 @@ export default {
           prevEl: ".swiper-button-prev",
         },
         thumbs: {
-          swiper: this.galleryThumbs,
-          slideThumbActiveClass: "swiper-slide-thumb-active",
+          // slideThumbActiveClass: "swiper-slide-thumb-active",
+          swiper: new Swiper(".swiper-thumbs", {
+            spaceBetween: 5, //在slide之间设置距离（单位px）
+            slidesPerView: 4, //设置slider容器能够同时显示的slides数量
+            loop: false, //设置为true 则开启loop模式
+            freeMode: false, //默认为false，普通模式：slide滑动时只滑动一格
+            loopedSlides: 7, //一般设置大于可视slide个数2个即可
+            watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
+            watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
+          }),
         },
       });
-    },
-    galleryThumbsLunbo() {
-      this.galleryThumbs = new Swiper(".gallery-thumbs", {
-        spaceBetween: 5, //在slide之间设置距离（单位px）
-        slidesPerView: 4, //设置slider容器能够同时显示的slides数量
-        loop: false, //设置为true 则开启loop模式
-        freeMode: true, //默认为false，普通模式：slide滑动时只滑动一格
-        loopedSlides: 7, //一般设置大于可视slide个数2个即可
-        watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
-        watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
-      });
-    },
+    });
+
+    return {
+      url,
+      text,
+      title,
+      bigImg,
+      tableData,
+    };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .f-container {
@@ -241,7 +251,7 @@ export default {
       padding: 0 4vh;
     }
     .f-left {
-      border-image-source: url(~@/assets/img/effect/f-left-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-left-bg.png);
 
       p {
         font-size: 2vh;
@@ -249,7 +259,7 @@ export default {
       }
     }
     .f-right {
-      border-image-source: url(~@/assets/img/effect/f-right-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-right-bg.png);
       padding: 3vh;
 
       .f-card-body {
@@ -282,7 +292,7 @@ export default {
       flex: 1;
       margin: 0 1.4vh 0 2.4vh;
       padding-bottom: 5.5vh;
-      border-image-source: url(~@/assets/img/effect/f-center-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-center-bg.png);
     }
   }
 
@@ -325,16 +335,15 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .gallery-top {
+  .swiper-gallery {
     width: 87vh;
     height: 55vh;
     border: 1px solid #07d5c0;
     border-radius: 8px;
   }
-  .gallery-thumbs {
+  .swiper-thumbs {
     width: 87vh;
     height: 11vh;
-    margin-top: -10px;
 
     .swiper-bottom {
       padding-top: 10px;
@@ -363,7 +372,7 @@ export default {
         background: {
           repeat: no-repeat;
           size: 100%;
-          image: url(~@/assets/img/effect/f-thumb-active.png);
+          image: url(./../../assets/img/effect/f-thumb-active.png);
         }
       }
     }

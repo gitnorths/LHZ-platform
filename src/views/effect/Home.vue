@@ -241,150 +241,159 @@
   </div>
 </template>
 <script>
-export default {
-  name: "Home",
-  data() {
+import { getImageUrl } from "@/utils";
+import { defineComponent, reactive } from "vue";
+
+export default defineComponent({
+  name: "EffectHome",
+  setup() {
+    const effectData_lc = reactive([
+      {
+        name: "态塘",
+        text: "8",
+        color: "color-blue",
+        url: getImageUrl('effect', 'effect-1-1'),
+        unit: "个",
+      },
+      {
+        name: "挺水植物",
+        text: "1547",
+        color: "color-yellow",
+        url: getImageUrl('effect', 'effect-1-2'),
+        unit: "㎡",
+      },
+      {
+        name: "湿地清淤",
+        text: "28280",
+        color: "color-green",
+        url: getImageUrl('effect', 'effect-1-3'),
+        unit: "m³",
+      },
+      {
+        name: "湿地清淤",
+        text: "28280",
+        color: "color-pink",
+        url: getImageUrl('effect', 'effect-1-4'),
+        unit: "m³",
+      },
+      {
+        name: "净化塘边坡清杂",
+        text: "1512",
+        color: "color-purple",
+        url: getImageUrl('effect', 'effect-1-5'),
+        unit: "㎡",
+      },
+    ]);
+    const effectData_lb = reactive([
+      {
+        name: "10000株",
+        text: "栽植垂柳、红叶石楠 ",
+        color: "color-green",
+        url: getImageUrl('effect', 'effect-2-1'),
+        unit: "",
+      },
+    ]);
+    const effectData_rt = reactive([
+      {
+        name: "干粪运输车",
+        text: "1",
+        color: "color-green",
+        url: getImageUrl('effect', 'effect-3-1'),
+        unit: "台",
+      },
+      {
+        name: "有机肥施肥机",
+        text: "3",
+        color: "color-green",
+        url: getImageUrl('effect', 'effect-3-2'),
+        unit: "台",
+      },
+      {
+        name: "吸粪车",
+        text: "2",
+        color: "color-green",
+        url: getImageUrl('effect', 'effect-3-3'),
+        unit: "台",
+      },
+    ]);
+    const effectData_rc = reactive([
+      {
+        value: "25.31",
+        text: "清淤清杂",
+        color: "color-white",
+        url: getImageUrl('effect', 'effect-4-1'),
+        unit: "万m³",
+      },
+      {
+        value: "14360",
+        text: "栽植挺水植物",
+        color: "color-white",
+        url: getImageUrl('effect', 'effect-4-2'),
+        unit: "㎡",
+      },
+      {
+        value: "2393",
+        text: "栽植灌木",
+        color: "color-white",
+        url: getImageUrl('effect', 'effect-4-3'),
+        unit: "株",
+      },
+      {
+        value: "16974",
+        text: "杉木桩护岸",
+        color: "color-white",
+        url: getImageUrl('effect', 'effect-4-4'),
+        unit: "m",
+      },
+    ]);
+    const effectData_rb = reactive([
+      {
+        value: "19200",
+        text: "新建生态道路",
+        color: "color-blue",
+        unit: "㎡",
+      },
+      {
+        value: "2",
+        text: "机耕桥",
+        color: "color-green",
+        unit: "座",
+      },
+      {
+        value: "3",
+        text: "涵洞",
+        color: "color-yellow",
+        unit: "座",
+      },
+    ]);
+    const effectData_center = reactive([
+      {
+        name: "养殖污染物治理",
+        url: getImageUrl('effect', 'effect-center-1'),
+      },
+      {
+        name: "农田面源污染防治",
+        url: getImageUrl('effect', 'effect-center-2'),
+      },
+      {
+        name: "地表径流污水净化",
+        url: getImageUrl('effect', 'effect-center-3'),
+      },
+      {
+        name: "配套工程",
+        url: getImageUrl('effect', 'effect-center-4'),
+      },
+    ]);
     return {
-      effectData_lc: [
-        {
-          name: "态塘",
-          text: "8",
-          color: "color-blue",
-          url: require(`@/assets/img/effect/effect-1-1.png`),
-          unit: "个",
-        },
-        {
-          name: "挺水植物",
-          text: "1547",
-          color: "color-yellow",
-          url: require(`@/assets/img/effect/effect-1-2.png`),
-          unit: "㎡",
-        },
-        {
-          name: "湿地清淤",
-          text: "28280",
-          color: "color-green",
-          url: require(`@/assets/img/effect/effect-1-3.png`),
-          unit: "m³",
-        },
-        {
-          name: "湿地清淤",
-          text: "28280",
-          color: "color-pink",
-          url: require(`@/assets/img/effect/effect-1-4.png`),
-          unit: "m³",
-        },
-        {
-          name: "净化塘边坡清杂",
-          text: "1512",
-          color: "color-purple",
-          url: require(`@/assets/img/effect/effect-1-5.png`),
-          unit: "㎡",
-        },
-      ],
-      effectData_lb: [
-        {
-          name: "10000株",
-          text: "栽植垂柳、红叶石楠 ",
-          color: "color-green",
-          url: require(`@/assets/img/effect/effect-2-1.png`),
-          unit: "",
-        },
-      ],
-      effectData_rt: [
-        {
-          name: "干粪运输车",
-          text: "1",
-          color: "color-green",
-          url: require(`@/assets/img/effect/effect-3-1.png`),
-          unit: "台",
-        },
-        {
-          name: "有机肥施肥机",
-          text: "3",
-          color: "color-green",
-          url: require(`@/assets/img/effect/effect-3-2.png`),
-          unit: "台",
-        },
-        {
-          name: "吸粪车",
-          text: "2",
-          color: "color-green",
-          url: require(`@/assets/img/effect/effect-3-3.png`),
-          unit: "台",
-        },
-      ],
-      effectData_rc: [
-        {
-          value: "25.31",
-          text: "清淤清杂",
-          color: "color-white",
-          url: require(`@/assets/img/effect/effect-4-1.png`),
-          unit: "万m³",
-        },
-        {
-          value: "14360",
-          text: "栽植挺水植物",
-          color: "color-white",
-          url: require(`@/assets/img/effect/effect-4-2.png`),
-          unit: "㎡",
-        },
-        {
-          value: "2393",
-          text: "栽植灌木",
-          color: "color-white",
-          url: require(`@/assets/img/effect/effect-4-3.png`),
-          unit: "株",
-        },
-        {
-          value: "16974",
-          text: "杉木桩护岸",
-          color: "color-white",
-          url: require(`@/assets/img/effect/effect-4-4.png`),
-          unit: "m",
-        },
-      ],
-      effectData_rb: [
-        {
-          value: "19200",
-          text: "新建生态道路",
-          color: "color-blue",
-          unit: "㎡",
-        },
-        {
-          value: "2",
-          text: "机耕桥",
-          color: "color-green",
-          unit: "座",
-        },
-        {
-          value: "3",
-          text: "涵洞",
-          color: "color-yellow",
-          unit: "座",
-        },
-      ],
-      effectData_center: [
-        {
-          name: "养殖污染物治理",
-          url: require(`@/assets/img/effect/effect-center-1.png`),
-        },
-        {
-          name: "农田面源污染防治",
-          url: require(`@/assets/img/effect/effect-center-2.png`),
-        },
-        {
-          name: "地表径流污水净化",
-          url: require(`@/assets/img/effect/effect-center-3.png`),
-        },
-        {
-          name: "配套工程",
-          url: require(`@/assets/img/effect/effect-center-4.png`),
-        },
-      ],
+      effectData_lc,
+      effectData_lb,
+      effectData_rt,
+      effectData_rc,
+      effectData_rb,
+      effectData_center,
     };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .lhz-effect {
@@ -393,13 +402,13 @@ export default {
     line-height: 6vh;
     padding: 0 2.4vh;
     font-size: 2.4vh;
-    // font-weight: bold;
+    // font-weight: bold; 
     font-family: "PingFang-SC-Bold";
     color: #fff;
     background: {
       repeat: no-repeat;
       size: 100% 100%;
-      image: url(~@/assets/img/effect/effect-title.png);
+      image: url(./../../assets/img/effect/effect-title.png);
     }
   }
 }
@@ -423,7 +432,7 @@ export default {
       repeat: no-repeat;
       size: contain;
       position: center;
-      image: url(~@/assets/img/effect/effect-center-bg.png);
+      image: url(./../../assets/img/effect/effect-center-bg.png);
     }
 
     .el-image {
@@ -468,7 +477,7 @@ export default {
     background: {
       repeat: no-repeat;
       size: 100% 100%;
-      image: url(~@/assets/img/effect/effect-rb.png);
+      image: url(./../../assets/img/effect/effect-rb.png);
     }
   }
 }

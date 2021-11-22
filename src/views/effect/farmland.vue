@@ -6,7 +6,7 @@
         v-for="(item, i) in fData"
         :key="i"
         :class="i === active ? 'active' : ''"
-        @click="onClick(i)"
+        @click="handleClick(i)"
         >{{ item.name }}</el-button
       >
     </div>
@@ -28,7 +28,7 @@
             </div>
             <div class="f-card-body">
               <div class="bannerBox">
-                <div class="swiper-container gallery-top">
+                <div class="swiper-container swiper-gallery">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide"
@@ -38,15 +38,10 @@
                       <img class="img" :src="item" />
                     </div>
                   </div>
-                  <div class="swiper-button-next swiper-button-white">
-                    <i class="el-icon-arrow-right"></i>
-                  </div>
-                  <div class="swiper-button-prev swiper-button-white">
-                    <i class="el-icon-arrow-left"></i>
-                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
                 </div>
-                <div style="height: 15px; width: 400px"></div>
-                <div class="swiper-container gallery-thumbs">
+                <div thumbsSlider="" class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
                     <div
                       class="swiper-slide swiper-bottom"
@@ -147,79 +142,99 @@
 </template>
 <script>
 import Swiper from "swiper";
-export default {
-  components: {
-    // Pagination,
-  },
-  data() {
-    return {
-      active: 0,
-      fData: [
-        { name: "农田排水口污染物拦截工程" },
-        { name: "农田排水氮磷拦截净化工程" },
-        { name: "建立生态隔离带" },
-        { name: "秸秆收集利用工程" },
-        { name: "化肥农药减量施用" },
-        { name: "节水灌溉工程" },
-      ],
-      bigImg: [
-        "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-        "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      ],
-      title: "",
-      text: "",
-      url: "",
-      rData: [],
-    };
-  },
-  created() {
-    this.$nextTick(function () {
-      this.title = "农田排水口污染物拦截工程";
-      this.text =
-        "建设农田排水促沉净化装置30个，建设生态填料与基质400m2。其中生态填料与基质包含大小粒径沸石、生物炭、软性填料、其他高效吸附环境材料等。";
-      this.url = require(`@/assets/img/effect/f-1.png`);
-      this.rData = [
-        {
-          name: "农田排水促沉净化装置",
-          value: "30",
-          unit: "个",
-          url: require(`@/assets/img/effect/f-1-2.png`),
-        },
-        {
-          name: "生态填料与基质",
-          value: "400",
-          unit: "㎡",
-          url: require(`@/assets/img/effect/f-1-3.png`),
-        },
-      ];
+import { Pagination } from "swiper";
+import { getImageUrl } from "@/utils";
+import { defineComponent, onMounted, reactive, ref } from "vue";
 
-      this.galleryThumbsLunbo();
-      this.galleryTopLunbo();
+export default defineComponent({
+  name: "Header",
+  components: { Pagination },
+  setup() {
+    const url = ref(getImageUrl("effect", "f-1"));
+    const text = ref(
+      "建设农田排水促沉净化装置30个，建设生态填料与基质400m2。其中生态填料与基质包含大小粒径沸石、生物炭、软性填料、其他高效吸附环境材料等。"
+    );
+    const title = ref("农田排水口污染物拦截工程");
+    const active = ref(0);
+    const rData = reactive([
+      {
+        name: "农田排水促沉净化装置",
+        value: "30",
+        unit: "个",
+        url: getImageUrl("effect", "f-1-2"),
+      },
+      {
+        name: "生态填料与基质",
+        value: "400",
+        unit: "㎡",
+        url: getImageUrl("effect", "f-1-3"),
+      },
+    ]);
+    const fData = reactive([
+      { name: "农田排水口污染物拦截工程" },
+      { name: "农田排水氮磷拦截净化工程" },
+      { name: "建立生态隔离带" },
+      { name: "秸秆收集利用工程" },
+      { name: "化肥农药减量施用" },
+      { name: "节水灌溉工程" },
+    ]);
+    const bigImg = reactive([
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
+      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+    ]);
+
+    onMounted(() => {
+      new Swiper(".swiper-gallery", {
+        spaceBetween: 0,
+        loop: false,
+        loopedSlides: 5,
+        // 左右按钮
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        thumbs: {
+          // slideThumbActiveClass: "swiper-slide-thumb-active",
+          swiper: new Swiper(".swiper-thumbs", {
+            spaceBetween: 5, //在slide之间设置距离（单位px）
+            slidesPerView: 4, //设置slider容器能够同时显示的slides数量
+            loop: false, //设置为true 则开启loop模式
+            freeMode: false, //默认为false，普通模式：slide滑动时只滑动一格
+            loopedSlides: 7, //一般设置大于可视slide个数2个即可
+            watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
+            watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
+          }),
+        },
+      });
     });
-  },
-  methods: {
-    onClick(i) {
+
+    function handleClick(i) {
+      console.log(i);
       this.active = i;
       switch (i) {
         case 0:
           this.title = "农田排水口污染物拦截工程";
           this.text =
             "建设农田排水促沉净化装置30个，建设生态填料与基质400m2。其中生态填料与基质包含大小粒径沸石、生物炭、软性填料、其他高效吸附环境材料等。";
-          this.url = require(`@/assets/img/effect/f-1.png`);
+          this.url = getImageUrl("effect", "f-1");
           this.rData = [
             {
               name: "农田排水促沉净化装置",
               value: "30",
               unit: "个",
-              url: require(`@/assets/img/effect/f-1-2.png`),
+              url: getImageUrl("effect", "f-1-2"),
             },
             {
               name: "生态填料与基质",
               value: "400",
               unit: "㎡",
-              url: require(`@/assets/img/effect/f-1-3.png`),
+              url: getImageUrl("effect", "f-1-3"),
             },
           ];
           break;
@@ -227,42 +242,42 @@ export default {
           this.title = "农田排水汇流湿地工程";
           this.text =
             "在示范区内建设生态塘8个，累计面积32亩，农田排水汇流湿地清淤共28280m3，净化塘边坡清杂1512m2，净水塘近水岸边栽植鸢尾、美人蕉等挺水植物1547m2，在净化塘顶栽植垂柳、红叶石楠等乔灌木516株，在易坍塌河段密打杉木桩护岸778m。";
-          this.url = require(`@/assets/img/effect/f-2.png`);
+          this.url = getImageUrl("effect", "f-2");
           this.rData = [
             {
               name: "生态塘",
               value: "8",
               unit: "个",
               color: "color-blue",
-              url: require(`@/assets/img/effect/f-2-1.png`),
+              url: getImageUrl("effect", "f-2-1"),
             },
             {
               name: "湿地清淤",
               value: "28280",
               unit: "m3",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-2-3.png`),
+              url: getImageUrl("effect", "f-2-3"),
             },
             {
               name: "净化塘边坡清杂",
               value: "1512",
               unit: "㎡",
               color: "color-purple",
-              url: require(`@/assets/img/effect/f-2-5.png`),
+              url: getImageUrl("effect", "f-2-5"),
             },
             {
               name: "挺水植物",
               value: "1547",
               unit: "㎡",
               color: "color-yellow",
-              url: require(`@/assets/img/effect/f-2-2.png`),
+              url: getImageUrl("effect", "f-2-2"),
             },
             {
               name: "杉木桩护岸",
               value: "778",
               unit: "m",
               color: "color-pink",
-              url: require(`@/assets/img/effect/f-2-4.png`),
+              url: getImageUrl("effect", "f-2-4"),
             },
           ];
           break;
@@ -270,17 +285,17 @@ export default {
           this.title = "建立生态隔离带";
           this.text =
             "在示范区范围的主干道两侧建立乔灌结合生态隔离带，一乔一灌间隔种植垂柳、红叶石楠，垂柳胸径5cm，红叶石楠冠幅100cm，高度100-110cm，垂柳与红叶石楠株距1.5m，垂柳（红叶石楠）与垂柳（红叶石楠）株距3m，构筑生态屏障，实现对干道周边环境的绿化和防止田间水土流失。";
-          this.url = require(`@/assets/img/effect/f-3.png`);
+          this.url = getImageUrl("effect", "f-3");
           this.rData = [
             {
               name: "栽植垂柳、红叶石楠",
               color: "color-green",
-              url: require(`@/assets/img/effect/f-3-1.png`),
+              url: getImageUrl("effect", "f-3-1"),
             },
             {
               name: "生态防护林布置图",
               color: "color-blue",
-              url: require(`@/assets/img/effect/f-3-2.png`),
+              url: getImageUrl("effect", "f-3-2"),
             },
           ];
           break;
@@ -288,7 +303,7 @@ export default {
           this.title = "秸秆收集利用工程";
           this.text =
             "购置秸秆还田机12台，秸秆粉碎机12台，配套大型拖拉机12台，在万安村建设一座秸秆收储中心1460m2。";
-          this.url = require(`@/assets/img/effect/f-4.png`);
+          this.url = getImageUrl("effect", "f-4");
           this.rData = [
             {
               name: "秸秆还田机",
@@ -320,7 +335,7 @@ export default {
           this.title = "化肥农药减量施用";
           this.text =
             "将新塘村300亩废弃种植田块进行复垦等土地整理工程，后续种植紫云英，进行绿肥轮作有机生产模式应用推广。同时，在万安村、何桥村等地的500亩耕地进行休耕轮作。购置自走植保机12台，防控无人机12台。";
-          this.url = require(`@/assets/img/effect/f-5.png`);
+          this.url = getImageUrl("effect", "f-5");
           this.rData = [
             {
               name: "复垦废弃种植田块",
@@ -352,51 +367,34 @@ export default {
           this.title = "节水灌溉工程";
           this.text =
             "将万安村、何桥村的700亩土渠明灌区改造为暗管灌溉区，实现水资源的节约利用，减少进入水体的农业生产种植尾水，从中间环节上对农业面源污染物进入水体进行控制。";
-          this.url = require(`@/assets/img/effect/f-6.png`);
+          this.url = getImageUrl("effect", "f-6");
           this.rData = [
             {
               name: "明灌改暗灌",
               color: "color-green",
               value: "700",
               unit: "亩",
-              url: require(`@/assets/img/effect/f-6-1.png`),
+              url: getImageUrl("effect", "f-6-1"),
             },
           ];
           break;
-
         default:
           break;
       }
-    },
-    galleryTopLunbo() {
-      this.galleryTop = new Swiper(".gallery-top", {
-        spaceBetween: 0,
-        loop: false,
-        loopedSlides: 5,
-        // 左右按钮
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        thumbs: {
-          swiper: this.galleryThumbs,
-          slideThumbActiveClass: "swiper-slide-thumb-active",
-        },
-      });
-    },
-    galleryThumbsLunbo() {
-      this.galleryThumbs = new Swiper(".gallery-thumbs", {
-        spaceBetween: 5, //在slide之间设置距离（单位px）
-        slidesPerView: 4, //设置slider容器能够同时显示的slides数量
-        loop: false, //设置为true 则开启loop模式
-        freeMode: true, //默认为false，普通模式：slide滑动时只滑动一格
-        loopedSlides: 7, //一般设置大于可视slide个数2个即可
-        watchSlidesVisibility: true, //开启watchSlidesVisibility选项前需要先开启watchSlidesProgress
-        watchSlidesProgress: true, //开启这个参数来计算每个slide的progress(进度、进程)
-      });
-    },
+    };
+
+    return {
+      url,
+      text,
+      title,
+      fData,
+      rData,
+      active,
+      bigImg,
+      handleClick,
+    };
   },
-};
+});
 </script>
 <style lang="scss" scoped>
 .f-container {
@@ -453,7 +451,7 @@ export default {
       padding: 0 4vh;
     }
     .f-left {
-      border-image-source: url(~@/assets/img/effect/f-left-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-left-bg.png);
 
       p {
         font-size: 2vh;
@@ -461,7 +459,7 @@ export default {
       }
     }
     .f-right {
-      border-image-source: url(~@/assets/img/effect/f-right-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-right-bg.png);
     }
     .f-left,
     .f-right {
@@ -473,7 +471,7 @@ export default {
       flex: 1;
       margin: 0 1.4vh 0 2.4vh;
       padding-bottom: 5.5vh;
-      border-image-source: url(~@/assets/img/effect/f-center-bg.png);
+      border-image-source: url(./../../assets/img/effect/f-center-bg.png);
     }
   }
 
@@ -516,16 +514,17 @@ export default {
     width: 100%;
     height: 100%;
   }
-  .gallery-top {
+  .swiper-gallery {
     width: 87vh;
     height: 48vh;
     border: 1px solid #07d5c0;
     border-radius: 8px;
+    overflow: hidden;
   }
-  .gallery-thumbs {
+  .swiper-thumbs {
     width: 87vh;
     height: 11vh;
-    margin-top: -10px;
+    margin-top: 10px;
 
     .swiper-bottom {
       padding-top: 10px;
@@ -554,7 +553,7 @@ export default {
         background: {
           repeat: no-repeat;
           size: 100%;
-          image: url(~@/assets/img/effect/f-thumb-active.png);
+          image: url(./../../assets/img/effect/f-thumb-active.png);
         }
       }
     }
@@ -605,7 +604,7 @@ export default {
         background: {
           repeat: no-repeat;
           size: cover;
-          image: url(~@/assets/img/effect/f-4-1.png);
+          image: url(./../../assets/img/effect/f-4-1.png);
         }
       }
     }
@@ -646,7 +645,7 @@ export default {
     background: {
       repeat: no-repeat;
       size: 100%;
-      image: url(~@/assets/img/effect/f-5-1.png);
+      image: url(./../../assets/img/effect/f-5-1.png);
     }
 
     font {

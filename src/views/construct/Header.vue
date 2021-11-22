@@ -78,12 +78,7 @@ export default defineComponent({
       },
     ]);
 
-    function goHome() {
-      this.$router.push(`/home`);
-    }
-
     return {
-      goHome,
       meunLeft,
       meunRight,
       weatherImg,
