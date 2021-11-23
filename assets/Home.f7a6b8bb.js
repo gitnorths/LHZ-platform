@@ -1,1 +1,0 @@
-import{_ as e}from"./index.f7dd670f.js";import{d as o,f as t,o as s}from"./vendor.9f6a7aad.js";const a=o({name:"ConstructHome",setup(){return{}}}),n={class:"construct-layout"};function r(_,c,d,p,f,u){return s(),t("div",n)}var l=e(a,[["render",r],["__scopeId","data-v-2775c491"]]);export{l as default};
