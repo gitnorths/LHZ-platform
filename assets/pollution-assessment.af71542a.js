@@ -1,0 +1,1 @@
+import{_ as e}from"./index.f7dd670f.js";import{f as s,o as t}from"./vendor.9f6a7aad.js";const o={name:"Construct"},n={class:"construct-map"};function _(a,r,c,d,p,f){return t(),s("div",n)}var u=e(o,[["render",_],["__scopeId","data-v-08bdb83d"]]);export{u as default};
