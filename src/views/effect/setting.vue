@@ -25,13 +25,12 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
                   <div class="swiper-button-prev"></div>
                 </div>
-                <div style="height: 15px; width: 400px"></div>
                 <div class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
                     <div
@@ -39,7 +38,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                 </div>
@@ -151,14 +150,34 @@ export default defineComponent({
     ]);
 
     const bigImg = reactive([
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      {
+        name: "机耕道断面图",
+        url: getImageUrl("effect/4", "4-1"),
+      },
+      {
+        name: "砂石路断面图",
+        url: getImageUrl("effect/4", "4-2"),
+      },
+      {
+        name: "机耕桥断面图",
+        url: getImageUrl("effect/4", "4-3"),
+      },
+      {
+        name: "涵洞立面图",
+        url: getImageUrl("effect/4", "4-4"),
+      },
+      {
+        name: "机耕道",
+        url: getImageUrl("effect/4", "4-5"),
+      },
+      {
+        name: "机耕桥",
+        url: getImageUrl("effect/4", "4-6"),
+      },
+      {
+        name: "涵洞",
+        url: getImageUrl("effect/4", "4-7"),
+      },
     ]);
 
     onMounted(() => {
@@ -344,6 +363,7 @@ export default defineComponent({
   .swiper-thumbs {
     width: 87vh;
     height: 11vh;
+    margin-top: 10px;
 
     .swiper-bottom {
       padding-top: 10px;

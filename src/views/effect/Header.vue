@@ -54,11 +54,11 @@ export default defineComponent({
         path: "/effect/farmland",
       },
       {
-        name: "养殖污染物治理",
+        name: "畜禽养殖污染物治理工程",
         path: "/effect/farming",
       },
       {
-        name: "地表径流污水净化",
+        name: "地表径流净化利用工程",
         path: "/effect/purify",
       },
       {

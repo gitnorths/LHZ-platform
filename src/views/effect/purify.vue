@@ -25,13 +25,12 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
                   <div class="swiper-button-prev"></div>
                 </div>
-                <div style="height: 15px; width: 400px"></div>
                 <div class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
                     <div
@@ -39,7 +38,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                 </div>
@@ -77,7 +76,7 @@
 <script>
 import Swiper from "swiper";
 import { Pagination } from "swiper";
-// import { getImageUrl } from "@/utils";
+import { getImageUrl } from "@/utils";
 import { defineComponent, onMounted, reactive, ref } from "vue";
 
 export default defineComponent({
@@ -94,14 +93,14 @@ export default defineComponent({
       "对示范区内河道进行岸坡生态化改造，同时清淤清杂，共计25.31万m3，河道边坡清杂28720㎡，近水岸边栽植鸢尾、美人蕉、千蕨菜等挺水植物共14360m2，河道坡顶栽植冬青、红叶石楠等灌木2393株，在易坍塌河段密打杉木桩护岸16974m。"
     );
     const bigImg = reactive([
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      {
+        name: "河道生态化改造断面图",
+        url: getImageUrl("effect/3", "3-1"),
+      },
+      {
+        name: "杉木桩护岸",
+        url: getImageUrl("effect/3", "3-2"),
+      },
     ]);
     const tableData = reactive([
       {
@@ -349,6 +348,7 @@ export default defineComponent({
   .swiper-thumbs {
     width: 87vh;
     height: 11vh;
+    margin-top: 10px;
 
     .swiper-bottom {
       padding-top: 10px;

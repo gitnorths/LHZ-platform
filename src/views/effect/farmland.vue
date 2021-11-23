@@ -35,7 +35,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
@@ -48,7 +48,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                 </div>
@@ -172,24 +172,24 @@ export default defineComponent({
     ]);
     const fData = reactive([
       { name: "农田排水口污染物拦截工程" },
-      { name: "农田排水氮磷拦截净化工程" },
+      { name: "农田排水汇流湿地工程" },
       { name: "建立生态隔离带" },
       { name: "秸秆收集利用工程" },
       { name: "化肥农药减量施用" },
       { name: "节水灌溉工程" },
     ]);
     const bigImg = reactive([
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      {
+        name: "生态沟渠",
+        url: getImageUrl("effect/1/2", "2-4"),
+      },
     ]);
 
     onMounted(() => {
+      handleSwiper(); // 初始化swiper
+    });
+
+    function handleSwiper() {
       new Swiper(".swiper-gallery", {
         spaceBetween: 0,
         loop: false,
@@ -212,7 +212,7 @@ export default defineComponent({
           }),
         },
       });
-    });
+    }
 
     function handleClick(i) {
       console.log(i);
@@ -237,6 +237,13 @@ export default defineComponent({
               url: getImageUrl("effect", "f-1-3"),
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "生态沟渠",
+              url: getImageUrl("effect/1/2", "2-4"),
+            },
+          ]);
+          handleSwiper();
           break;
         case 1:
           this.title = "农田排水汇流湿地工程";
@@ -280,6 +287,27 @@ export default defineComponent({
               url: getImageUrl("effect", "f-2-4"),
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "生态河坡建设断面图",
+              url: getImageUrl("effect/1/2", "2-1"),
+            },
+            {
+              name: "生态塘",
+              url: getImageUrl("effect/1/2", "2-2"),
+            },
+            {
+              name: "护坡木桩施工",
+              url: getImageUrl("effect/1/2", "2-3"),
+            },
+            {
+              name: "生态沟渠",
+              url: getImageUrl("effect/1/2", "2-4"),
+            },
+          ]);
+          setTimeout(() => {
+            this.handleSwiper();
+          }, 50);
           break;
         case 2:
           this.title = "建立生态隔离带";
@@ -298,6 +326,23 @@ export default defineComponent({
               url: getImageUrl("effect", "f-3-2"),
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "生态防护林布置图",
+              url: getImageUrl("effect/1/3", "3-1"),
+            },
+            {
+              name: "生态防护林",
+              url: getImageUrl("effect/1/3", "3-2"),
+            },
+            {
+              name: "生态防护林",
+              url: getImageUrl("effect/1/3", "3-3"),
+            },
+          ]);
+          setTimeout(() => {
+            this.handleSwiper();
+          }, 50);
           break;
         case 3:
           this.title = "秸秆收集利用工程";
@@ -330,6 +375,15 @@ export default defineComponent({
               unit: "座",
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "大型拖拉机",
+              url: getImageUrl("effect/1/4", "4-1"),
+            },
+          ]);
+          setTimeout(() => {
+            this.handleSwiper();
+          }, 50);
           break;
         case 4:
           this.title = "化肥农药减量施用";
@@ -381,7 +435,7 @@ export default defineComponent({
         default:
           break;
       }
-    };
+    }
 
     return {
       url,
@@ -392,6 +446,7 @@ export default defineComponent({
       active,
       bigImg,
       handleClick,
+      handleSwiper,
     };
   },
 });

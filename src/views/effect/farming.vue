@@ -25,13 +25,11 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
-                  <div class="swiper-button-next ">
-                  </div>
-                  <div class="swiper-button-prev ">
-                  </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
                 </div>
                 <div class="swiper-container swiper-thumbs">
                   <div class="swiper-wrapper">
@@ -40,7 +38,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item" />
+                      <img class="img" :src="item.url" />
                     </div>
                   </div>
                 </div>
@@ -113,14 +111,10 @@ export default defineComponent({
       },
     ]);
     const bigImg = reactive([
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2942499027,2479446682&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=2610975262,3538281461&fm=193&f=GIF",
-      "https://t7.baidu.com/it/u=4138158235,3956816634&fm=193&f=GIF",
+      {
+        name: "生态沟渠",
+        url: getImageUrl("effect/1/2", "2-4"),
+      },
     ]);
 
     onMounted(() => {
@@ -306,6 +300,7 @@ export default defineComponent({
   .swiper-thumbs {
     width: 87vh;
     height: 11vh;
+    margin-top: 10px;
 
     .swiper-bottom {
       padding-top: 10px;
