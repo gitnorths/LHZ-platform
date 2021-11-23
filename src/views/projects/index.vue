@@ -105,10 +105,16 @@
               </span>
             </p>
             <el-form size="mini" label-width="120px">
-              <el-form-item label="组 &nbsp;&nbsp;长："> <span>赵建初 市政府副市长</span> </el-form-item>
-              <el-form-item label="副组长："> <span>王晨清 市政府办公室副主任</span> </el-form-item>
+              <el-form-item label="组 &nbsp;&nbsp;长：">
+                <span>赵建初 市政府副市长</span>
+              </el-form-item>
+              <el-form-item label="副组长：">
+                <span>王晨清 市政府办公室副主任</span>
+              </el-form-item>
               <el-form-item><span>盛海峰 市农委主任</span></el-form-item>
-              <el-form-item label="成 &nbsp;&nbsp;员："> <span>曹炳华 市委农工办副主任</span> </el-form-item>
+              <el-form-item label="成 &nbsp;&nbsp;员：">
+                <span>曹炳华 市委农工办副主任</span>
+              </el-form-item>
               <el-form-item><span>许子云 市发改委副主任</span></el-form-item>
               <el-form-item><span>沈美林 市科技局副局长</span></el-form-item>
               <el-form-item><span>王建良 市财政局副局长</span></el-form-item>
@@ -354,7 +360,7 @@ export default defineComponent({
     const weatherImg = ref("xy");
     const dialogTitle = ref("");
     const dialogWidth = ref("1200px");
-    let dialogVisible = ref(false);
+    const dialogVisible = ref(false);
     const imgData = reactive([
       {
         name: "项目实施组织管理",
@@ -400,7 +406,7 @@ export default defineComponent({
     ]);
 
     function handleClose() {
-      this.dialogVisible = false;
+      dialogVisible.value = false;
     }
 
     function handleScroll() {
@@ -414,12 +420,11 @@ export default defineComponent({
     }
 
     function onShowPop(index, curr) {
-      console.log(index, curr);
-      this.dialogVisible = true;
-      this.dialogTitle = "项目实施组织管理";
-      this.current = curr;
+      dialogVisible.value = true;
+      dialogTitle.value = "项目实施组织管理";
+      current.value = curr;
       setTimeout(() => {
-        this.onChangeTab(index);
+        onChangeTab(index);
       }, 500);
     }
 
