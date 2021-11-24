@@ -21,6 +21,14 @@
   }
 }
 
+.login {
+  .el-form {
+    .el-input__inner {
+      padding-left: 64px;
+    }
+  }
+}
+
 .home {
   .el-header {
     height: 86px;
@@ -312,6 +320,36 @@
             margin: 0;
           }
         }
+      }
+    }
+  }
+}
+
+.dialog-card {
+  background-color: initial;
+  border-width: 0;
+
+  .el-card {
+    &__header {
+      border-width: 0;
+      span {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 28px;
+      }
+    }
+
+    &__body {
+      padding: 0;
+
+      p {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 5px;
+        padding-right: 10px;
+        text-indent: 2em;
       }
     }
   }

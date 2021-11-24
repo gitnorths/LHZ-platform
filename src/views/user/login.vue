@@ -1,13 +1,13 @@
 <template>
   <div class="login">
     <div class="login-title login-title-bg">
-      <span>浏河镇农业面源污染智慧监管平台</span>
+      <!-- <span>浏河镇农业面源污染智慧监管平台</span> -->
     </div>
     <el-form
-      ref="formLogin"
-      :model="formLogin"
-      :rules="rules"
       class="login-form"
+      ref="loginRef"
+      :model="loginForm"
+      :rules="loginRules"
     >
       <el-form-item>
         <h1 class="login-title-bg">登 录</h1>
@@ -23,7 +23,7 @@
         </div>
         <el-input
           type="text"
-          v-model="formLogin.username"
+          v-model="loginForm.username"
           autocomplete="off"
         ></el-input>
       </el-form-item>
@@ -38,19 +38,19 @@
         </div>
         <el-input
           type="password"
-          v-model="formLogin.password"
+          v-model="loginForm.password"
           autocomplete="off"
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-checkbox-group v-model="formLogin.checkedPassword">
+        <el-checkbox-group v-model="loginForm.checkedPassword">
           <el-checkbox label="记住密码" name="type"></el-checkbox>
         </el-checkbox-group>
       </el-form-item>
       <el-form-item>
         <el-button
           type="success"
-          @click="submitForm('formLogin')"
+          @click="submitForm('loginForm')"
           style="width: 100%"
         >
           登 录
@@ -60,48 +60,58 @@
   </div>
 </template>
 <script>
+import { defineComponent, reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 
-export default {
+export default defineComponent({
   name: "Login",
-  data() {
+  setup() {
+    const loginRef = ref(null);
+    const loginForm = reactive({
+      username: "",
+      password: "",
+      checkedPassword: [],
+    });
+    const loginRules = reactive({
+      username: [
+        {
+          required: true,
+          message: "请输入用户名",
+          trigger: "blur",
+        },
+      ],
+      password: [
+        {
+          required: true,
+          message: "请输入密码",
+          trigger: "blur",
+        },
+      ],
+    });
+
+    const submitForm = async () => {
+      const valid = await loginRef.value.validate();
+
+      if (valid) {
+        if (loginForm.username != "admin") {
+          console.log("用户名错误！");
+        } else if (loginForm.password != "123") {
+          console.log("密码错误！");
+        } else {
+          // 路由跳转
+          router.push("/home");
+        }
+      }
+    };
+
     return {
-      formLogin: {
-        username: "1",
-        password: "1",
-        checkedPassword: [],
-      },
-      rules: {
-        username: [
-          {
-            required: true,
-            message: "请输入用户名",
-            trigger: "blur",
-          },
-        ],
-        password: [
-          {
-            required: true,
-            message: "请输入用户名",
-            trigger: "blur",
-          },
-        ],
-      },
+      loginRef,
+      loginForm,
+      loginRules,
+      submitForm,
     };
   },
-  methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          this.$router.push(`/home`);
-          // router.push({ name: "home" });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
-    },
-  },
-};
+});
 </script>
 <style lang="scss" scoped>
 .login {
@@ -113,7 +123,7 @@ export default {
   height: 100vh;
   background: {
     repeat: no-repeat;
-    image: url(~@/assets/img/login/bg.png);
+    image: url(./../../assets/img/login/bg.png);
   }
 
   &-title {
@@ -140,7 +150,7 @@ export default {
         repeat: no-repeat;
         position: center bottom;
         size: 100%;
-        image: url(~@/assets/img/login/title-bot.png);
+        image: url(./../../assets/img/login/title-bot.png);
       }
     }
   }
@@ -152,7 +162,7 @@ export default {
   padding: 0 70px;
   background: {
     repeat: no-repeat;
-    image: url(~@/assets/img/login/form-bg.png);
+    image: url(./../../assets/img/login/form-bg.png);
   }
   &-item {
     margin-bottom: 20px;
@@ -182,10 +192,6 @@ export default {
         opacity: 0.8;
       }
     }
-  }
-
-  .el-input__inner {
-    padding-left: 64px;
   }
 
   .el-input-group__prepend {
