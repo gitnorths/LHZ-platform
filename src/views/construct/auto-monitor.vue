@@ -124,7 +124,7 @@ export default defineComponent({
             let myIcon = new BMap.Icon(
               // iconCamera,
               // require(`@/assets/img/construct/icon-camera.png`),
-              getImageUrl('construct', 'icon-camera'),
+              getImageUrl('construct', 'icon-camera.png'),
               new BMap.Size(140, 116)
             );
             let point = new BMap.Point(121.186163, 31.589242);

@@ -25,7 +25,8 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <p class="bannerBox-text">{{ item.name }}</p>
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
@@ -38,7 +39,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                 </div>
@@ -79,7 +80,7 @@ export default defineComponent({
   name: "Header",
   components: { Pagination },
   setup() {
-    const url = ref(getImageUrl("effect", "f-1"));
+    const url = ref(getImageUrl("effect", "f-1.png"));
     const text = ref(
       "畜禽养殖污染物治理工程在示范区内以畜禽养殖粪污资源化利用和延伸农业产业链为重点，拓展农业产业化空间，打造产品加工循环模式、废弃物质循环模式、区域产业循环模式，在发展循环农业产业的同时，消减农业面源污染物的排放量。"
     );
@@ -93,27 +94,27 @@ export default defineComponent({
         color: "color-green",
         value: "1",
         unit: "台",
-        url: getImageUrl("effect", "farming-1"),
+        url: getImageUrl("effect", "farming-1.png"),
       },
       {
         name: "有机肥施肥机",
         color: "color-purple",
         value: "3",
         unit: "台",
-        url: getImageUrl("effect", "farming-2"),
+        url: getImageUrl("effect", "farming-2.png"),
       },
       {
         name: "吸粪车",
         color: "color-pink",
         value: "2",
         unit: "台",
-        url: getImageUrl("effect", "farming-3"),
+        url: getImageUrl("effect", "farming-3.png"),
       },
     ]);
     const bigImg = reactive([
       {
-        name: "生态沟渠",
-        url: getImageUrl("effect/1/2", "2-4"),
+        name: "",
+        url: "",
       },
     ]);
 
@@ -261,7 +262,6 @@ export default defineComponent({
     &-header {
       position: relative;
       font-size: 2.8vh;
-      font-family: PingFang SC;
       font-weight: bold;
       color: #39ffe7;
       padding: 4.5vh 0 3vh;
@@ -287,7 +287,21 @@ export default defineComponent({
 .bannerBox {
   width: 87vh;
   height: 67vh;
-  .img {
+
+  &-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 65%);
+  }
+
+  &-img {
     width: 100%;
     height: 100%;
   }

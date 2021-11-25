@@ -2,10 +2,7 @@
   <div class="construct-map">
   </div>
 </template>
-<script>
-export default {
-  name: "Construct",
-};
+<script setup>
 </script>
 <style lang="scss" scoped>
 .construct-map {
@@ -14,7 +11,7 @@ export default {
   background: {
     repeat: no-repeat;
     size: 100%;
-    image: url(~@/assets/img/effect/bg.png);
+    image: url(./../../assets/img/effect/bg.png);
   }
 }
 </style>

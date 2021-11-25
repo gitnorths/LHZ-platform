@@ -1,15 +1,7 @@
 <template>
   <div class="construct-layout"></div>
 </template>
-<script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "ConstructHome",
-  setup() {
-    return {};
-  },
-});
+<script setup>
 </script>
 <style lang="scss" scoped>
 .construct-layout {

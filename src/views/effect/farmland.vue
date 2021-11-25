@@ -35,7 +35,8 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <p class="bannerBox-text">{{ item.name }}</p>
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
@@ -48,7 +49,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                 </div>
@@ -66,8 +67,7 @@
             >
               <el-image class="mb30" :src="`${item.url}`"></el-image>
               <p class="font24">
-                <font class="font40">{{ item.value }}</font
-                >{{ item.unit }}
+                <span class="font40"> {{ item.value }} </span>{{ item.unit }}
               </p>
               <p class="font24 color-blue">{{ item.name }}</p>
             </div>
@@ -84,8 +84,7 @@
                   {{ item.name }}
                 </p>
                 <p class="font16">
-                  <font class="font30">{{ item.value }}</font
-                  >{{ item.unit }}
+                  <span class="font30"> {{ item.value }} </span>{{ item.unit }}
                 </p>
               </div>
             </div>
@@ -107,8 +106,7 @@
                 <div v-for="(item, i) in rData" :key="i">
                   <p>{{ item.value }}</p>
                   <p :class="`font16 ${item.color}`">
-                    <font class="font24">{{ item.name }}</font
-                    >({{ item.unit }})
+                    <span class="font24">{{ item.name }}</span> {{ item.unit }}
                   </p>
                 </div>
               </div>
@@ -118,7 +116,7 @@
             <div class="f-card-body f-item4" style="padding: 0">
               <div v-for="(item, i) in rData" :key="i">
                 <p :class="`font24 ${item.color}`">
-                  <font class="font40">{{ item.value }}</font> {{ item.unit }}
+                  <span class="font40">{{ item.value }}</span> {{ item.unit }}
                 </p>
                 <p class="font24">{{ item.name }}</p>
               </div>
@@ -128,7 +126,7 @@
             <div class="f-card-body" v-for="(item, i) in rData" :key="i">
               <div class="mb30 f-item5">
                 <p :class="`font24 ${item.color}`">
-                  <font class="font40">{{ item.value }}</font> {{ item.unit }}
+                  <span class="font40">{{ item.value }}</span> {{ item.unit }}
                 </p>
                 <p :class="`font24 ${item.color}`">{{ item.name }}</p>
               </div>
@@ -150,7 +148,7 @@ export default defineComponent({
   name: "Header",
   components: { Pagination },
   setup() {
-    const url = ref(getImageUrl("effect", "f-1"));
+    const url = ref(getImageUrl("effect", "f-1.png"));
     const text = ref(
       "建设农田排水促沉净化装置30个，建设生态填料与基质400m2。其中生态填料与基质包含大小粒径沸石、生物炭、软性填料、其他高效吸附环境材料等。"
     );
@@ -161,13 +159,13 @@ export default defineComponent({
         name: "农田排水促沉净化装置",
         value: "30",
         unit: "个",
-        url: getImageUrl("effect", "f-1-2"),
+        url: getImageUrl("effect", "f-1-2.png"),
       },
       {
         name: "生态填料与基质",
         value: "400",
         unit: "㎡",
-        url: getImageUrl("effect", "f-1-3"),
+        url: getImageUrl("effect", "f-1-3.png"),
       },
     ]);
     const fData = reactive([
@@ -180,8 +178,8 @@ export default defineComponent({
     ]);
     const bigImg = reactive([
       {
-        name: "生态沟渠",
-        url: getImageUrl("effect/1/2", "2-4"),
+        name: "",
+        url: getImageUrl("effect/1/2", ""),
       },
     ]);
 
@@ -215,32 +213,31 @@ export default defineComponent({
     }
 
     function handleClick(i) {
-      console.log(i);
       this.active = i;
       switch (i) {
         case 0:
           this.title = "农田排水口污染物拦截工程";
           this.text =
             "建设农田排水促沉净化装置30个，建设生态填料与基质400m2。其中生态填料与基质包含大小粒径沸石、生物炭、软性填料、其他高效吸附环境材料等。";
-          this.url = getImageUrl("effect", "f-1");
+          this.url = getImageUrl("effect", "f-1.png");
           this.rData = [
             {
               name: "农田排水促沉净化装置",
               value: "30",
               unit: "个",
-              url: getImageUrl("effect", "f-1-2"),
+              url: getImageUrl("effect", "f-1-2.png"),
             },
             {
               name: "生态填料与基质",
               value: "400",
               unit: "㎡",
-              url: getImageUrl("effect", "f-1-3"),
+              url: getImageUrl("effect", "f-1-3.png"),
             },
           ];
           this.bigImg = reactive([
             {
-              name: "生态沟渠",
-              url: getImageUrl("effect/1/2", "2-4"),
+              name: "",
+              url: "",
             },
           ]);
           handleSwiper();
@@ -249,60 +246,60 @@ export default defineComponent({
           this.title = "农田排水汇流湿地工程";
           this.text =
             "在示范区内建设生态塘8个，累计面积32亩，农田排水汇流湿地清淤共28280m3，净化塘边坡清杂1512m2，净水塘近水岸边栽植鸢尾、美人蕉等挺水植物1547m2，在净化塘顶栽植垂柳、红叶石楠等乔灌木516株，在易坍塌河段密打杉木桩护岸778m。";
-          this.url = getImageUrl("effect", "f-2");
+          this.url = getImageUrl("effect", "f-2.png");
           this.rData = [
             {
               name: "生态塘",
               value: "8",
               unit: "个",
               color: "color-blue",
-              url: getImageUrl("effect", "f-2-1"),
+              url: getImageUrl("effect", "f-2-1.png"),
             },
             {
               name: "湿地清淤",
               value: "28280",
               unit: "m3",
               color: "color-green",
-              url: getImageUrl("effect", "f-2-3"),
+              url: getImageUrl("effect", "f-2-3.png"),
             },
             {
               name: "净化塘边坡清杂",
               value: "1512",
               unit: "㎡",
               color: "color-purple",
-              url: getImageUrl("effect", "f-2-5"),
+              url: getImageUrl("effect", "f-2-5.png"),
             },
             {
               name: "挺水植物",
               value: "1547",
               unit: "㎡",
               color: "color-yellow",
-              url: getImageUrl("effect", "f-2-2"),
+              url: getImageUrl("effect", "f-2-2.png"),
             },
             {
               name: "杉木桩护岸",
               value: "778",
               unit: "m",
               color: "color-pink",
-              url: getImageUrl("effect", "f-2-4"),
+              url: getImageUrl("effect", "f-2-4.png"),
             },
           ];
           this.bigImg = reactive([
             {
               name: "生态河坡建设断面图",
-              url: getImageUrl("effect/1/2", "2-1"),
+              url: getImageUrl("effect/1/2", "2-1.png"),
             },
             {
               name: "生态塘",
-              url: getImageUrl("effect/1/2", "2-2"),
+              url: getImageUrl("effect/1/2", "2-2.png"),
             },
             {
               name: "护坡木桩施工",
-              url: getImageUrl("effect/1/2", "2-3"),
+              url: getImageUrl("effect/1/2", "2-3.png"),
             },
             {
               name: "生态沟渠",
-              url: getImageUrl("effect/1/2", "2-4"),
+              url: getImageUrl("effect/1/2", "2-4.png"),
             },
           ]);
           setTimeout(() => {
@@ -313,31 +310,31 @@ export default defineComponent({
           this.title = "建立生态隔离带";
           this.text =
             "在示范区范围的主干道两侧建立乔灌结合生态隔离带，一乔一灌间隔种植垂柳、红叶石楠，垂柳胸径5cm，红叶石楠冠幅100cm，高度100-110cm，垂柳与红叶石楠株距1.5m，垂柳（红叶石楠）与垂柳（红叶石楠）株距3m，构筑生态屏障，实现对干道周边环境的绿化和防止田间水土流失。";
-          this.url = getImageUrl("effect", "f-3");
+          this.url = getImageUrl("effect", "f-3.png");
           this.rData = [
             {
               name: "栽植垂柳、红叶石楠",
               color: "color-green",
-              url: getImageUrl("effect", "f-3-1"),
+              url: getImageUrl("effect", "f-3-1.png"),
             },
             {
               name: "生态防护林布置图",
               color: "color-blue",
-              url: getImageUrl("effect", "f-3-2"),
+              url: getImageUrl("effect", "f-3-2.png"),
             },
           ];
           this.bigImg = reactive([
             {
               name: "生态防护林布置图",
-              url: getImageUrl("effect/1/3", "3-1"),
+              url: getImageUrl("effect/1/3", "3-1.png"),
             },
             {
               name: "生态防护林",
-              url: getImageUrl("effect/1/3", "3-2"),
+              url: getImageUrl("effect/1/3", "3-2.png"),
             },
             {
               name: "生态防护林",
-              url: getImageUrl("effect/1/3", "3-3"),
+              url: getImageUrl("effect/1/3", "3-3.png"),
             },
           ]);
           setTimeout(() => {
@@ -348,7 +345,7 @@ export default defineComponent({
           this.title = "秸秆收集利用工程";
           this.text =
             "购置秸秆还田机12台，秸秆粉碎机12台，配套大型拖拉机12台，在万安村建设一座秸秆收储中心1460m2。";
-          this.url = getImageUrl("effect", "f-4");
+          this.url = getImageUrl("effect", "f-4.png");
           this.rData = [
             {
               name: "秸秆还田机",
@@ -378,7 +375,7 @@ export default defineComponent({
           this.bigImg = reactive([
             {
               name: "大型拖拉机",
-              url: getImageUrl("effect/1/4", "4-1"),
+              url: getImageUrl("effect/1/4", "4-1.png"),
             },
           ]);
           setTimeout(() => {
@@ -389,7 +386,7 @@ export default defineComponent({
           this.title = "化肥农药减量施用";
           this.text =
             "将新塘村300亩废弃种植田块进行复垦等土地整理工程，后续种植紫云英，进行绿肥轮作有机生产模式应用推广。同时，在万安村、何桥村等地的500亩耕地进行休耕轮作。购置自走植保机12台，防控无人机12台。";
-          this.url = getImageUrl("effect", "f-5");
+          this.url = getImageUrl("effect", "f-5.png");
           this.rData = [
             {
               name: "复垦废弃种植田块",
@@ -416,21 +413,33 @@ export default defineComponent({
               unit: "台",
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "",
+              url: "",
+            },
+          ]);
           break;
         case 5:
           this.title = "节水灌溉工程";
           this.text =
             "将万安村、何桥村的700亩土渠明灌区改造为暗管灌溉区，实现水资源的节约利用，减少进入水体的农业生产种植尾水，从中间环节上对农业面源污染物进入水体进行控制。";
-          this.url = getImageUrl("effect", "f-6");
+          this.url = getImageUrl("effect", "f-6.png");
           this.rData = [
             {
               name: "明灌改暗灌",
               color: "color-green",
               value: "700",
               unit: "亩",
-              url: getImageUrl("effect", "f-6-1"),
+              url: getImageUrl("effect", "f-6-1.png"),
             },
           ];
+          this.bigImg = reactive([
+            {
+              name: "",
+              url: "",
+            },
+          ]);
           break;
         default:
           break;
@@ -539,7 +548,6 @@ export default defineComponent({
     &-header {
       position: relative;
       font-size: 2.8vh;
-      font-family: PingFang SC;
       font-weight: bold;
       color: #39ffe7;
       padding: 4.5vh 0 3vh;
@@ -565,7 +573,21 @@ export default defineComponent({
 .bannerBox {
   width: 87vh;
   height: 60vh;
-  .img {
+
+  &-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 65%);
+  }
+
+  &-img {
     width: 100%;
     height: 100%;
   }

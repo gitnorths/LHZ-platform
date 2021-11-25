@@ -11,13 +11,13 @@
           <div class="flex justify-content-around border-r flex1">
             <div>
               <p class="font14 color-white ta-center mb12">
-                <font class="font30">30</font>个
+                <span class="font30">30</span>个
               </p>
               <p class="font14 color-green ta-center">农田排水促沉净化装置</p>
             </div>
             <div>
               <p class="font14 color-white ta-center mb12">
-                <font class="font30">400</font>㎡
+                <span class="font30">400</span>㎡
               </p>
               <p class="font14 color-green ta-center">生态填料与基质</p>
             </div>
@@ -49,8 +49,7 @@
                 <div class="flex1">
                   <p class="font14 color-blue">{{ item.name }}</p>
                   <p class="font14 color-white">
-                    <font class="font20">{{ item.text }}</font
-                    >{{ item.unit }}
+                    <span class="font20"> {{ item.text }} </span>{{ item.unit }}
                   </p>
                 </div>
               </div>
@@ -70,8 +69,7 @@
                     {{ item.name }}
                   </p>
                   <p class="font16 color-white ta-center">
-                    <font class="font16">{{ item.text }}</font
-                    >{{ item.unit }}
+                    <span class="font16"> {{ item.text }} </span>{{ item.unit }}
                   </p>
                 </div>
               </div>
@@ -84,7 +82,7 @@
               <div class="flex align-items justify-content-center">
                 <p class="font14 color-white ta-center mr20">秸秆还田机</p>
                 <p class="font12 color-green ta-center">
-                  <font class="font24">12</font>台
+                  <span class="font24">12</span>台
                 </p>
               </div>
             </el-col>
@@ -92,7 +90,7 @@
               <div class="flex align-items justify-content-center">
                 <p class="font14 color-white ta-center mr20">秸秆粉碎机</p>
                 <p class="font12 color-green ta-center">
-                  <font class="font24">12</font>台
+                  <span class="font24">12</span>台
                 </p>
               </div>
             </el-col>
@@ -100,7 +98,7 @@
               <div class="flex align-items justify-content-center">
                 <p class="font14 color-white ta-center mr20">大型拖拉机</p>
                 <p class="font12 color-green ta-center">
-                  <font class="font24">12</font>台
+                  <span class="font24">12</span>台
                 </p>
               </div>
             </el-col>
@@ -108,7 +106,7 @@
               <div class="flex align-items justify-content-center">
                 <p class="font14 color-white ta-center mr20">秸秆收储中心</p>
                 <p class="font12 color-green ta-center">
-                  <font class="font24">1</font>台
+                  <span class="font24">1</span>台
                 </p>
               </div>
             </el-col>
@@ -118,25 +116,25 @@
           <div class="flex justify-content-around border-r flex1">
             <div>
               <p class="font14 color-green ta-center mb12">
-                <font class="font24">300</font>亩
+                <span class="font24">300</span>亩
               </p>
               <p class="font14 color-white ta-center">复垦废弃<br />种植田块</p>
             </div>
             <div>
               <p class="font14 color-blue ta-center mb12">
-                <font class="font24">500</font>亩
+                <span class="font24">500</span>亩
               </p>
               <p class="font14 color-white ta-center">轮作休耕</p>
             </div>
             <div>
               <p class="font14 color-yellow ta-center mb12">
-                <font class="font24">12</font>台
+                <span class="font24">12</span>台
               </p>
               <p class="font14 color-white ta-center">自走植保机</p>
             </div>
             <div>
               <p class="font14 color-purple ta-center mb12">
-                <font class="font24">12</font>台
+                <span class="font24">12</span>台
               </p>
               <p class="font14 color-white ta-center">防控无人机</p>
             </div>
@@ -148,7 +146,7 @@
               <div class="flex align-items justify-content-center">
                 <p class="font14 color-white ta-center mr20">明灌改暗灌</p>
                 <p class="font12 color-green ta-center">
-                  <font class="font24">700</font>亩
+                  <span class="font24">700</span>亩
                 </p>
               </div>
             </el-col>
@@ -187,7 +185,7 @@
           <div v-for="(item, i) in effectData_rt" :key="i" style="">
             <el-image style="height: 8.4vh" :src="`${item.url}`"></el-image>
             <p class="font14 color-green ta-center mb12">
-              <font class="font24"> {{ item.text }} </font>{{ item.unit }}
+              <span class="font24"> {{ item.text }} </span>{{ item.unit }}
             </p>
             <p class="font14 color-white ta-center">{{ item.name }}</p>
           </div>
@@ -212,7 +210,7 @@
                 :class="`flex align-items justify-content-center font14 ta-center mb12 ${item.color}`"
                 :style="{ backgroundImage: `url(${item.url})` }"
               >
-                <font class="font30">{{ item.value }} </font>
+                <span class="font30">{{ item.value }} </span>
               </p>
               <p class="font14 color-white ta-center">
                 {{ item.text }}（{{ item.unit }}）
@@ -233,7 +231,7 @@
               "
             >
               <p :class="`font14 ta-center mb12 ${item.color}`">
-                <font class="font30">{{ item.value }} </font>
+                <span class="font30">{{ item.value }} </span>
                 {{ item.unit }}
               </p>
               <p class="font14 color-white ta-center">{{ item.text }}</p>
@@ -256,35 +254,35 @@ export default defineComponent({
         name: "态塘",
         text: "8",
         color: "color-blue",
-        url: getImageUrl("effect", "effect-1-1"),
+        url: getImageUrl("effect", "effect-1-1.png"),
         unit: "个",
       },
       {
         name: "挺水植物",
         text: "1547",
         color: "color-yellow",
-        url: getImageUrl("effect", "effect-1-2"),
+        url: getImageUrl("effect", "effect-1-2.png"),
         unit: "㎡",
       },
       {
         name: "湿地清淤",
         text: "28280",
         color: "color-green",
-        url: getImageUrl("effect", "effect-1-3"),
+        url: getImageUrl("effect", "effect-1-3.png"),
         unit: "m³",
       },
       {
         name: "湿地清淤",
         text: "28280",
         color: "color-pink",
-        url: getImageUrl("effect", "effect-1-4"),
+        url: getImageUrl("effect", "effect-1-4.png"),
         unit: "m³",
       },
       {
         name: "净化塘边坡清杂",
         text: "1512",
         color: "color-purple",
-        url: getImageUrl("effect", "effect-1-5"),
+        url: getImageUrl("effect", "effect-1-5.png"),
         unit: "㎡",
       },
     ]);
@@ -293,7 +291,7 @@ export default defineComponent({
         name: "10000株",
         text: "栽植垂柳、红叶石楠 ",
         color: "color-green",
-        url: getImageUrl("effect", "effect-2-1"),
+        url: getImageUrl("effect", "effect-2-1.png"),
         unit: "",
       },
     ]);
@@ -302,21 +300,21 @@ export default defineComponent({
         name: "干粪运输车",
         text: "1",
         color: "color-green",
-        url: getImageUrl("effect", "effect-3-1"),
+        url: getImageUrl("effect", "effect-3-1.png"),
         unit: "台",
       },
       {
         name: "有机肥施肥机",
         text: "3",
         color: "color-green",
-        url: getImageUrl("effect", "effect-3-2"),
+        url: getImageUrl("effect", "effect-3-2.png"),
         unit: "台",
       },
       {
         name: "吸粪车",
         text: "2",
         color: "color-green",
-        url: getImageUrl("effect", "effect-3-3"),
+        url: getImageUrl("effect", "effect-3-3.png"),
         unit: "台",
       },
     ]);
@@ -325,28 +323,28 @@ export default defineComponent({
         value: "25.31",
         text: "清淤清杂",
         color: "color-white",
-        url: getImageUrl("effect", "effect-4-1"),
+        url: getImageUrl("effect", "effect-4-1.png"),
         unit: "万m³",
       },
       {
         value: "14360",
         text: "栽植挺水植物",
         color: "color-white",
-        url: getImageUrl("effect", "effect-4-2"),
+        url: getImageUrl("effect", "effect-4-2.png"),
         unit: "㎡",
       },
       {
         value: "2393",
         text: "栽植灌木",
         color: "color-white",
-        url: getImageUrl("effect", "effect-4-3"),
+        url: getImageUrl("effect", "effect-4-3.png"),
         unit: "株",
       },
       {
         value: "16974",
         text: "杉木桩护岸",
         color: "color-white",
-        url: getImageUrl("effect", "effect-4-4"),
+        url: getImageUrl("effect", "effect-4-4.png"),
         unit: "m",
       },
     ]);
@@ -373,22 +371,22 @@ export default defineComponent({
     const effectData_center = reactive([
       {
         name: "养殖污染物治理",
-        url: getImageUrl("effect", "effect-center-1"),
+        url: getImageUrl("effect", "effect-center-1.png"),
         path: "/effect/farming",
       },
       {
         name: "农田面源污染防治",
-        url: getImageUrl("effect", "effect-center-2"),
+        url: getImageUrl("effect", "effect-center-2.png"),
         path: "/effect/farmland",
       },
       {
         name: "地表径流污水净化",
-        url: getImageUrl("effect", "effect-center-3"),
+        url: getImageUrl("effect", "effect-center-3.png"),
         path: "/effect/purify",
       },
       {
         name: "配套工程",
-        url: getImageUrl("effect", "effect-center-4"),
+        url: getImageUrl("effect", "effect-center-4.png"),
         path: "/effect/setting",
       },
     ]);
@@ -410,9 +408,7 @@ export default defineComponent({
     line-height: 6vh;
     padding: 0 2.4vh;
     font-size: 2.4vh;
-    // font-weight: bold;
     text-align: left;
-    font-family: "PingFang-SC-Bold";
     color: #fff;
     background: {
       repeat: no-repeat;

@@ -89,12 +89,10 @@ export default defineComponent({
 
     // 初始化地图
     function initBaiduMap() {
-      console.log(123);
       baiduMap(ak).then(() => {
         // 创建Map实例
         /* eslint-disable */
         let map = new BMap.Map("map");
-        console.log(map);
         // 初始化地图,设置中心点坐标和地图级别
         map.centerAndZoom(new BMap.Point(121.13215, 31.462382), 11);
         // 设置地图显示的城市 此项是必须设置的
@@ -130,7 +128,7 @@ export default defineComponent({
             // const marker1 = new BMap.Marker(new BMap.Point(121.13215, 31.462382));
             let myIcon = new BMap.Icon(
               // require(`@/assets/img/construct/icon-location.png`),
-              getImageUrl('construct', 'icon-location'),
+              getImageUrl('construct', 'icon-location.png'),
               new BMap.Size(140, 116)
             );
             let markers = [];

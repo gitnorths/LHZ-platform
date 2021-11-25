@@ -5,7 +5,8 @@
         <div class="el-header__left">
           <el-breadcrumb separator="|">
             <el-breadcrumb-item>
-              <img :src="getImageUrl('home', weatherImg)" alt />雨 25℃ 2020-07-28 15:53
+              <img :src="getImageUrl('home', weatherImg)" alt />雨 25℃
+              2020-07-28 15:53
             </el-breadcrumb-item>
           </el-breadcrumb>
         </div>
@@ -20,7 +21,9 @@
             </span>
             <template #dropdown>
               <el-dropdown-menu>
-                <el-dropdown-item><a href="/login">退出</a></el-dropdown-item>
+                <el-dropdown-item>
+                  <router-link to="/login">退出</router-link>
+                </el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -31,7 +34,7 @@
           <img
             v-for="(item, i) in mapArr"
             :key="i"
-            :src="getImageUrl('home', item.name)"
+            :src="getImageUrl('home', item.url)"
             :class="`animate__animated animate__zoomIn ${item.name}`"
             alt=""
             @click="onClick(item.name)"
@@ -40,7 +43,7 @@
             <img
               v-for="(item, i) in cloudArr"
               :key="i"
-              :src="getImageUrl('home', item.name)"
+              :src="getImageUrl('home', item.url)"
               :class="item.name"
               alt=""
             />
@@ -51,25 +54,24 @@
   </div>
 </template>
 <script>
-import { getImageUrl } from '@/utils';
+import { getImageUrl } from "@/utils";
 import { defineComponent, reactive, ref } from "vue";
 export default defineComponent({
-  name: 'Home',
+  name: "Home",
   setup() {
-
-    const weatherImg = ref("xy");
+    const weatherImg = ref("xy.png");
     const mapArr = reactive([
-      { name: "jsnr" },
-      { name: "ssxg" },
-      { name: "xmgl" },
+      { name: "jsnr", url: "jsnr.png" },
+      { name: "ssxg", url: "ssxg.png" },
+      { name: "xmgl", url: "xmgl.png" },
     ]);
     const cloudArr = reactive([
-      { name: "cloud-1" },
-      { name: "cloud-2" },
-      { name: "cloud-3" },
-      { name: "cloud-4" },
-      { name: "cloud-5" },
-      { name: "cloud-6" },
+      { name: "cloud-1", url: "cloud-1.png" },
+      { name: "cloud-2", url: "cloud-2.png" },
+      { name: "cloud-3", url: "cloud-3.png" },
+      { name: "cloud-4", url: "cloud-4.png" },
+      { name: "cloud-5", url: "cloud-5.png" },
+      { name: "cloud-6", url: "cloud-6.png" },
     ]);
     function onClick(action) {
       switch (action) {

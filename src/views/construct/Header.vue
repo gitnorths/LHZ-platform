@@ -53,7 +53,7 @@ import { defineComponent, reactive, ref } from "vue";
 export default defineComponent({
   name: "Header",
   setup() {
-    const weatherImg = ref("xy");
+    const weatherImg = ref("xy.png");
     const activeIndex = ref("1");
     const activeIndex2 = ref("1");
     const meunLeft = reactive([

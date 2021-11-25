@@ -22,4 +22,8 @@ Swiper.use([Thumbs, Autoplay, EffectCube, Pagination, Navigation, EffectCoverflo
 
 import "./style/index.scss";
 
-createApp(App).use(router).use(store).use(ElementPlus).mount("#app");
+const app = createApp(App)
+app.use(router)
+app.use(store)
+app.use(ElementPlus)
+app.mount("#app");

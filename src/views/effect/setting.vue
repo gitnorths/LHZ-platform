@@ -25,7 +25,8 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <p class="bannerBox-text">{{ item.name }}</p>
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
@@ -38,7 +39,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                 </div>
@@ -87,7 +88,7 @@ export default defineComponent({
   name: "Header",
   components: { Pagination },
   setup() {
-    const url = ref(getImageUrl("effect", "f-7"));
+    const url = ref(getImageUrl("effect", "f-7.png"));
     const text = ref(
       "本项目配套工程主要包括田间道路及桥涵工程建设等。在示范区范围内共新（拆）建生态道路（机耕道、砂石路）共19200㎡，2座机耕桥，3座涵洞。"
     );
@@ -152,31 +153,31 @@ export default defineComponent({
     const bigImg = reactive([
       {
         name: "机耕道断面图",
-        url: getImageUrl("effect/4", "4-1"),
+        url: getImageUrl("effect/4", "4-1.png"),
       },
       {
         name: "砂石路断面图",
-        url: getImageUrl("effect/4", "4-2"),
+        url: getImageUrl("effect/4", "4-2.png"),
       },
       {
         name: "机耕桥断面图",
-        url: getImageUrl("effect/4", "4-3"),
+        url: getImageUrl("effect/4", "4-3.png"),
       },
       {
         name: "涵洞立面图",
-        url: getImageUrl("effect/4", "4-4"),
+        url: getImageUrl("effect/4", "4-4.png"),
       },
       {
         name: "机耕道",
-        url: getImageUrl("effect/4", "4-5"),
+        url: getImageUrl("effect/4", "4-5.png"),
       },
       {
         name: "机耕桥",
-        url: getImageUrl("effect/4", "4-6"),
+        url: getImageUrl("effect/4", "4-6.png"),
       },
       {
         name: "涵洞",
-        url: getImageUrl("effect/4", "4-7"),
+        url: getImageUrl("effect/4", "4-7.png"),
       },
     ]);
 
@@ -324,7 +325,6 @@ export default defineComponent({
     &-header {
       position: relative;
       font-size: 2.8vh;
-      font-family: PingFang SC;
       font-weight: bold;
       color: #39ffe7;
       padding: 4.5vh 0 3vh;
@@ -350,7 +350,20 @@ export default defineComponent({
 .bannerBox {
   width: 87vh;
   height: 67vh;
-  .img {
+  &-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 65%);
+  }
+
+  &-img {
     width: 100%;
     height: 100%;
   }

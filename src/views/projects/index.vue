@@ -385,19 +385,19 @@ const state = reactive({
   tabActive: 0,
   current: 0,
   tabsValue: "",
-  weatherImg: getImageUrl("home", "xy"),
-  file1: getImageUrl("projects", "file1"),
-  file2: getImageUrl("projects", "file2"),
-  file3: getImageUrl("projects", "file3"),
-  file4: getImageUrl("projects", "file4"),
-  file5: getImageUrl("projects", "file5"),
+  weatherImg: getImageUrl("home", "xy.png"),
+  file1: getImageUrl("projects", "file1.png"),
+  file2: getImageUrl("projects", "file2.png"),
+  file3: getImageUrl("projects", "file3.png"),
+  file4: getImageUrl("projects", "file4.png"),
+  file5: getImageUrl("projects", "file5.png"),
   dialogTitle: "",
   dialogWidth: "1200px",
   dialogVisible: false,
   imgData: [
     {
       name: "项目实施组织管理",
-      url: getImageUrl("projects", "organization"),
+      url: getImageUrl("projects", "organization.png"),
       className: "organization",
       data: [
         { active: 0, curr: 0, name: "项目建设领导小组" },
@@ -407,7 +407,7 @@ const state = reactive({
     },
     {
       name: "项目管理制度",
-      url: getImageUrl("projects", "system"),
+      url: getImageUrl("projects", "system.png"),
       className: "system",
       data: [
         { active: 0, curr: 1, name: "施工招投标制度" },
@@ -423,7 +423,7 @@ const state = reactive({
     },
     {
       name: "项目建成后的运行管理",
-      url: getImageUrl("projects", "run"),
+      url: getImageUrl("projects", "run.png"),
       className: "run",
       data: [
         { active: 0, curr: 2, name: "突出宣传指导，加强技术服务" },
@@ -539,6 +539,11 @@ const onChangeTab = (index) => {
     overflow-x: hidden;
     overflow-y: auto;
     height: 630px;
+
+    span {
+      color: #ffffff;
+      font-size: 14px;
+    }
   }
 }
 .projects {

@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <div class="login-title login-title-bg">
-      <!-- <span>浏河镇农业面源污染智慧监管平台</span> -->
+      <span>浏河镇农业面源污染智慧监管平台</span>
     </div>
     <el-form
       class="login-form"
@@ -59,59 +59,57 @@
     </el-form>
   </div>
 </template>
-<script>
-import { defineComponent, reactive, ref } from "vue";
+<script setup>
+import { reactive, ref } from "vue";
 import { useRouter } from "vue-router";
+import { ElMessage } from "element-plus";
 
-export default defineComponent({
-  name: "Login",
-  setup() {
-    const loginRef = ref(null);
-    const loginForm = reactive({
-      username: "",
-      password: "",
-      checkedPassword: [],
-    });
-    const loginRules = reactive({
-      username: [
-        {
-          required: true,
-          message: "请输入用户名",
-          trigger: "blur",
-        },
-      ],
-      password: [
-        {
-          required: true,
-          message: "请输入密码",
-          trigger: "blur",
-        },
-      ],
-    });
-
-    const submitForm = async () => {
-      const valid = await loginRef.value.validate();
-
-      if (valid) {
-        if (loginForm.username != "admin") {
-          console.log("用户名错误！");
-        } else if (loginForm.password != "123") {
-          console.log("密码错误！");
-        } else {
-          // 路由跳转
-          router.push("/home");
-        }
-      }
-    };
-
-    return {
-      loginRef,
-      loginForm,
-      loginRules,
-      submitForm,
-    };
-  },
+const router = useRouter();
+const loginRef = ref(null);
+const loginForm = reactive({
+  username: "admin",
+  password: "123",
+  checkedPassword: [],
 });
+const loginRules = reactive({
+  username: [
+    {
+      required: true,
+      message: "请输入用户名",
+      trigger: "blur",
+    },
+  ],
+  password: [
+    {
+      required: true,
+      message: "请输入密码",
+      trigger: "blur",
+    },
+  ],
+});
+
+const submitForm = async () => {
+  const valid = await loginRef.value.validate();
+
+  if (valid) {
+    if (loginForm.username != "admin") {
+      ElMessage({
+        showClose: true,
+        message: "用户名错误！",
+        type: "warning",
+      });
+    } else if (loginForm.password != "123") {
+      ElMessage({
+        showClose: true,
+        message: "密码错误！",
+        type: "warning",
+      });
+    } else {
+      // 路由跳转
+      router.push("/");
+    }
+  }
+};
 </script>
 <style lang="scss" scoped>
 .login {
@@ -123,6 +121,7 @@ export default defineComponent({
   height: 100vh;
   background: {
     repeat: no-repeat;
+    size: 100%;
     image: url(./../../assets/img/login/bg.png);
   }
 
@@ -132,7 +131,6 @@ export default defineComponent({
     padding-bottom: 50px;
 
     & > span {
-      font-family: Source Han Sans CN;
       font-weight: bold;
       font-size: 54px;
       line-height: 54px;
@@ -172,7 +170,6 @@ export default defineComponent({
       padding: 40px 0;
       font-size: 32px;
       font-weight: bold;
-      font-family: Source Han Sans CN;
       color: #ffffff;
       text-align: center;
     }
@@ -184,7 +181,6 @@ export default defineComponent({
       border-color: #05bf99;
       padding: 0;
       font-size: 20px;
-      font-family: PingFang SC;
       font-weight: bold;
       color: #002323;
 

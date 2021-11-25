@@ -25,7 +25,8 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <p class="bannerBox-text">{{ item.name }}</p>
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                   <div class="swiper-button-next"></div>
@@ -38,7 +39,7 @@
                       v-for="(item, index) of bigImg"
                       :key="index"
                     >
-                      <img class="img" :src="item.url" />
+                      <el-image class="bannerBox-img" :src="`${item.url}`"></el-image>
                     </div>
                   </div>
                 </div>
@@ -95,11 +96,11 @@ export default defineComponent({
     const bigImg = reactive([
       {
         name: "河道生态化改造断面图",
-        url: getImageUrl("effect/3", "3-1"),
+        url: getImageUrl("effect/3", "3-1.png"),
       },
       {
         name: "杉木桩护岸",
-        url: getImageUrl("effect/3", "3-2"),
+        url: getImageUrl("effect/3", "3-2.png"),
       },
     ]);
     const tableData = reactive([
@@ -309,7 +310,6 @@ export default defineComponent({
     &-header {
       position: relative;
       font-size: 2.8vh;
-      font-family: PingFang SC;
       font-weight: bold;
       color: #39ffe7;
       padding: 4.5vh 0 3vh;
@@ -335,7 +335,20 @@ export default defineComponent({
 .bannerBox {
   width: 87vh;
   height: 67vh;
-  .img {
+  &-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: 36px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: rgb(0 0 0 / 65%);
+  }
+
+  &-img {
     width: 100%;
     height: 100%;
   }
