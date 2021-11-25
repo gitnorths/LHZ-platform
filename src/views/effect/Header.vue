@@ -103,7 +103,7 @@ export default defineComponent({
         font-size: 1.6vh;
         color: #fff;
         margin: 0 4vh;
-        border-bottom: 2px solid transparent;
+        border-bottom: 0.2vh solid transparent;
 
         &.router-link-exact-active {
           font-weight: bold;

@@ -177,28 +177,28 @@ export default defineComponent({
         top: 0;
       }
       &:nth-child(2) {
-        right: 25px;
-        top: 80px;
+        right: 2.5vh;
+        top: 8vh;
       }
       &:nth-child(2) {
-        right: 25px;
-        top: 80px;
+        right: 2.5vh;
+        top: 8vh;
       }
       &:nth-child(3) {
-        right: 110px;
-        bottom: 145px;
+        right: 11vh;
+        bottom: 14.5vh;
       }
       &:nth-child(4) {
-        left: 565px;
-        top: 180px;
+        left: 56.5vh;
+        top: 18vh;
       }
       &:nth-child(5) {
-        left: 30px;
-        top: 260px;
+        left: 3vh;
+        top: 26vh;
       }
       &:nth-child(6) {
-        left: 630px;
-        top: 20px;
+        left: 63vh;
+        top: 2vh;
       }
     }
   }
@@ -209,10 +209,10 @@ export default defineComponent({
     transform: translate(0);
   }
   33.33% {
-    transform: translate(150px);
+    transform: translate(15vh);
   }
   66.66% {
-    transform: translate(-150px);
+    transform: translate(-15vh);
   }
   100% {
     transform: translate(0);

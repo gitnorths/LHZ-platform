@@ -99,7 +99,7 @@ export default defineComponent({
   }
 
   &__center {
-    flex: 0 0 480px;
+    flex: 0 0 48vh;
   }
   &__left {
     padding-left: 3vh;

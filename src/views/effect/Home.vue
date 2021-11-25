@@ -446,7 +446,7 @@ export default defineComponent({
 
     & > a {
       text-align: center;
-      margin-bottom: 150px;
+      margin-bottom: 15vh;
 
       &:nth-child(2),
       &:nth-child(3) {
@@ -454,11 +454,11 @@ export default defineComponent({
       }
 
       &:nth-child(2) {
-        margin-right: 100px;
+        margin-right: 10vh;
       }
 
       &:nth-child(3) {
-        margin-left: 100px;
+        margin-left: 10vh;
       }
     }
   }

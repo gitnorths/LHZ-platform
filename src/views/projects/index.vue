@@ -71,7 +71,6 @@
       v-model="dialogVisible"
       custom-class="lhz-dialog-projects"
       :title="dialogTitle"
-      :width="dialogWidth"
       :before-close="handleClose"
     >
       <div class="lhz-tabs">
@@ -170,7 +169,7 @@
                 :src="file1"
               ></el-image>
               <el-image
-                style="width: 90%; margin: 0 auto 10px; display: block"
+                style="width: 90%; margin: 0 auto 1vh; display: block"
                 :src="file2"
               ></el-image>
             </el-card>
@@ -223,7 +222,7 @@
                 :src="file3"
               ></el-image>
               <el-image
-                style="width: 90%; margin: 0 auto 10px; display: block"
+                style="width: 90%; margin: 0 auto 1vh; display: block"
                 :src="file4"
               ></el-image>
             </el-card>
@@ -236,7 +235,7 @@
                 本项目成立太仓市农业面源污染综合防治专家组，由江苏省农业科学院、苏州市农业科学院、中国科学院南京土壤研究所及江苏太湖地区农业科学研究所等有关专家组成，具体负责农业面源污染综合防治技术集成的研究、技术模式的提炼、技术规范制定，随时对项目的实施提供技术咨询和指导。
               </p>
               <el-image
-                style="width: 90%; margin: 0 auto 10px; display: block"
+                style="width: 90%; margin: 0 auto 1vh; display: block"
                 :src="file5"
               ></el-image>
               <p style="display: block; text-align: center">
@@ -392,7 +391,6 @@ const state = reactive({
   file4: getImageUrl("projects", "file4.png"),
   file5: getImageUrl("projects", "file5.png"),
   dialogTitle: "",
-  dialogWidth: "1200px",
   dialogVisible: false,
   imgData: [
     {
@@ -501,28 +499,28 @@ const onChangeTab = (index) => {
 .lhz-tabs {
   &__header {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 3vh;
     overflow: hidden;
   }
   &__nav {
     position: relative;
     float: left;
-    border: 1px solid #2b6768;
-    border-radius: 4px;
+    border: 0.1vh solid #2b6768;
+    border-radius: 0.4vh;
   }
   &__item {
     position: relative;
-    padding: 0 20px;
+    padding: 0 2vh;
     box-sizing: border-box;
     display: inline-block;
     list-style: none;
     font-weight: 500;
-    height: 32px;
-    line-height: 32px;
+    height: 3.2vh;
+    line-height: 3.2vh;
     color: #2b6768;
-    font-size: 16px;
+    font-size: 1.6vh;
     border-color: #2b6768;
-    border-left: 1px solid #2b6768;
+    border-left: 0.1vh solid #2b6768;
     cursor: pointer;
 
     &:first-child {
@@ -538,11 +536,11 @@ const onChangeTab = (index) => {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
-    height: 630px;
+    height: 63vh;
 
     span {
       color: #ffffff;
-      font-size: 14px;
+      font-size: 1.4vh;
     }
   }
 }
@@ -559,22 +557,22 @@ const onChangeTab = (index) => {
   .el-main {
     &__ul {
       position: relative;
-      width: 1300px;
+      width: 130vh;
       height: 100%;
       margin: 0 auto;
 
       & > li {
         position: absolute;
-        width: 230px;
-        height: 290px;
+        width: 23vh;
+        height: 29vh;
 
         p {
           position: absolute;
           left: 0;
-          bottom: 50px;
-          padding: 0 50px;
+          bottom: 5vh;
+          padding: 0 5vh;
           color: #ffffff;
-          font-size: 30px;
+          font-size: 3vh;
           font-weight: bold;
           text-align: center;
         }
@@ -582,21 +580,21 @@ const onChangeTab = (index) => {
         &:nth-child(1) {
           left: 0;
           top: 50%;
-          margin-top: -100px;
+          margin-top: -10vh;
         }
         &:nth-child(2) {
           left: 50%;
           top: 50%;
-          margin-left: -100px;
-          margin-top: 100px;
+          margin-left: -10vh;
+          margin-top: 10vh;
         }
         &:nth-child(3) {
           right: 0;
           top: 50%;
-          margin-top: -100px;
+          margin-top: -10vh;
 
           p {
-            padding: 0 30px;
+            padding: 0 3vh;
           }
         }
       }
@@ -604,20 +602,21 @@ const onChangeTab = (index) => {
   }
 
   .el-header {
-    height: 86px;
+    height: 8.6vh;
     background: {
       repeat: no-repeat;
       position: center;
+      size: 100% 100%;
       image: url(./../../assets/img/home/header.png);
     }
 
     &__left {
-      padding-left: 50px;
-      padding-bottom: 35px;
+      padding-left: 5vh;
+      padding-bottom: 3.5vh;
     }
     &__right {
-      padding-right: 50px;
-      padding-bottom: 35px;
+      padding-right: 5vh;
+      padding-bottom: 3.5vh;
     }
   }
 }

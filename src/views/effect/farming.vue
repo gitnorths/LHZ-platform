@@ -53,7 +53,7 @@
               <div
                 v-for="(item, i) in rData"
                 :key="i"
-                :style="`box-shadow: 0px 0px 10px ${item.color}`"
+                :style="`box-shadow: 0 0 1vh ${item.color}`"
               >
                 <el-image :src="`${item.url}`" class="mr20"></el-image>
                 <div>
@@ -165,7 +165,7 @@ export default defineComponent({
   justify-content: center;
   background: rgba(3, 23, 31, 0.5);
   padding: 2vh;
-  border-bottom: 1px solid;
+  border-bottom: 0.1vh solid;
   border-image: linear-gradient(
       0deg,
       rgba(12, 85, 74, 0.5),
@@ -178,9 +178,9 @@ export default defineComponent({
     padding: 0 3.6vh;
     height: 6vh;
     line-height: 6vh;
-    border: 1px solid #0c554a;
+    border: 0.1vh solid #0c554a;
     background: linear-gradient(0deg, #0c554a 0%, rgba(12, 85, 74, 0) 100%);
-    border-radius: 6px;
+    border-radius: 0.6vh;
     font-size: 2.2vh;
     color: #fff;
 
@@ -225,9 +225,9 @@ export default defineComponent({
           width: 100%;
           padding: 3vh 4vh;
           background-color: rgba(0, 0, 0, 0.7);
-          border: 1px solid rgba(57, 255, 232, 0.7);
-          box-shadow: 0px 0px 10px rgba(25, 219, 149, 0.6);
-          border-radius: 8px;
+          border: 0.1vh solid rgba(57, 255, 232, 0.7);
+          box-shadow: 0 0 1vh rgba(25, 219, 149, 0.6);
+          border-radius: 0.8vh;
 
           & > div {
             &:last-child {
@@ -274,7 +274,7 @@ export default defineComponent({
       justify-content: space-evenly;
       flex-direction: column;
       flex: 1;
-      padding: 0 10px;
+      padding: 0 1vh;
       color: #ffffff;
     }
   }
@@ -295,8 +295,8 @@ export default defineComponent({
     right: 0;
     z-index: 1;
     text-align: center;
-    line-height: 36px;
-    font-size: 14px;
+    line-height:  3.6vh;
+    font-size: 1.4vh;
     color: #ffffff;
     background-color: rgb(0 0 0 / 65%);
   }
@@ -308,16 +308,16 @@ export default defineComponent({
   .swiper-gallery {
     width: 87vh;
     height: 55vh;
-    border: 1px solid #07d5c0;
-    border-radius: 8px;
+    border: 0.1vh solid #07d5c0;
+    border-radius: 0.8vh;
   }
   .swiper-thumbs {
     width: 87vh;
     height: 11vh;
-    margin-top: 10px;
+    margin-top: 1vh;
 
     .swiper-bottom {
-      padding-top: 10px;
+      padding-top: 1vh;
       img {
         display: block;
         border: 0.4vh solid transparent;
@@ -332,14 +332,14 @@ export default defineComponent({
       }
 
       &::before {
-        width: 20px;
-        height: 10px;
+        width: 2vh;
+        height: 1vh;
         display: block;
         content: "";
         position: absolute;
         top: 0;
         left: 50%;
-        margin-left: -10px;
+        margin-left: 1vh;
         background: {
           repeat: no-repeat;
           size: 100%;

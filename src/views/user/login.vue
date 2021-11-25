@@ -18,7 +18,7 @@
             class="login-form__icon"
             src="~@/assets/img/login/form-user.png"
             alt="#"
-            style="margin-left: -10px"
+            style="margin-left: 1vh"
           />
         </div>
         <el-input
@@ -33,7 +33,7 @@
             class="login-form__icon"
             src="~@/assets/img/login/form-pass.png"
             alt="#"
-            style="margin-left: -10px"
+            style="margin-left: 1vh"
           />
         </div>
         <el-input
@@ -127,17 +127,17 @@ const submitForm = async () => {
 
   &-title {
     position: relative;
-    margin: 0 0 85px 0;
-    padding-bottom: 50px;
+    margin: 0 0 8.5vh 0;
+    padding-bottom: 5vh;
 
     & > span {
       font-weight: bold;
-      font-size: 54px;
-      line-height: 54px;
+      font-size: 5.4vh;
+      line-height: 5.4vh;
       color: #ffffff;
-      text-shadow: 0px 2px 6px rgba(2, 64, 68, 0.5);
-      -webkit-text-stroke: 1px #297979;
-      text-stroke: 1px #297979;
+      text-shadow: 0 0.2vh 0.6vh rgba(2, 64, 68, 0.5);
+      -webkit-text-stroke: 0.1vh #297979;
+      text-stroke: 0.1vh #297979;
       background: linear-gradient(180deg, #a0dbd5 0%, #ffffff 59.5947265625%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -154,33 +154,33 @@ const submitForm = async () => {
   }
 }
 .el-form {
-  width: 450px;
-  height: 468px;
-  margin-left: 550px;
-  padding: 0 70px;
+  width: 45vh;
+  height: 46.8vh;
+  margin-left: 55vh;
+  padding: 0 7vh;
   background: {
     repeat: no-repeat;
     image: url(./../../assets/img/login/form-bg.png);
   }
   &-item {
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
 
     h1 {
       margin: 0;
-      padding: 40px 0;
-      font-size: 32px;
+      padding: 4vh 0;
+      font-size: 3.2vh;
       font-weight: bold;
       color: #ffffff;
       text-align: center;
     }
 
     .el-button {
-      height: 50px;
-      line-height: 50px;
+      height: 5vh;
+      line-height: 5vh;
       background-color: #05bf99;
       border-color: #05bf99;
       padding: 0;
-      font-size: 20px;
+      font-size: 2vh;
       font-weight: bold;
       color: #002323;
 
@@ -195,12 +195,12 @@ const submitForm = async () => {
     left: 0;
     top: 50%;
     background-color: initial;
-    height: 18px;
-    line-height: 18px;
-    margin-top: -9px;
+    height: 1.8vh;
+    line-height: 1.8vh;
+    margin-top: -0.9vh;
     border: 0;
     z-index: 10;
-    border-right: 1px solid #2a7a7a;
+    border-right: 0.1vh solid #2a7a7a;
   }
 }
 </style>

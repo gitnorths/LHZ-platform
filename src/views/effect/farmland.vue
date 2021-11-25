@@ -471,7 +471,7 @@ export default defineComponent({
   justify-content: center;
   background: rgba(3, 23, 31, 0.5);
   padding: 2vh;
-  border-bottom: 1px solid;
+  border-bottom: 0.1vh solid;
   border-image: linear-gradient(
       0deg,
       rgba(12, 85, 74, 0.5),
@@ -484,9 +484,9 @@ export default defineComponent({
     padding: 0 3.6vh;
     height: 6vh;
     line-height: 6vh;
-    border: 1px solid #0c554a;
+    border: 0.1vh solid #0c554a;
     background: linear-gradient(0deg, #0c554a 0%, rgba(12, 85, 74, 0) 100%);
-    border-radius: 6px;
+    border-radius: 0.6vh;
     font-size: 2.2vh;
     color: #fff;
 
@@ -560,7 +560,7 @@ export default defineComponent({
       justify-content: space-evenly;
       flex-direction: column;
       flex: 1;
-      padding: 0 10px;
+      padding: 0 1vh;
       color: #ffffff;
     }
   }
@@ -581,8 +581,8 @@ export default defineComponent({
     right: 0;
     z-index: 1;
     text-align: center;
-    line-height: 36px;
-    font-size: 14px;
+    line-height:  3.6vh;
+    font-size: 1.4vh;
     color: #ffffff;
     background-color: rgb(0 0 0 / 65%);
   }
@@ -594,17 +594,17 @@ export default defineComponent({
   .swiper-gallery {
     width: 87vh;
     height: 48vh;
-    border: 1px solid #07d5c0;
-    border-radius: 8px;
+    border: 0.1vh solid #07d5c0;
+    border-radius: 0.8vh;
     overflow: hidden;
   }
   .swiper-thumbs {
     width: 87vh;
     height: 11vh;
-    margin-top: 10px;
+    margin-top: 1vh;
 
     .swiper-bottom {
-      padding-top: 10px;
+      padding-top: 1vh;
       img {
         display: block;
         border: 0.4vh solid transparent;
@@ -619,14 +619,14 @@ export default defineComponent({
       }
 
       &::before {
-        width: 20px;
-        height: 10px;
+        width: 2vh;
+        height: 1vh;
         display: block;
         content: "";
         position: absolute;
         top: 0;
         left: 50%;
-        margin-left: -10px;
+        margin-left: 1vh;
         background: {
           repeat: no-repeat;
           size: 100%;
@@ -643,13 +643,13 @@ export default defineComponent({
   justify-content: space-between;
   width: 100%;
   height: 8vh;
-  border: 1px solid rgba(7, 213, 192, 0.5);
+  border: 0.1vh solid rgba(7, 213, 192, 0.5);
   background: linear-gradient(
     270deg,
     rgba(0, 74, 52, 0.5) 0%,
     rgba(12, 85, 74, 0.5) 100%
   );
-  border-radius: 40px;
+  border-radius: 4vh;
 
   & > p {
     &:nth-child(1) {
@@ -672,12 +672,12 @@ export default defineComponent({
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 161px;
-        height: 138.75px;
+        width: 16.1vh;
+        height: 13.875vh;
         font-size: 5.6vh;
         font-weight: bold;
         color: #fff;
-        margin-right: 10px;
+        margin-right: 1vh;
         background: {
           repeat: no-repeat;
           size: cover;
@@ -689,7 +689,7 @@ export default defineComponent({
     &:nth-child(2) {
       & > p {
         &:first-child {
-          background-position: center -138.75px;
+          background-position: center -13.875vh;
         }
       }
     }
@@ -697,7 +697,7 @@ export default defineComponent({
     &:nth-child(3) {
       & > p {
         &:first-child {
-          background-position: center -277.5px;
+          background-position: center -27.75vh;
         }
       }
     }
@@ -705,7 +705,7 @@ export default defineComponent({
     &:nth-child(4) {
       & > p {
         &:first-child {
-          background-position: center -416.25px;
+          background-position: center -41.625vh;
         }
       }
     }
@@ -732,7 +732,7 @@ export default defineComponent({
 }
 .f-item5 {
   width: 100%;
-  border: 1px solid #07d5c0;
+  border: 0.1vh solid #07d5c0;
   border-radius: 4vh;
   text-align: center;
   overflow: hidden;
@@ -742,7 +742,7 @@ export default defineComponent({
     background: linear-gradient(180deg, rgba(0, 74, 52, 0) 50%, #0c554a 100%);
 
     &:first-child {
-      border-bottom: 1px solid #07d5c0;
+      border-bottom: 0.1vh solid #07d5c0;
     }
   }
 }
