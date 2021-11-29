@@ -3,7 +3,7 @@
     <div class="el-header__left">
       <el-breadcrumb separator="|">
         <el-breadcrumb-item>
-          <a href="/"> <i class="el-icon-s-home el-icon--left"></i>首页</a>
+          <a @click="goHome"> <i class="el-icon-s-home el-icon--left"></i>首页</a>
         </el-breadcrumb-item>
         <el-breadcrumb-item>
           <img :src="getImageUrl('home', weatherImg)" alt /> 雨 25℃ 2020-07-28 15:53
@@ -47,12 +47,14 @@
   </el-header>
 </template>
 <script>
+import { useRouter } from "vue-router";
 import { getImageUrl } from "@/utils";
 import { defineComponent, reactive, ref } from "vue";
 
 export default defineComponent({
   name: "Header",
   setup() {
+    const router = useRouter();
     const weatherImg = ref("xy.png");
     const activeIndex = ref("1");
     const activeIndex2 = ref("1");
@@ -78,7 +80,13 @@ export default defineComponent({
       },
     ]);
 
+    // 返回主页
+    const goHome = () => {
+      router.push(`/`);
+    };
+
     return {
+      goHome,
       meunLeft,
       meunRight,
       weatherImg,

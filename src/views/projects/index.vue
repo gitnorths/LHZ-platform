@@ -377,9 +377,11 @@
   </div>
 </template>
 <script setup>
+import { useRouter } from "vue-router";
 import { getImageUrl } from "@/utils";
 import { onMounted, reactive, toRefs, ref } from "vue";
 
+const router = useRouter();
 const state = reactive({
   tabActive: 0,
   current: 0,
@@ -453,6 +455,11 @@ const {
 } = toRefs(state);
 
 onMounted(() => {});
+
+// 返回主页
+const goHome = () => {
+  router.push(`/`);
+};
 
 const jump = (i) => {
   const block = document.querySelectorAll(".conBlock");
