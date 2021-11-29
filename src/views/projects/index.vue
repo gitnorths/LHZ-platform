@@ -5,7 +5,7 @@
         <div class="el-header__left">
           <el-breadcrumb separator="|">
             <el-breadcrumb-item>
-              <a href="/"><i class="el-icon-s-home el-icon--left"></i>首页</a>
+              <a @click="goHome"><i class="el-icon-s-home el-icon--left"></i>首页</a>
             </el-breadcrumb-item>
             <el-breadcrumb-item>
               <img :src="weatherImg" alt /> 雨 25℃ 2020-07-28 15:53
