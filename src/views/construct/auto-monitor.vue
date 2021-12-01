@@ -206,7 +206,7 @@ export default defineComponent({
       };
     }
 
-    return { initBaiduMap, initChart };
+    return { handleClick, initBaiduMap, initChart };
   },
 });
 </script>

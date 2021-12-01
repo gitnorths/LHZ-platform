@@ -26,39 +26,18 @@
           <div class="sidebar__item">
             <div class="sidebar__title sidebar__body-title">
               <p>2016年10月至2017年9月浏河镇示范区监测点总氮变化</p>
-              <el-button-group>
-                <el-button type="primary" size="mini">年度</el-button>
-                <el-button type="primary" size="mini" class="active">
-                  月度
-                </el-button>
-                <el-button type="primary" size="mini">旬度</el-button>
-              </el-button-group>
             </div>
             <div class="echarts-box" id="myEcharts"></div>
           </div>
           <div class="sidebar__item">
             <div class="sidebar__title sidebar__body-title">
               <p>2016年10月至2017年9月浏河镇示范区监测点总磷变化</p>
-              <el-button-group>
-                <el-button type="primary" size="mini">年度</el-button>
-                <el-button type="primary" size="mini" class="active">
-                  月度
-                </el-button>
-                <el-button type="primary" size="mini">旬度</el-button>
-              </el-button-group>
             </div>
             <div class="echarts-box"></div>
           </div>
           <div class="sidebar__item">
             <div class="sidebar__title sidebar__body-title">
               <p>氨氮</p>
-              <el-button-group>
-                <el-button type="primary" size="mini">年度</el-button>
-                <el-button type="primary" size="mini" class="active">
-                  月度
-                </el-button>
-                <el-button type="primary" size="mini">旬度</el-button>
-              </el-button-group>
             </div>
             <div class="echarts-box"></div>
           </div>

@@ -221,7 +221,7 @@
     padding: 2vh 0 3.5vh;
     border-image-source: url(./../assets/img/projects/pop-bg.png);
     border-image-repeat: stretch round;
-    border-image-width: 3.5vh 13.2vh;
+    border-image-width: 3.5vh 14.5vh;
     border-image-slice: 35 132 fill;
 
     & > li {
@@ -978,10 +978,15 @@
 
       p {
         font-size: 1.8vh;
-        line-height: 1.8vh;
+        line-height: 2vh;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
 
       .el-button-group {
+        flex: 0 0 135px;
+
         .el-button {
           background-color: #112532;
           border-color: #2b6768 !important;
