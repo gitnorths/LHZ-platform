@@ -54,7 +54,7 @@ import { baiduMap } from "@/components/baiduMap";
 export default defineComponent({
   name: "AutoMonitor",
   setup() {
-    let ak = "avfc2kLXwHDxyuKCPYpjU3V6AQEEQTE4";
+    let ak = "klVlkLpNj10O3SZfxknKLLjnE0fwku0A";
     let echart = echarts;
 
     onMounted(() => {
