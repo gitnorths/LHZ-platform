@@ -1,0 +1,1 @@
+import{_ as e}from"./index.cc1ba797.js";import{f as _,o}from"./vendor.1b8eec5f.js";const c={},t={class:"construct-layout"};function r(s,a){return o(),_("div",t)}var f=e(c,[["render",r],["__scopeId","data-v-0245153b"]]);export{f as default};
